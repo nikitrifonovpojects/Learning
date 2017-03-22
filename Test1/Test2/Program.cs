@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Test2
             
             FillMatrix(matrix);
             
-            PrintMatrix(matrix);
+            Utility.PrintMatrix(matrix);
         }
 
         private static void FillMatrix(int[,] matrix)
@@ -43,19 +44,6 @@ namespace Test2
                         number++;
                     }
                 }
-
-            }
-        }
-
-        private static void PrintMatrix(int[,] matrix)
-        {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    Console.Write(string.Format("{0} ", matrix[i, f]));
-                }
-                Console.WriteLine();
             }
         }
     }
