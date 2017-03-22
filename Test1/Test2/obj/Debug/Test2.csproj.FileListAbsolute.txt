@@ -1,0 +1,6 @@
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\bin\Debug\Test2.exe.config
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\bin\Debug\Test2.exe
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\bin\Debug\Test2.pdb
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\obj\Debug\Test2.csprojResolveAssemblyReference.cache
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\obj\Debug\Test2.exe
+C:\Users\Nikki\Desktop\Niki zadachi\Test1\Test2\obj\Debug\Test2.pdb
