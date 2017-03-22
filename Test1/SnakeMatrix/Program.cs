@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,11 @@ namespace SnakeMatrix
             {
                 for (int f = 0; f < matrix.GetLength(1); f++)
                 {
-
+                    matrix[i, f] += startNumber;
+                    startNumber++;
                 }
             }
-
+            Utility.PrintMatrix(matrix);
         }
     }
 }
