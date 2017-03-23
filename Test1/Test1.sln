@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeMatrix", "SnakeMatrix\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{88AE125A-6462-40BB-AB91-D8D0F1BCC842}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeMatrix2ndEdition", "SnakeMatrix2ndEdition\SnakeMatrix2ndEdition.csproj", "{BFCABDE8-DE5B-406F-849F-72B06ABD3876}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HittingWalls", "HittingWalls\HittingWalls.csproj", "{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{88AE125A-6462-40BB-AB91-D8D0F1BCC842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88AE125A-6462-40BB-AB91-D8D0F1BCC842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88AE125A-6462-40BB-AB91-D8D0F1BCC842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCABDE8-DE5B-406F-849F-72B06ABD3876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCABDE8-DE5B-406F-849F-72B06ABD3876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCABDE8-DE5B-406F-849F-72B06ABD3876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCABDE8-DE5B-406F-849F-72B06ABD3876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
