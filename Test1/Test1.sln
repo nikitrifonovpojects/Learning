@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeMatrix2ndEdition", "Sn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HittingWalls", "HittingWalls\HittingWalls.csproj", "{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructureExcersise", "StructureExcersise\StructureExcersise.csproj", "{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83C66232-9366-4EF7-8C95-7BE6B5EE3B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
