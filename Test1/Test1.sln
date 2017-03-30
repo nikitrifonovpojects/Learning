@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HittingWalls", "HittingWall
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StructureExcersise", "StructureExcersise\StructureExcersise.csproj", "{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{F0A8E8A7-F769-483E-BAA5-8676153296CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger.Test", "Logger.Test\Logger.Test.csproj", "{6E22551D-D8BC-4D5B-A634-5C3C2AADC29A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{558D4EF1-4684-4950-ADBE-0A0D5C6EB58F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A8E8A7-F769-483E-BAA5-8676153296CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A8E8A7-F769-483E-BAA5-8676153296CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A8E8A7-F769-483E-BAA5-8676153296CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A8E8A7-F769-483E-BAA5-8676153296CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E22551D-D8BC-4D5B-A634-5C3C2AADC29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E22551D-D8BC-4D5B-A634-5C3C2AADC29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E22551D-D8BC-4D5B-A634-5C3C2AADC29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E22551D-D8BC-4D5B-A634-5C3C2AADC29A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

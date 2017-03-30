@@ -12,6 +12,7 @@ namespace StructureExcersise
 
         public Subdject Subject { get; set; }
 
+
         public override void SayHi()
         {
             Console.WriteLine("Hi i'm a teacher.");

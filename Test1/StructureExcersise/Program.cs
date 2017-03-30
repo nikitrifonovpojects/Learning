@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StructureExcersise
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -51,7 +51,6 @@ namespace StructureExcersise
             {
                 item.SayHi();
             }
-           
         }
     }
 }
