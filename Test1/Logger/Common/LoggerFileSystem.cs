@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Logger.Common
 {
-    class LoggerFileSystem : IFileSystem
+    public class LoggerFileSystem : IFileSystem
     {
-        public void WriteText(string path, string message)
+        public void AppendAllText(string path, string message)
         {
             File.AppendAllText(path, message);
         }

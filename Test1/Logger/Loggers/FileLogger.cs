@@ -29,7 +29,7 @@ namespace Logger.Loggers
 
         protected override void Write(string message)
         {
-            file.WriteText(this.fullFileName, message + Environment.NewLine);
+            file.AppendAllText(this.fullFileName, message + Environment.NewLine);
         }
     }
 }

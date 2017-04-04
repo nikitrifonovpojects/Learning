@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using Logger.Configuration;
+using Moq;
+using Logger.Common;
 
 namespace Logger.Test.IntegrationTest
 {
@@ -13,7 +15,8 @@ namespace Logger.Test.IntegrationTest
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.ConsoleLogger;
-            MockConsole console = new MockConsole();
+            var mockConsole = new Mock<IConsole>();
+            var console = mockConsole.Object;
             LoggerFactory.Configuration.ConsoleOptions = new ConsoleLoggerOptions()
             {
                 Console = console
@@ -21,15 +24,15 @@ namespace Logger.Test.IntegrationTest
 
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+            string expected = string.Join("-", timeOfLog, inputLog);
 
             //Act
             var testConsoleLogger = LoggerFactory.GetLogger();
             testConsoleLogger.Log(inputLog);
-            string result = console.ConsoleMemory.ToString();
 
             //Assert
-            Assert.AreEqual(expected, result);
+            
+            mockConsole.Verify(x => x.WriteLine(expected), Times.Once());
         }
 
         [TestMethod]
@@ -37,7 +40,13 @@ namespace Logger.Test.IntegrationTest
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.ConsoleLogger;
-            MockConsole console = new MockConsole();
+            var mockConsole = new Mock<IConsole>();
+            var result = string.Empty;
+            mockConsole.Setup(x => x.WriteLine(It.IsAny<string>())).Callback<string>(c =>
+            {
+                result += c + Environment.NewLine;
+            });
+            var console = mockConsole.Object;
             LoggerFactory.Configuration.ConsoleOptions = new ConsoleLoggerOptions()
             {
                 Console = console
@@ -57,9 +66,10 @@ namespace Logger.Test.IntegrationTest
                 testConsoleLogger.Log(inputLog);
                 expected += string.Join("-", timeOfLog, inputLog + Environment.NewLine);
             }
-            string result = console.ConsoleMemory.ToString();
+
 
             //Assert
+            mockConsole.Verify(x => x.WriteLine(It.IsAny<string>()), Times.Exactly(numberOfLogs));
             Assert.AreEqual(expected, result);
         }
 
@@ -68,7 +78,11 @@ namespace Logger.Test.IntegrationTest
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.ConsoleLogger;
-            MockConsole console = new MockConsole();
+            var mockConsole = new Mock<IConsole>();
+            var console = mockConsole.Object;
+            string result = String.Empty;
+            mockConsole.Setup(x => x.WriteLine(It.IsAny<string>())).Callback<string>(c => result += c + Environment.NewLine);
+
             LoggerFactory.Configuration.ConsoleOptions = new ConsoleLoggerOptions()
             {
                 Console = console,
@@ -78,17 +92,20 @@ namespace Logger.Test.IntegrationTest
 
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+            string expected = string.Join("-", timeOfLog, inputLog);
 
             //Act
+            
             var testConsoleLogger = LoggerFactory.GetLogger();
             testConsoleLogger.Log(inputLog);
-            string result = console.ConsoleMemory.ToString();
+            
+            
 
             //Assert
-            Assert.IsTrue(console.IsBackGroundColorSet);
-            Assert.IsTrue(console.IsForgroundColorSet);
-            Assert.AreEqual(expected, result);
+            mockConsole.Verify(x => x.WriteLine(expected), Times.Once());
+            mockConsole.VerifySet(x => x.BackgroundColor);
+            mockConsole.VerifySet(x => x.ForegroundColor);
+            Assert.AreEqual(expected + Environment.NewLine, result);
         }
 
         [TestCleanup]

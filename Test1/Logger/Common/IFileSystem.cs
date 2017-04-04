@@ -8,6 +8,6 @@ namespace Logger.Common
 {
     public interface IFileSystem
     {
-        void WriteText(string path, string message);
+        void AppendAllText(string path, string message);
     }
 }

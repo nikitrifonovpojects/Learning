@@ -4,6 +4,7 @@ using Moq;
 using Logger.Common;
 using Logger.Loggers;
 using Logger.Configuration;
+using System.IO;
 
 namespace Logger.Test.UnitTests
 {
@@ -15,7 +16,6 @@ namespace Logger.Test.UnitTests
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.FileLogger;
-            MockFileSystem file = new MockFileSystem();
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Logs";
             string expected = string.Empty;
@@ -30,9 +30,9 @@ namespace Logger.Test.UnitTests
             }
 
             //Assert
-            string result = file.ReadText(@"..\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            file.DeleteFile(@"..\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestMethod]
@@ -43,8 +43,7 @@ namespace Logger.Test.UnitTests
 
             LoggerFactory.Configuration.FileOptions.FileName = "Log.txt";
             LoggerFactory.Configuration.FileOptions.FilePath = @"..\";
-
-            MockFileSystem file = new MockFileSystem();
+            
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
@@ -54,9 +53,9 @@ namespace Logger.Test.UnitTests
             testFileLogger.Log(inputLog);
 
             //Assert
-            string result = file.ReadText(@"..\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            file.DeleteFile(@"..\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestMethod]
@@ -64,8 +63,6 @@ namespace Logger.Test.UnitTests
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.FileLogger;
-            MockFileSystem file = new MockFileSystem();
-
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
@@ -75,9 +72,9 @@ namespace Logger.Test.UnitTests
             testFileLogger.Log(inputLog);
 
             //Assert
-            string result = file.ReadText(@"..\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            file.DeleteFile(@"..\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestCleanup]
