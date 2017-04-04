@@ -16,7 +16,7 @@ namespace Logger.Test.IntegrationTest
             LoggerFactory.Configuration.FileOptions = new FileLoggerOptions();
 
             LoggerFactory.Configuration.FileOptions.FileName = "Log.txt";
-            LoggerFactory.Configuration.FileOptions.FilePath = @"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\";
+            LoggerFactory.Configuration.FileOptions.FilePath = @"..\";
 
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
@@ -27,9 +27,9 @@ namespace Logger.Test.IntegrationTest
             testFileLogger.Log(inputLog);
 
             //Assert
-            string result = File.ReadAllText(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            File.Delete(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestMethod]
@@ -47,9 +47,9 @@ namespace Logger.Test.IntegrationTest
             testFileLogger.Log(inputLog);
 
             //Assert
-            string result = File.ReadAllText(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            File.Delete(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestMethod]
@@ -126,9 +126,9 @@ namespace Logger.Test.IntegrationTest
             }
 
             //Assert
-            string result = File.ReadAllText(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            string result = File.ReadAllText(@"..\Log.txt");
             Assert.AreEqual(expected, result);
-            File.Delete(@"C:\Users\Nikki\Desktop\Niki zadachi\Learning\Test1\Logger.Test\Log.txt");
+            File.Delete(@"..\Log.txt");
         }
 
         [TestMethod]
