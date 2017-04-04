@@ -7,22 +7,25 @@ using System.IO;
 
 namespace Logger
 {
-    public class FileLogger : ILogger
+    public class FileLogger : AbstractLogger, ILogger
     {
         private string fullFileName;
 
-        public FileLogger() : this("Log.txt","../../") // default
+        public FileLogger(ISerializer serializer)
+            : this(serializer, "Log.txt", "../../") // default
         {
-            
+
         }
 
-        public FileLogger(string fileName, string filePath)
+        public FileLogger(ISerializer serializer, string fileName, string filePath)
+            : base(serializer)
         {
             this.fullFileName = filePath + fileName;
         }
-        public void Log(string message)
+
+        protected override void Write(string message)
         {
-            File.AppendAllText(this.fullFileName, string.Format("{0}-{1}", DateTime.Now.ToString(), message) + Environment.NewLine);
+            File.AppendAllText(this.fullFileName,  message + Environment.NewLine);
         }
     }
 }

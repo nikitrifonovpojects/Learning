@@ -48,6 +48,9 @@
     <Compile Include="ConsoleLoggerOptions.cs" />
     <Compile Include="FileLoggerOptions.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="ISerializer.cs" />
+    <Compile Include="JsonSerializer.cs" />
+    <Compile Include="AbstractLogger.cs" />
     <Compile Include="LoggerConsole.cs" />
     <Compile Include="LoggerType.cs" />
     <Compile Include="ConsoleLogger.cs" />

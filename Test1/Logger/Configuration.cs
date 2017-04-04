@@ -13,5 +13,8 @@ namespace Logger
         public ConsoleLoggerOptions ConsoleOptions { get; set; }
 
         public FileLoggerOptions FileOptions { get; set; }
+
+        public ISerializer Serializer { get; set; }
+
     }
 }

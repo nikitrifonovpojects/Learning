@@ -10,44 +10,61 @@ namespace Logger
     {
         public readonly static Configuration Configuration = new Configuration();
 
+        private static Dictionary<LoggerType, ILogger> loggers = new Dictionary<LoggerType, ILogger>();
 
-        public static ILogger CreateLogger(LoggerType type)
+        public static ILogger GetLogger(LoggerType type)
         {
-            if (type == LoggerType.ConsoleLogger)
+            if (type == LoggerType.ConsoleLogger && !loggers.ContainsKey(type))
             {
-                if (Configuration.ConsoleOptions != null)
-                {
-                    IConsole console = new LoggerConsole();
-                    if (Configuration.ConsoleOptions.Console != null)
-                    {
-                        console = Configuration.ConsoleOptions.Console;
-                    }
-
-                    return new ConsoleLogger(console, Configuration.ConsoleOptions.ForegroundColor, Configuration.ConsoleOptions.BackgroundColor);
-                }
-                else
-                {
-                    return new ConsoleLogger(new LoggerConsole());
-                }
+                loggers.Add(type, CreateConsoleLogger());
+                
             }
-            else if (type == LoggerType.FileLogger)
+            else if (type == LoggerType.FileLogger && !loggers.ContainsKey(type))
             {
-                if (Configuration.FileOptions != null)
-                {
-                    return new FileLogger(Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
-                }
-                else
-                {
-                    return new FileLogger();
-                }
+                loggers.Add(type, CreateFileLogger());
+                
             }
             else
             {
                 throw new NotSupportedException(string.Format("{0} is not supported", type));
             }
+
+            return loggers[type];
         }
 
-        public static ILogger CreateLogger()
+        private static ILogger CreateFileLogger()
+        {
+            if (Configuration.FileOptions != null)
+            {
+                ISerializer serializer = new JsonSerializer();
+                return new FileLogger(serializer, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
+            }
+            else
+            {
+                return new FileLogger(Configuration.Serializer);
+            }
+        }
+
+        private static ILogger CreateConsoleLogger()
+        {
+            if (Configuration.ConsoleOptions != null)
+            {
+                IConsole console = new LoggerConsole();
+                ISerializer serializer = new JsonSerializer();
+                if (Configuration.ConsoleOptions.Console != null)
+                {
+                    console = Configuration.ConsoleOptions.Console;
+                }
+
+                return new ConsoleLogger(serializer, console, Configuration.ConsoleOptions.ForegroundColor, Configuration.ConsoleOptions.BackgroundColor);
+            }
+            else
+            {
+                return new ConsoleLogger(Configuration.Serializer, new LoggerConsole());
+            }
+        }
+
+        public static ILogger GetLogger()
         {
             if (Configuration == null)
             {
@@ -55,8 +72,13 @@ namespace Logger
             }
             else
             {
-                return CreateLogger(Configuration.DefaultLoggerType);
+                return GetLogger(Configuration.DefaultLoggerType);
             }
+        }
+
+        public static void ClearLoggers()
+        {
+            loggers.Clear();
         }
     }
 }

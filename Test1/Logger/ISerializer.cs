@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Logger
 {
-    public interface ILogger
+    public interface ISerializer
     {
-        void Log(string message);
-
-        void Log<T>(T message);
+        string Serialize<T>(T input);
     }
 }

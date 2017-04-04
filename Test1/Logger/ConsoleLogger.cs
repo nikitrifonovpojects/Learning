@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Logger
 {
-    public class ConsoleLogger : ILogger
+    public class ConsoleLogger : AbstractLogger, ILogger
     {
         private IConsole console;
 
-        public ConsoleLogger(IConsole console)
+        public ConsoleLogger(ISerializer serializer, IConsole console) 
+            : base(serializer)
         {
             this.console = console;
         }
 
-        public ConsoleLogger(IConsole console, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
-            : this(console)
+        public ConsoleLogger(ISerializer serializer,IConsole console, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
+            : this(serializer,console)
         {
             this.console.BackgroundColor = backgroundColor;
             this.console.ForegroundColor = foregroundColor;
         }
 
-        public void Log(string message)
+        protected override void Write(string message)
         {
-            this.console.WriteLine(string.Format("{0}-{1}", DateTime.Now, message));
+            this.console.WriteLine(message);
         }
     }
 }

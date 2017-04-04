@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace Logger.Test
+namespace Logger.Test.IntegrationTest
 {
     [TestClass]
     public class ConsoleLoggerTest
@@ -22,7 +22,7 @@ namespace Logger.Test
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
 
             //Act
-            var testFileLogger = LoggerFactory.CreateLogger(LoggerType.FileLogger);
+            var testFileLogger = LoggerFactory.GetLogger(LoggerType.FileLogger);
             testFileLogger.Log(inputLog);
 
             //Assert
@@ -42,7 +42,7 @@ namespace Logger.Test
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
 
             //Act
-            var testFileLogger = LoggerFactory.CreateLogger();
+            var testFileLogger = LoggerFactory.GetLogger();
             testFileLogger.Log(inputLog);
 
             //Assert
@@ -67,7 +67,7 @@ namespace Logger.Test
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
 
             //Act
-            var testConsoleLogger = LoggerFactory.CreateLogger();
+            var testConsoleLogger = LoggerFactory.GetLogger();
             testConsoleLogger.Log(inputLog);
             string result = console.ConsoleMemory.ToString();
 
@@ -91,7 +91,7 @@ namespace Logger.Test
 
 
             //Act
-            var testConsoleLogger = LoggerFactory.CreateLogger();
+            var testConsoleLogger = LoggerFactory.GetLogger();
 
             int numberOfLogs = 5;
             string expected = string.Empty;
@@ -116,7 +116,7 @@ namespace Logger.Test
             string expected = string.Empty;
 
             //Act
-            var testFileLogger = LoggerFactory.CreateLogger();
+            var testFileLogger = LoggerFactory.GetLogger();
             int numberOfLogs = 7;
             for (int i = 0; i < numberOfLogs; i++)
             {
@@ -148,7 +148,7 @@ namespace Logger.Test
             string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
 
             //Act
-            var testConsoleLogger = LoggerFactory.CreateLogger();
+            var testConsoleLogger = LoggerFactory.GetLogger();
             testConsoleLogger.Log(inputLog);
             string result = console.ConsoleMemory.ToString();
 
@@ -156,6 +156,18 @@ namespace Logger.Test
             Assert.IsTrue(console.IsBackGroundColorSet);
             Assert.IsTrue(console.IsForgroundColorSet);
             Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void CreateDefaultFileLoggerIFormatter()
+        {
+            var logger = LoggerFactory.GetLogger(LoggerType.FileLogger);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            LoggerFactory.ClearLoggers();
         }
     }
 }
