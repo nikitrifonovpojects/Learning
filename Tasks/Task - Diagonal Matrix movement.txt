@@ -1,0 +1,25 @@
+You will place numbers for each "step" you take to move. All other places in the matrix will be printed out as "0". Obstacles will be printed out as X.
+To be more readable your result must be printed with 4 characters for each position, and a space between each position:
+0000 0001 0004
+0000 0003 0006
+0002 0005 XXXX
+
+As input you will receive two comma separated numbers on the first row. They will represent the row and col count of the matrix. You will have to traverse it in the following manner:
+
+1 3 6 10
+2 5 9 13
+4 8 12 15
+7 11 14 16
+
+On the second row you will receive your initial position, as two comma separated numbers.
+
+For each following row, you will receive two comma separated numbers with the position of obstacles. If you encounter an obstacle, you will have to move in the following manner:
+
+1 3 0 8
+2 X 7 11
+4 6 10 13
+5 9 12 14
+
+You will skip all the following diagonal positions and move to the bottom position on the next diagonal if possible.
+
+The input will finish with an "END" string
