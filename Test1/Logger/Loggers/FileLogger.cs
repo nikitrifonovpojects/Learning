@@ -15,7 +15,7 @@ namespace Logger.Loggers
         public FileLogger(ISerializer serializer)
             : this(serializer, "Log.txt", "../../") // default
         {
-
+            ;
         }
 
         public FileLogger(ISerializer serializer, string fileName, string filePath)
@@ -26,7 +26,7 @@ namespace Logger.Loggers
 
         protected override void Write(string message)
         {
-            File.AppendAllText(this.fullFileName,  message + Environment.NewLine);
+            File.AppendAllText(this.fullFileName, message + Environment.NewLine);
         }
     }
 }
