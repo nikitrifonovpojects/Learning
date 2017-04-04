@@ -44,24 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
-    <Compile Include="ConsoleLoggerOptions.cs" />
-    <Compile Include="FileLoggerOptions.cs" />
-    <Compile Include="IConsole.cs" />
-    <Compile Include="ISerializer.cs" />
-    <Compile Include="JsonSerializer.cs" />
-    <Compile Include="AbstractLogger.cs" />
-    <Compile Include="LoggerConsole.cs" />
-    <Compile Include="LoggerType.cs" />
-    <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="FileLogger.cs" />
-    <Compile Include="ILogger.cs" />
+    <Compile Include="Configuration\FactoryOptions.cs" />
+    <Compile Include="Configuration\ConsoleLoggerOptions.cs" />
+    <Compile Include="Configuration\FileLoggerOptions.cs" />
+    <Compile Include="Common\IConsole.cs" />
+    <Compile Include="Common\ISerializer.cs" />
+    <Compile Include="Common\JsonSerializer.cs" />
+    <Compile Include="Loggers\AbstractLogger.cs" />
+    <Compile Include="Common\LoggerConsole.cs" />
+    <Compile Include="Configuration\LoggerType.cs" />
+    <Compile Include="Loggers\ConsoleLogger.cs" />
+    <Compile Include="Loggers\FileLogger.cs" />
+    <Compile Include="Common\ILogger.cs" />
     <Compile Include="LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

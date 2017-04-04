@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Logger.Common;
 
-namespace Logger
+namespace Logger.Loggers
 {
     public class ConsoleLogger : AbstractLogger, ILogger
     {

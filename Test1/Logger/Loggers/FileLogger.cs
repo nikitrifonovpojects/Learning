@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Logger.Common;
 
-namespace Logger
+namespace Logger.Loggers
 {
     public class FileLogger : AbstractLogger, ILogger
     {

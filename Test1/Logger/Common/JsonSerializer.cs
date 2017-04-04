@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 
-namespace Logger
+namespace Logger.Common
 {
     public class JsonSerializer : ISerializer
     {

@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using Logger.Configuration;
 
 namespace Logger.Test.IntegrationTest
 {
     [TestClass]
-    public class ConsoleLoggerTest
+    public class LoggerFactoryTest
     {
 
         [TestMethod]

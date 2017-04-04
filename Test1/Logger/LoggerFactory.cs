@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logger.Common;
+using Logger.Configuration;
+using Logger.Loggers;
 
 namespace Logger
 {
     public static class LoggerFactory
     {
-        public readonly static Configuration Configuration = new Configuration();
+        public readonly static FactoryOptions Configuration = new FactoryOptions();
 
         private static Dictionary<LoggerType, ILogger> loggers = new Dictionary<LoggerType, ILogger>();
 

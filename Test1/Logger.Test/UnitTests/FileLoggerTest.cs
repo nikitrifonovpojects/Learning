@@ -1,14 +1,17 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Logger.Common;
+using Logger.Loggers;
+using Logger.Configuration;
 
 namespace Logger.Test.UnitTests
 {
     [TestClass]
-    public class LoggerFactoryTest
+    public class FileLoggerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void LogWithModelCallsSerialize()
         {
             
             var mock = new Mock<ISerializer>();

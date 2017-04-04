@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger.Common
 {
-    public interface ISerializer
+    public interface ILogger
     {
-        string Serialize<T>(T input);
+        void Log(string message);
+
+        void Log<T>(T message);
     }
 }
