@@ -40,11 +40,16 @@ namespace Logger
             if (Configuration.FileOptions != null)
             {
                 ISerializer serializer = new JsonSerializer();
-                return new FileLogger(serializer, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
+                IFileSystem file = new LoggerFileSystem();
+                if (Configuration.FileOptions.File != null)
+                {
+                    file = Configuration.FileOptions.File;
+                }
+                return new FileLogger(serializer, file, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
             }
             else
             {
-                return new FileLogger(Configuration.Serializer);
+                return new FileLogger(Configuration.Serializer, new LoggerFileSystem());
             }
         }
 

@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IFileSystem.cs" />
+    <Compile Include="Common\LoggerFileSystem.cs" />
     <Compile Include="Configuration\FactoryOptions.cs" />
     <Compile Include="Configuration\ConsoleLoggerOptions.cs" />
     <Compile Include="Configuration\FileLoggerOptions.cs" />

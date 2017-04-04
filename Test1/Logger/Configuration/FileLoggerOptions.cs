@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logger.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace Logger.Configuration
         public string FileName { get; set; }
 
         public string FilePath { get; set; }
+
+        public IFileSystem File { get; set; }
     }
 }

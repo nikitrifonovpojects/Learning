@@ -12,21 +12,24 @@ namespace Logger.Loggers
     {
         private string fullFileName;
 
-        public FileLogger(ISerializer serializer)
-            : this(serializer, "Log.txt", "../../") // default
+        private IFileSystem file;
+
+        public FileLogger(ISerializer serializer, IFileSystem file)
+            : this(serializer, file, "Log.txt", "../") // default
         {
-            ;
+            this.file = file;
         }
 
-        public FileLogger(ISerializer serializer, string fileName, string filePath)
+        public FileLogger(ISerializer serializer, IFileSystem file, string fileName, string filePath)
             : base(serializer)
         {
             this.fullFileName = filePath + fileName;
+            this.file = file;
         }
 
         protected override void Write(string message)
         {
-            File.AppendAllText(this.fullFileName, message + Environment.NewLine);
+            file.WriteText(this.fullFileName, message + Environment.NewLine);
         }
     }
 }
