@@ -20,19 +20,27 @@ namespace Logger
             if (type == LoggerType.ConsoleLogger && !loggers.ContainsKey(type))
             {
                 loggers.Add(type, CreateConsoleLogger());
-                
             }
             else if (type == LoggerType.FileLogger && !loggers.ContainsKey(type))
             {
                 loggers.Add(type, CreateFileLogger());
-                
             }
-            else
+            else if (!loggers.ContainsKey(type))
             {
                 throw new NotSupportedException(string.Format("{0} is not supported", type));
             }
 
             return loggers[type];
+        }
+
+        public static ILogger GetLogger()
+        {
+            return GetLogger(Configuration.DefaultLoggerType);
+        }
+
+        public static void ClearLoggers()
+        {
+            loggers.Clear();
         }
 
         private static ILogger CreateFileLogger()
@@ -73,21 +81,6 @@ namespace Logger
             }
         }
 
-        public static ILogger GetLogger()
-        {
-            if (Configuration == null)
-            {
-                throw new NotSupportedException(string.Format("The default logger wasn't configurated"));
-            }
-            else
-            {
-                return GetLogger(Configuration.DefaultLoggerType);
-            }
-        }
 
-        public static void ClearLoggers()
-        {
-            loggers.Clear();
-        }
     }
 }

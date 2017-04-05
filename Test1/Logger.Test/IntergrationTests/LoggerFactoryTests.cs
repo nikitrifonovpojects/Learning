@@ -5,10 +5,10 @@ using Logger.Configuration;
 using Moq;
 using Logger.Common;
 
-namespace Logger.Test.IntegrationTest
+namespace Logger.Test.IntegrationTests
 {
     [TestClass]
-    public class LoggerFactoryTest
+    public class LoggerFactoryTests
     {
         [TestMethod]
         public void CreateConsoleLoggerWithDefaultOptions()
@@ -25,6 +25,7 @@ namespace Logger.Test.IntegrationTest
             string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
             string expected = string.Join("-", timeOfLog, inputLog);
+
 
             //Act
             var testConsoleLogger = LoggerFactory.GetLogger();
@@ -95,16 +96,16 @@ namespace Logger.Test.IntegrationTest
             string expected = string.Join("-", timeOfLog, inputLog);
 
             //Act
-            
+
             var testConsoleLogger = LoggerFactory.GetLogger();
             testConsoleLogger.Log(inputLog);
-            
-            
+
+
 
             //Assert
             mockConsole.Verify(x => x.WriteLine(expected), Times.Once());
-            mockConsole.VerifySet(x => x.BackgroundColor);
-            mockConsole.VerifySet(x => x.ForegroundColor);
+            mockConsole.VerifySet(x => x.BackgroundColor = ConsoleColor.DarkMagenta, Times.Once);
+            mockConsole.VerifySet(x => x.ForegroundColor = ConsoleColor.DarkCyan, Times.Once);
             Assert.AreEqual(expected + Environment.NewLine, result);
         }
 

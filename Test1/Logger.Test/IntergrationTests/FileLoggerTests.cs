@@ -6,10 +6,10 @@ using Logger.Loggers;
 using Logger.Configuration;
 using System.IO;
 
-namespace Logger.Test.UnitTests
+namespace Logger.Test.IntegrationTests
 {
     [TestClass]
-    public class FileLoggerTest
+    public class FileLoggerTests
     {
         [TestMethod]
         public void CreateFileLoggerWithDefaultOptionsAndMultipleLogs()
@@ -58,6 +58,7 @@ namespace Logger.Test.UnitTests
             File.Delete(@"..\Log.txt");
         }
 
+
         [TestMethod]
         public void CreateFileLoggerWithDefaultSettings()
         {
@@ -76,6 +77,7 @@ namespace Logger.Test.UnitTests
             Assert.AreEqual(expected, result);
             File.Delete(@"..\Log.txt");
         }
+
 
         [TestCleanup]
         public void Cleanup()
