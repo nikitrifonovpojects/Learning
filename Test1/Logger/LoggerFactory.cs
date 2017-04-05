@@ -45,6 +45,7 @@ namespace Logger
                 {
                     file = Configuration.FileOptions.File;
                 }
+
                 return new FileLogger(serializer, file, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
             }
             else

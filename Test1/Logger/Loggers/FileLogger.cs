@@ -17,7 +17,7 @@ namespace Logger.Loggers
         public FileLogger(ISerializer serializer, IFileSystem file)
             : this(serializer, file, "Log.txt", "../") // default
         {
-            this.file = file;
+
         }
 
         public FileLogger(ISerializer serializer, IFileSystem file, string fileName, string filePath)
