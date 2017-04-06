@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test1", "Test1\Test1.csproj", "{A9A2FDA1-C104-413D-88EA-DC1EE6691A45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortArray", "Test1\SortArray.csproj", "{A9A2FDA1-C104-413D-88EA-DC1EE6691A45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test2", "Test2\Test2.csproj", "{9A34985B-D96C-4718-A7E2-4665E5E4A6CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillMatrix", "Test2\FillMatrix.csproj", "{9A34985B-D96C-4718-A7E2-4665E5E4A6CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeMatrix", "SnakeMatrix\SnakeMatrix.csproj", "{71BD6CBD-0283-4FBE-AB73-F0DAEB38920B}"
 EndProject
