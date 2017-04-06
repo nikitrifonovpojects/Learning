@@ -67,6 +67,7 @@
     <Compile Include="IntergrationTests\LoggerFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IntergrationTests\FileLoggerTests.cs" />
+    <Compile Include="UnitTests\JsonSerializerTests.cs" />
     <Compile Include="UnitTests\LoggerFactoryUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
