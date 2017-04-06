@@ -12,7 +12,7 @@ namespace Logger.Test.UnitTests
     public class LoggerFactoryUnitTests
     {
         [TestMethod]
-        public void GetLoggerWithConfigurationReturnsConsoleLogger()
+        public void GetLoggerWithDefaultLoggerTypeConsoleLoggerReturnsConsoleLogger()
         {
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.ConsoleLogger;
             var logger = LoggerFactory.GetLogger();
@@ -21,7 +21,7 @@ namespace Logger.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetLoggerWithConfigurationReturnsFilelogger()
+        public void GetLoggerWithLoggerTypeFileLoggerReturnsFileLogger()
         {
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.FileLogger;
             var logger = LoggerFactory.GetLogger();
@@ -31,7 +31,7 @@ namespace Logger.Test.UnitTests
 
         [ExpectedException(typeof(NotSupportedException))]
         [TestMethod]
-        public void GetLoggerWithLoggerTypeThatDoesntExist()
+        public void GetLoggerWithLoggerTypeThatDoesntExistThrowsException()
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = (LoggerType)3;
@@ -43,7 +43,7 @@ namespace Logger.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetLoggerReturnsFilelogger()
+        public void GetLoggerWithArgumentFileLoggerReturnsFilelogger()
         {
             var logger = LoggerFactory.GetLogger(LoggerType.FileLogger);
 
@@ -51,7 +51,7 @@ namespace Logger.Test.UnitTests
         }
 
         [TestMethod]
-        public void GetLoggerReturnsConsoleLogger()
+        public void GetLoggerWithArgumentConsoleLoggerReturnsConsoleLogger()
         {
             var logger = LoggerFactory.GetLogger(LoggerType.ConsoleLogger);
 
@@ -71,7 +71,7 @@ namespace Logger.Test.UnitTests
         }
    
         [TestMethod]
-        public void ClearLoggersClearsTheCache()
+        public void ClearLoggersClearsLoggerCache()
         {
             var fileLogger = LoggerFactory.GetLogger(LoggerType.FileLogger);
             var consoleLogger = LoggerFactory.GetLogger(LoggerType.ConsoleLogger);
