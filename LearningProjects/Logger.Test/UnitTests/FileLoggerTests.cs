@@ -25,7 +25,6 @@ namespace Logger.Test.UnitTests
             logger.Log(input);
 
             //Assert
-            //var a = new {a = 3, b = "asdf" }; class
             //with strict mock behavior if serializer is called an exception will be thrown
         }
 
@@ -98,7 +97,7 @@ namespace Logger.Test.UnitTests
             logger.Log(a);
 
             //Assert
-            file.Setup(x => x.AppendAllText("Log.txt", "../"));
+            file.Verify(x => x.AppendAllText("../Log.txt",It.IsAny<string>()));
         }
 
         [TestMethod]
@@ -119,7 +118,7 @@ namespace Logger.Test.UnitTests
             logger.Log(a);
 
             //Assert
-            file.Setup(x => x.AppendAllText(fileName, filePath));
+            file.Verify(x => x.AppendAllText(filePath + fileName, It.IsAny<string>()));
         }
     }
 }
