@@ -86,7 +86,7 @@ namespace Logger.Test.UnitTests
             {
                 for (int f = 0; f < input.GetLength(1); f++)
                 {
-                    input[i,f] += 1;
+                    input[i, f] += 1;
                 }
             }
 
@@ -96,12 +96,6 @@ namespace Logger.Test.UnitTests
 
             //Assert
             CollectionAssert.AreEqual(input, deserializedResult);
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            LoggerFactory.ClearLoggers();
         }
     }
 }
