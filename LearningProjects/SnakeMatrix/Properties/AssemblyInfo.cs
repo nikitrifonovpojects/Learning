@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SnakeMatrix")]
+[assembly: AssemblyTitle("SnakeMatrix2ndEdition")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SnakeMatrix")]
+[assembly: AssemblyProduct("SnakeMatrix2ndEdition")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("71bd6cbd-0283-4fbe-ab73-f0daeb38920b")]
+[assembly: Guid("bfcabde8-de5b-406f-849f-72b06abd3876")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,9 +1,9 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace SnakeMatrix
 {
@@ -13,53 +13,51 @@ namespace SnakeMatrix
         {
             string input = Console.ReadLine();
             string[] values = input.Split(',');
-            int rows = int.Parse(values[0]);
-            int cols = int.Parse(values[1]);
+            int n = int.Parse(values[0]);
+            int m = int.Parse(values[1]);
             int startNumber = int.Parse(values[2]);
-            int?[,] matrix = new int?[rows, cols];
+            int?[,] matrix = new int?[n, m];
 
-            int totalSteps = rows * cols;
-            int positionY = 0;
-            int positionX = 0;
-            Direction direction = Direction.Right;
-            for (int i = 1; i <= totalSteps; i++)
+            int row = 0;
+            int col = 0;
+            int steps = n * m;
+            Directions direction = Directions.Right;
+
+            for (int i = 1; i <= steps; i++)
             {
-                if (direction == Direction.Right && (positionX >= cols - 1 || matrix[positionY, positionX + 1] != null))
+                if (direction == Directions.Right && (col >= m - 1|| matrix[row,col + 1] != null))
                 {
-                    direction = Direction.Down;
-                    
+                    direction = Directions.Down;
                 }
-                if (direction == Direction.Down && (positionY >= rows - 1 || matrix[positionY + 1, positionX] != null))
+                if (direction == Directions.Down && (row  >= n - 1 || matrix[row + 1, col] != null))
                 {
-                    direction = Direction.Left;
-                    
+                    direction = Directions.Left;
                 }
-                if (direction == Direction.Left && (positionX <= 0 || matrix[positionY, positionX - 1] != null))
+                if (direction == Directions.Left && (col <= 0 || matrix[row, col - 1] != null))
                 {
-                    direction = Direction.Up;
-                    
+                    direction = Directions.Up;
                 }
-                if (direction == Direction.Up &&  matrix[positionY - 1, positionX] != null)
+                if (direction == Directions.Up &&  matrix[row - 1, col] != null)
                 {
-                    direction = Direction.Right;
-                    
+                    direction = Directions.Right;
                 }
-                matrix[positionY, positionX] = startNumber;
+
+                matrix[row, col] = startNumber;
                 startNumber++;
 
                 switch (direction)
                 {
-                    case Direction.Right:
-                        positionX++;
+                    case Directions.Right:
+                        col++;
                         break;
-                    case Direction.Down:
-                        positionY++;
+                    case Directions.Left:
+                        col--;
                         break;
-                    case Direction.Left:
-                        positionX--;
+                    case Directions.Down:
+                        row++;
                         break;
-                    case Direction.Up:
-                        positionY--;
+                    case Directions.Up:
+                        row--;
                         break;
                 }
             }
