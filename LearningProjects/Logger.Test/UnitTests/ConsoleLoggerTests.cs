@@ -54,8 +54,6 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-            string result = String.Empty;
-            mockConsole.Setup(x => x.WriteLine(It.IsAny<string>())).Callback<string>(c => result += c + Environment.NewLine);
 
             var logger = new ConsoleLogger(serializer, console, ConsoleColor.DarkBlue, ConsoleColor.DarkMagenta);
             var input = "strings";
@@ -68,7 +66,62 @@ namespace Logger.Test.UnitTests
             mockConsole.Verify(x => x.WriteLine(expected), Times.Once);
             mockConsole.VerifySet(x => x.BackgroundColor = ConsoleColor.DarkMagenta);
             mockConsole.VerifySet(x => x.ForegroundColor = ConsoleColor.DarkBlue);
-            Assert.AreEqual(expected + Environment.NewLine, result);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void LogNullObjectThrowsArgumentNullException()
+        {
+            // Arrange
+            var mockSerializer = new Mock<ISerializer>();
+            var serializer = mockSerializer.Object;
+            var mockConsole = new Mock<IConsole>();
+            var console = mockConsole.Object;
+            var logger = new ConsoleLogger(serializer, console);
+            var input = default(FactoryOptions);
+
+            //Act
+            logger.Log(input);
+
+            //Assert
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void LogNullStringThrowsArgumentNullException()
+        {
+            // Arrange
+            var mockSerializer = new Mock<ISerializer>();
+            var serializer = mockSerializer.Object;
+            var mockConsole = new Mock<IConsole>();
+            var console = mockConsole.Object;
+            var logger = new ConsoleLogger(serializer, console);
+            string input = null;
+
+            //Act
+            logger.Log(input);
+
+            //Assert
+        }
+
+        [TestMethod]
+        public void LogEmptyStringUsesConsoleLoggerCorrectly()
+        {
+            // Arrange
+            var mockSerializer = new Mock<ISerializer>();
+            var serializer = mockSerializer.Object;
+            var mockConsole = new Mock<IConsole>();
+            var console = mockConsole.Object;
+            var logger = new ConsoleLogger(serializer, console);
+
+            string input = string.Empty;
+            string time = DateTime.Now.ToString();
+            string result = time + "-" + input;
+            //Act
+            logger.Log(input);
+
+            //Assert
+            mockConsole.Verify(x => x.WriteLine(result));
         }
     }
 }
