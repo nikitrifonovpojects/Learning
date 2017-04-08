@@ -18,12 +18,20 @@ namespace Logger.Loggers
 
         public void Log(string message)
         {
+            if (message == null)
+            {
+                throw new ArgumentNullException("message");
+            }
             message = string.Format("{0}-{1}", DateTime.Now, message);
             Write(message);
         }
 
         public void Log<T>(T message)
         {
+            if (message == null)
+            {
+                throw new ArgumentNullException("message");
+            }
             Log(serializer.Serialize(message));
         }
 
