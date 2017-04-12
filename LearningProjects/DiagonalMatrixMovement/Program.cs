@@ -40,6 +40,7 @@ namespace DiagonalMatrixMovement
                     Row = int.Parse(obsticlePos[0]),
                     Col = int.Parse(obsticlePos[1])
                 };
+
                 obsticles.Add(obsticle);
                 obsticlePosition = Console.ReadLine();
             }

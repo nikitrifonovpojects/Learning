@@ -27,8 +27,10 @@ namespace DiagonalMatrixMovement
             {
                 throw new IndexOutOfRangeException("The player is not within the bounds of the matrix");
             }
+
             int startNumber = 1;
             PlayerPosition newPosition = new PlayerPosition();
+
             while (row - 1 != matrix.GetLength(0) && col - 1 != matrix.GetLength(1))
             {
                 if (CanMove(row, col))
@@ -37,6 +39,7 @@ namespace DiagonalMatrixMovement
                     startNumber++;
                     newPosition = MoveNext(row, col);
                 }
+
                 else
                 {
                     newPosition = GetNextPosition(row, col);

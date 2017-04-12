@@ -38,6 +38,7 @@ namespace DiagonalMatrixTests
                 { "0006", "0011", "0016", "0020", "0023", },
                 { "0010", "0015", "0019", "0022", "0024", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -69,6 +70,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -113,6 +115,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -126,6 +129,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0002", "0007", "0011", "XXXX", },
                 { "0001", "0006", "0010", "0013", "0014", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -160,6 +164,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -173,6 +178,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0002", "0007", "0011", "XXXX", },
                 { "0001", "0006", "0010", "0013", "0014", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -204,6 +210,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -217,6 +224,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0002", "0007", "0011", "XXXX", },
                 { "0001", "0006", "0010", "0013", "0014", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -247,6 +255,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -260,6 +269,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0000", "0000", "0000", "XXXX", },
                 { "0000", "0000", "0000", "0000", "0001", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -291,6 +301,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -304,6 +315,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0000", "0003", "0007", "XXXX", },
                 { "0000", "0002", "0006", "0009", "0010", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
@@ -335,6 +347,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "0000";
                 }
             }
+
             foreach (var item in obsticles)
             {
                 matrix[item.Row, item.Col] = "XXXX";
@@ -348,6 +361,7 @@ namespace DiagonalMatrixTests
                 { "0000", "0000", "0005", "0009", "XXXX", },
                 { "0000", "0004", "0008", "0011", "0012", },
             };
+
             //Act
             var engine = new MovementEngine(player, obsticles, matrix);
             string[,] result = engine.Execute();
