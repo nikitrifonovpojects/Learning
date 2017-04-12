@@ -38,7 +38,7 @@ namespace Logger.Test.UnitTests
             var console = mockConsole.Object;
             var logger = new ConsoleLogger(serializer, console);
             var input = new { a = 13, b = "strings" };
-
+            mockSerializer.Setup(x => x.Serialize(input)).Returns("123");
             //Act
             logger.Log(input);
 
