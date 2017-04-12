@@ -22,7 +22,7 @@ namespace DiagonalMatrixMovement
             string[] position = initialPosition.Split(',');
             int playerRow = int.Parse(position[0]);
             int playerCol = int.Parse(position[1]);
-
+            
             PlayerPosition player = new PlayerPosition()
             {
                 Row = playerRow,
