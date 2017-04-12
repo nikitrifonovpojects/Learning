@@ -39,9 +39,10 @@ namespace Logger.Test.UnitTests
             var logger = new FileLogger(serializer, fileSystem);
 
             var a = new { a = 3, b = "asdf" };
+
             //Act
             logger.Log(a);
-
+            
             //Assert
             mockSerializer.Verify(x => x.Serialize(a), Times.Once);
         }

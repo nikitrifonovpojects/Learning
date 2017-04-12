@@ -8,102 +8,91 @@ namespace DiagonalMatrixMovement
 {
     public class MovementEngine
     {
-        private PlayerPosition player;
+        private PlayerPosition position;
         private List<Obsticle> obsticles;
         private string[,] matrix;
-        private bool nextMove;
 
-        public MovementEngine(PlayerPosition playerPosition, List<Obsticle> obsticles, string[,] matrix)
+        public MovementEngine(PlayerPosition position, List<Obsticle> obsticles, string[,] matrix)
         {
             this.matrix = matrix;
-            this.player = playerPosition;
+            this.position = position;
             this.obsticles = obsticles;
         }
 
         public string[,] Execute()
         {
-            int row = player.Row;
-            int col = player.Col;
-            int startPosition = 1;
-            this.nextMove = true;
-            while (this.nextMove)
+            int row = position.Row;
+            int col = position.Col;
+            int startNumber = 1;
+            PlayerPosition newPosition = new PlayerPosition();
+            while (row - 1 != matrix.GetLength(0) && col - 1 != matrix.GetLength(1))
             {
-                matrix[player.Row, player.Col] = startPosition.ToString("D4");
-                startPosition++;
                 if (CanMove(row, col))
                 {
-                    row -= 1;
-                    col += 1;
-                    Move(row, col);
-                }
-                else if (player.Col + 1 < matrix.GetLength(1) || player.Row + 1 < matrix.GetLength(0))
-                {
-                    PlayerPosition newPosition = GetNextStartingPosition();
-                    row = newPosition.Row;
-                    col = newPosition.Col;
+                    matrix[row, col] = startNumber.ToString("D4");
+                    startNumber++;
+                    newPosition = MoveNext(row, col);
                 }
                 else
                 {
-                    this.nextMove = false;
+                    newPosition = GetNextPosition(row, col);
                 }
+
+                row = newPosition.Row;
+                col = newPosition.Col;
             }
+
             return this.matrix;
         }
 
-        private PlayerPosition GetNextStartingPosition()
+        private PlayerPosition MoveNext(int row, int col)
         {
-            player.Col += 1;
-            while (player.Row + 1 < matrix.GetLength(0) && player.Col - 1 >= 0)
+            return new PlayerPosition
             {
-                player.Row += 1;
-                player.Col -= 1;
-            }
-            if (CheckForObsticle(player.Row, player.Col))
-            {
-                if (player.Col + 1 < matrix.GetLength(1))
-                {
-                    GetNextStartingPosition();
-                }
-                else
-                {
-                    this.nextMove = false;
-                }
-            }
-            return player;
+                Row = row - 1,
+                Col = col + 1
+            };
         }
 
-        private void Move(int row, int col)
+        private PlayerPosition GetNextPosition(int row, int col)
         {
-            player.Row = row;
-            player.Col = col;
+            col += 1;
+            while (row + 1 < matrix.GetLength(0) && col - 1 >= 0)
+            {
+                row += 1;
+                col -= 1;
+            }
+
+            return new PlayerPosition
+            {
+                Row = row,
+                Col = col
+            };
         }
 
         private bool CanMove(int row, int col)
         {
-            bool canMove = false;
-            if (row - 1 >= 0 && col + 1 < matrix.GetLength(1))
+            bool move = false;
+            if (row >= 0 && col >= 0 && row < matrix.GetLength(0) && col < matrix.GetLength(1))
             {
-                if (!CheckForObsticle(row - 1, col + 1))
+                if (!CheckForObsticle(row, col))
                 {
-                    canMove = true;
+                    move = true;
                 }
             }
-            return canMove;
+
+            return move;
         }
 
         private bool CheckForObsticle(int row, int col)
         {
             bool obsticleFound = false;
-            foreach (var obsticle in obsticles)
+            if (matrix[row, col] == "XXXX")
             {
-                if (obsticle.Row == row && obsticle.Col == col)
-                {
-                    matrix[row, col] = "XXXX";
-                    obsticleFound = true;
-                }
+                obsticleFound = true;
             }
+
             return obsticleFound;
         }
-
     }
 }
