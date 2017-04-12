@@ -47,6 +47,7 @@ namespace Logger.Test.IntegrationTests
             {
                 result += c + Environment.NewLine;
             });
+
             var console = mockConsole.Object;
             LoggerFactory.Configuration.ConsoleOptions = new ConsoleLoggerOptions()
             {

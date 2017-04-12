@@ -22,6 +22,7 @@ namespace Logger.Loggers
             {
                 throw new ArgumentNullException("message");
             }
+
             message = string.Format("{0}-{1}", DateTime.Now, message);
             Write(message);
         }
@@ -32,6 +33,7 @@ namespace Logger.Loggers
             {
                 throw new ArgumentNullException("message");
             }
+
             Log(serializer.Serialize(message));
         }
 

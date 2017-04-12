@@ -35,11 +35,12 @@ namespace Logger.Test.UnitTests
             Mock<IFileSystem> file = new Mock<IFileSystem>();
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
+            mockSerializer.Setup(x => x.Serialize(It.IsAny<object>()));
             var serializer = mockSerializer.Object;
             var logger = new FileLogger(serializer, fileSystem);
 
             var a = new { a = 3, b = "asdf" };
-
+            mockSerializer.Setup(x => x.Serialize(a)).Returns("asdf");
             //Act
             logger.Log(a);
             
@@ -58,6 +59,7 @@ namespace Logger.Test.UnitTests
             var logger = new FileLogger(serializer, fileSystem);
 
             var a = 1235;
+            mockSerializer.Setup(x => x.Serialize(a)).Returns("123");
             //Act
             logger.Log(a);
 
@@ -76,6 +78,7 @@ namespace Logger.Test.UnitTests
             var logger = new FileLogger(serializer, fileSystem);
 
             int[] a = { 1, 2, 3, 5, };
+            mockSerializer.Setup(x => x.Serialize(a)).Returns("123");
             //Act
             logger.Log(a);
 
