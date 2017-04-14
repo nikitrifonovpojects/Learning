@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MovementEngine.cs" />
-    <Compile Include="Obstacle.cs" />
+    <Compile Include="Obsticle.cs" />
     <Compile Include="PlayerPosition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

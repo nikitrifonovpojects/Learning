@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiagonalMatrixMovement
 {
-    public class Obstacle
+    public class Obsticle
     {
 
         public int Row { get; set; }

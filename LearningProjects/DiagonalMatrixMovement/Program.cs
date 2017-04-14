@@ -29,20 +29,20 @@ namespace DiagonalMatrixMovement
                 Col = playerCol
             };
 
-            var obstacles = new List<Obstacle>();
+            var obsticles = new List<Obsticle>();
 
-            string obstaclePosition = Console.ReadLine();
-            while (obstaclePosition != "END")
+            string obsticlePosition = Console.ReadLine();
+            while (obsticlePosition != "END")
             {
-                string[] obstaclePos = obstaclePosition.Split(',');
-                Obstacle obsticle = new Obstacle()
+                string[] obsticlePos = obsticlePosition.Split(',');
+                Obsticle obsticle = new Obsticle()
                 {
-                    Row = int.Parse(obstaclePos[0]),
-                    Col = int.Parse(obstaclePos[1])
+                    Row = int.Parse(obsticlePos[0]),
+                    Col = int.Parse(obsticlePos[1])
                 };
 
-                obstacles.Add(obsticle);
-                obstaclePosition = Console.ReadLine();
+                obsticles.Add(obsticle);
+                obsticlePosition = Console.ReadLine();
             }
 
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -53,12 +53,12 @@ namespace DiagonalMatrixMovement
                 }
             }
 
-            foreach (var obstacle in obstacles)
+            foreach (var obsticle in obsticles)
             {
-                matrix[obstacle.Row, obstacle.Col] = "XXXX";
+                matrix[obsticle.Row, obsticle.Col] = "XXXX";
             }
 
-            var engine = new MovementEngine(player, obstacles, matrix);
+            var engine = new MovementEngine(player, obsticles, matrix);
 
             string[,] resultMatrix = engine.Execute();
 

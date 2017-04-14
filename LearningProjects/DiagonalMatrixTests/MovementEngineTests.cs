@@ -13,8 +13,8 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
-            Obstacle obsticle = new Obstacle() { Row = 0, Col = 0 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 0, Col = 0 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             int row = 5;
             int col = 5;
@@ -52,10 +52,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
-            Obstacle obsticle = new Obstacle() { Row = 4, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 3, Col = 1 };
-            Obstacle obsticle2 = new Obstacle() { Row = 0, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 4, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 3, Col = 1 };
+            Obsticle obsticle2 = new Obsticle() { Row = 0, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -97,10 +97,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 4, Col = 0 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -144,11 +144,11 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 4, Col = 0 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            Obstacle obsticle3 = new Obstacle() { Row = 5, Col = 5 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            Obsticle obsticle3 = new Obsticle() { Row = 5, Col = 5 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -192,10 +192,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 5, Col = 5 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -237,10 +237,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 4, Col = 4 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -283,10 +283,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 0, Col = 4 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -329,10 +329,10 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };
-            Obstacle obsticle = new Obstacle() { Row = 2, Col = 0 };
-            Obstacle obsticle1 = new Obstacle() { Row = 0, Col = 0 };
-            Obstacle obsticle2 = new Obstacle() { Row = 3, Col = 4 };
-            var obsticles = new List<Obstacle>();
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
             obsticles.Add(obsticle);
             obsticles.Add(obsticle1);
             obsticles.Add(obsticle2);
@@ -375,7 +375,7 @@ namespace DiagonalMatrixTests
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };
-            var obsticles = new List<Obstacle>();
+            var obsticles = new List<Obsticle>();
             int row = 5;
             int col = 5;
             string[,] matrix = new string[row, col];
@@ -387,7 +387,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "XXXX";
                 }
             }
-
+            
             string[,] expected = new string[,]
             {
                 { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
@@ -402,7 +402,6 @@ namespace DiagonalMatrixTests
 
             //Assert
             CollectionAssert.AreEqual(expected, result);
-            throw new Exception("You are filling your own matrix with the obstacles here, and leaving the list of obstacles empty. This is not the correct way to do it. Refactor as per my comments");
         }
     }
 }
