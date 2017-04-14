@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeMatrix", "SnakeMatrix\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagonalMatrixMovement", "DiagonalMatrixMovement\DiagonalMatrixMovement.csproj", "{1B96B8C6-0B60-4F5F-8298-CAD629389AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagonalMatrixTests", "DiagonalMatrixTests\DiagonalMatrixTests.csproj", "{9B77407C-C435-4FDB-A53D-4BB39698AD6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagonalMatrixMovement.Test", "DiagonalMatrixTests\DiagonalMatrixMovement.Test.csproj", "{9B77407C-C435-4FDB-A53D-4BB39698AD6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

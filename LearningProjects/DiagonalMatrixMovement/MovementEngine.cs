@@ -9,14 +9,14 @@ namespace DiagonalMatrixMovement
     public class MovementEngine
     {
         private PlayerPosition position;
-        private List<Obsticle> obsticles;
+        private List<Obstacle> obstacles;
         private string[,] matrix;
 
-        public MovementEngine(PlayerPosition position, List<Obsticle> obsticles, string[,] matrix)
+        public MovementEngine(PlayerPosition position, List<Obstacle> obsticles, string[,] matrix)
         {
             this.matrix = matrix;
             this.position = position;
-            this.obsticles = obsticles;
+            this.obstacles = obsticles;
         }
 
         public string[,] Execute()
@@ -82,7 +82,7 @@ namespace DiagonalMatrixMovement
             bool move = false;
             if (row >= 0 && col >= 0 && row < matrix.GetLength(0) && col < matrix.GetLength(1))
             {
-                if (!CheckForObsticle(row, col))
+                if (!CheckForObstacle(row, col))
                 {
                     move = true;
                 }
@@ -91,15 +91,15 @@ namespace DiagonalMatrixMovement
             return move;
         }
 
-        private bool CheckForObsticle(int row, int col)
+        private bool CheckForObstacle(int row, int col)
         {
-            bool obsticleFound = false;
+            bool obstacleFound = false;
             if (matrix[row, col] == "XXXX")
             {
-                obsticleFound = true;
+                obstacleFound = true;
             }
 
-            return obsticleFound;
+            return obstacleFound;
         }
     }
 }
