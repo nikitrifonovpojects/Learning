@@ -273,5 +273,220 @@ namespace DiagonalMatrixMovement.Test
             //Assert
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void PlayerStartsAtTheLastIndexOfTheMatrixWithObstacleOnTheSamePosition()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 4, Col = 4 };
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 4, Col = 4 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            int row = 5;
+            int col = 5;
+
+            string[,] expected = new string[,]
+            {
+                { "0000", "0000", "0000", "0000", "0000", },
+                { "0000", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "0000", "0000", "0000", "0000", "XXXX", },
+                { "0000", "0000", "0000", "0000", "XXXX", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void PlayerStartsAtTheFirstIndexOfTheMatrixWithObstaclesOnTheEdgesOnTheLeftAndDown()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
+            Obsticle obsticle = new Obsticle() { Row = 1, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 0 };
+            Obsticle obsticle3 = new Obsticle() { Row = 4, Col = 0 };
+            Obsticle obsticle4 = new Obsticle() { Row = 4, Col = 1 };
+            Obsticle obsticle5 = new Obsticle() { Row = 4, Col = 2 };
+            Obsticle obsticle6 = new Obsticle() { Row = 4, Col = 3 };
+            Obsticle obsticle7 = new Obsticle() { Row = 4, Col = 4 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            obsticles.Add(obsticle3);
+            obsticles.Add(obsticle4);
+            obsticles.Add(obsticle5);
+            obsticles.Add(obsticle6);
+            obsticles.Add(obsticle7);
+            int row = 5;
+            int col = 5;
+
+            string[,] expected = new string[,]
+            {
+                { "0001", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void PlayerStartsInTheMiddleOfTheMatrixWithObsticlesOnTheEdges()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };
+            Obsticle obsticle = new Obsticle() { Row = 1, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 3, Col = 0 };
+            Obsticle obsticle3 = new Obsticle() { Row = 4, Col = 0 };
+            Obsticle obsticle4 = new Obsticle() { Row = 4, Col = 1 };
+            Obsticle obsticle5 = new Obsticle() { Row = 4, Col = 2 };
+            Obsticle obsticle6 = new Obsticle() { Row = 4, Col = 3 };
+            Obsticle obsticle7 = new Obsticle() { Row = 4, Col = 4 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            obsticles.Add(obsticle3);
+            obsticles.Add(obsticle4);
+            obsticles.Add(obsticle5);
+            obsticles.Add(obsticle6);
+            obsticles.Add(obsticle7);
+            int row = 5;
+            int col = 5;
+
+            string[,] expected = new string[,]
+            {
+                { "0000", "0000", "0000", "0000", "0003", },
+                { "XXXX", "0000", "0000", "0002", "0000", },
+                { "XXXX", "0000", "0001", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void UnsymmetriclTheMatrix()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 0, Col = 1 };
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 2, Col = 1 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            int row = 3;
+            int col = 5;
+            string[,] expected = new string[,]
+            {
+                { "XXXX", "0001", "0000", "0000", "0004", },
+                { "0000", "0000", "0000", "0003", "0006", },
+                { "XXXX", "XXXX", "0002", "0005", "0007", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void UnsymmetriclTheMatrixPlayerAndObstacleAreAtTheSamePosition()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
+            Obsticle obsticle = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 2, Col = 1 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            int row = 3;
+            int col = 5;
+            string[,] expected = new string[,]
+            {
+                { "XXXX", "0002", "0000", "0000", "0005", },
+                { "0001", "0000", "0000", "0004", "0007", },
+                { "XXXX", "XXXX", "0003", "0006", "0008", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void UnsymmetricalMatrixPlayerStartsAtTheFirstIndexWithObstaclesOnTheEdgesOnTheLeftAndDown()
+        {
+            //Arrange
+            PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
+            Obsticle obsticle = new Obsticle() { Row = 0, Col = 0 };
+            Obsticle obsticle1 = new Obsticle() { Row = 1, Col = 0 };
+            Obsticle obsticle2 = new Obsticle() { Row = 2, Col = 0 };
+            Obsticle obsticle3 = new Obsticle() { Row = 3, Col = 0 };
+            Obsticle obsticle4 = new Obsticle() { Row = 3, Col = 1 };
+            Obsticle obsticle5 = new Obsticle() { Row = 3, Col = 2 };
+            Obsticle obsticle6 = new Obsticle() { Row = 3, Col = 3 };
+            Obsticle obsticle7 = new Obsticle() { Row = 3, Col = 4 };
+            var obsticles = new List<Obsticle>();
+            obsticles.Add(obsticle);
+            obsticles.Add(obsticle1);
+            obsticles.Add(obsticle2);
+            obsticles.Add(obsticle3);
+            obsticles.Add(obsticle4);
+            obsticles.Add(obsticle5);
+            obsticles.Add(obsticle6);
+            obsticles.Add(obsticle7);
+            int row = 4;
+            int col = 5;
+
+            string[,] expected = new string[,]
+            {
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "0000", "0000", "0000", "0000", },
+                { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
+            };
+
+            //Act
+            var engine = new MovementEngine(player, obsticles, row, col);
+            string[,] result = engine.Execute();
+
+            //Assert
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
