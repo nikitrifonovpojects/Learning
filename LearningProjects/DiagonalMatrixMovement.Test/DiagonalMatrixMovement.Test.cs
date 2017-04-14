@@ -18,17 +18,6 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            matrix[obsticle.Row, obsticle.Col] = "XXXX";
 
             string[,] expected = new string[,]
             {
@@ -40,7 +29,7 @@ namespace DiagonalMatrixMovement.Test
             };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
@@ -61,21 +50,7 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
-
+            
             string[,] expected = new string[,]
             {
                 { "0001", "0003", "0006", "0010", "XXXX", },
@@ -85,7 +60,7 @@ namespace DiagonalMatrixMovement.Test
                 { "XXXX", "0011", "0015", "0018", "0020", },
             };
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
@@ -106,21 +81,7 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
-
+            
             string[,] expected = new string[,]
             {
                 { "XXXX", "0000", "0000", "0000", "0005", },
@@ -131,14 +92,14 @@ namespace DiagonalMatrixMovement.Test
             };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
             CollectionAssert.AreEqual(expected, result);
         }
 
-        [ExpectedException(typeof(IndexOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
         public void ObsticleOutOfBoundsOfTheMatrixReturnsException()
         {
@@ -155,38 +116,15 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle3);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
-
-            string[,] expected = new string[,]
-            {
-                { "XXXX", "0000", "0000", "0000", "0005", },
-                { "0000", "0000", "0000", "0004", "0009", },
-                { "XXXX", "0000", "0003", "0008", "0012", },
-                { "0000", "0002", "0007", "0011", "XXXX", },
-                { "0001", "0006", "0010", "0013", "0014", },
-            };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
-            string[,] result = engine.Execute();
+            var engine = new MovementEngine(player, obsticles, row, col);
+            engine.Execute();
 
             //Assert
         }
 
-        [ExpectedException(typeof(IndexOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
         public void PlayerOutOfBoundsOfTheMatrixReturnsException()
         {
@@ -201,33 +139,10 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
-
-            string[,] expected = new string[,]
-            {
-                { "XXXX", "0000", "0000", "0000", "0005", },
-                { "0000", "0000", "0000", "0004", "0009", },
-                { "XXXX", "0000", "0003", "0008", "0012", },
-                { "0000", "0002", "0007", "0011", "XXXX", },
-                { "0001", "0006", "0010", "0013", "0014", },
-            };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
-            string[,] result = engine.Execute();
+            var engine = new MovementEngine(player, obsticles, row, col);
+            engine.Execute();
 
             //Assert
         }
@@ -246,20 +161,6 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
 
             string[,] expected = new string[,]
             {
@@ -271,7 +172,7 @@ namespace DiagonalMatrixMovement.Test
             };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
@@ -292,20 +193,6 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
 
             string[,] expected = new string[,]
             {
@@ -317,7 +204,7 @@ namespace DiagonalMatrixMovement.Test
             };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
@@ -338,20 +225,6 @@ namespace DiagonalMatrixMovement.Test
             obsticles.Add(obsticle2);
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var item in obsticles)
-            {
-                matrix[item.Row, item.Col] = "XXXX";
-            }
 
             string[,] expected = new string[,]
             {
@@ -363,7 +236,7 @@ namespace DiagonalMatrixMovement.Test
             };
 
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert
@@ -375,19 +248,16 @@ namespace DiagonalMatrixMovement.Test
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };
-            var obsticles = new List<Obsticle>();
             int row = 5;
             int col = 5;
-            string[,] matrix = new string[row, col];
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            var obsticles = new List<Obsticle>();
+            for (int i = 0; i < row; i++)
             {
-                for (int f = 0; f < matrix.GetLength(1); f++)
+                for (int f = 0; f < col; f++)
                 {
-                    matrix[i, f] = "XXXX";
+                    obsticles.Add(new Obsticle() { Row = i, Col = f });
                 }
             }
-
             string[,] expected = new string[,]
             {
                 { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
@@ -397,7 +267,7 @@ namespace DiagonalMatrixMovement.Test
                 { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
             };
             //Act
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
             string[,] result = engine.Execute();
 
             //Assert

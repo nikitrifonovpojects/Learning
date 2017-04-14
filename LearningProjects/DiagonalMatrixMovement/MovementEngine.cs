@@ -10,22 +10,27 @@ namespace DiagonalMatrixMovement
     {
         private PlayerPosition position;
         private List<Obsticle> obsticles;
+        private int matrixRow;
+        private int matrixCol;
         private string[,] matrix;
 
-        public MovementEngine(PlayerPosition position, List<Obsticle> obsticles, string[,] matrix)
+        public MovementEngine(PlayerPosition position, List<Obsticle> obsticles, int matrixRow, int matrixCol)
         {
-            this.matrix = matrix;
+            this.matrixRow = matrixRow;
+            this.matrixCol = matrixCol;
             this.position = position;
             this.obsticles = obsticles;
         }
 
         public string[,] Execute()
         {
+            this.matrix = CreateMatrix(matrixRow, matrixCol);
+            InputObstacles(this.obsticles);
             int row = position.Row;
             int col = position.Col;
             if (row >= matrix.GetLength(0) || col >= matrix.GetLength(1) || row < 0 || col < 0)
             {
-                throw new IndexOutOfRangeException("The player is not within the bounds of the matrix");
+                throw new ArgumentOutOfRangeException("The player is not within the bounds of the matrix");
             }
 
             int startNumber = 1;
@@ -100,6 +105,34 @@ namespace DiagonalMatrixMovement
             }
 
             return obsticleFound;
+        }
+
+        private string[,] CreateMatrix(int row, int col)
+        {
+            string[,] matrix = new string[row, col];
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int f = 0; f < matrix.GetLength(1); f++)
+                {
+                    matrix[i, f] = "0000";
+                }
+            }
+
+            return matrix;
+        }
+
+        private void InputObstacles(List<Obsticle> obsticles)
+        {
+            foreach (var obsticle in obsticles)
+            {
+                if (obsticle.Row >= matrix.GetLength(0) || obsticle.Col >= matrix.GetLength(1) || obsticle.Row < 0 || obsticle.Col < 0)
+                {
+                    throw new ArgumentOutOfRangeException("The obsticle is not within the bounds of the matrix");
+                }
+
+                matrix[obsticle.Row, obsticle.Col] = "XXXX";
+            }
         }
     }
 }

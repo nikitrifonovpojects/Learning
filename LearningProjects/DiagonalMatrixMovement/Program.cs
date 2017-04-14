@@ -16,13 +16,11 @@ namespace DiagonalMatrixMovement
             int row = int.Parse(values[0]);
             int col = int.Parse(values[1]);
 
-            string[,] matrix = new string[row, col];
-            
             string initialPosition = Console.ReadLine();
             string[] position = initialPosition.Split(',');
             int playerRow = int.Parse(position[0]);
             int playerCol = int.Parse(position[1]);
-            
+
             PlayerPosition player = new PlayerPosition()
             {
                 Row = playerRow,
@@ -45,20 +43,7 @@ namespace DiagonalMatrixMovement
                 obsticlePosition = Console.ReadLine();
             }
 
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int f = 0; f < matrix.GetLength(1); f++)
-                {
-                    matrix[i, f] = "0000";
-                }
-            }
-
-            foreach (var obsticle in obsticles)
-            {
-                matrix[obsticle.Row, obsticle.Col] = "XXXX";
-            }
-
-            var engine = new MovementEngine(player, obsticles, matrix);
+            var engine = new MovementEngine(player, obsticles, row, col);
 
             string[,] resultMatrix = engine.Execute();
 
