@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DiagonalMatrixMovement;
 using System.Collections.Generic;
+using DiagonalMatrixMovement;
 
-namespace DiagonalMatrixTests
+namespace DiagonalMatrixMovement.Test
 {
     [TestClass]
     public class MovementEngineTests
@@ -387,7 +387,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "XXXX";
                 }
             }
-            
+
             string[,] expected = new string[,]
             {
                 { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
