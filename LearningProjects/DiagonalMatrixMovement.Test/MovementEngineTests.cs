@@ -387,7 +387,7 @@ namespace DiagonalMatrixTests
                     matrix[i, f] = "XXXX";
                 }
             }
-            
+
             string[,] expected = new string[,]
             {
                 { "XXXX", "XXXX", "XXXX", "XXXX", "XXXX", },
@@ -402,6 +402,7 @@ namespace DiagonalMatrixTests
 
             //Assert
             CollectionAssert.AreEqual(expected, result);
+            throw new Exception("You are filling your own matrix with the obstacles here, and leaving the list of obstacles empty. This is not the correct way to do it. Refactor as per my comments");
         }
     }
 }
