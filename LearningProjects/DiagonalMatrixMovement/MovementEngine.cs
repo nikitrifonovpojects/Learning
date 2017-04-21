@@ -9,12 +9,12 @@ namespace DiagonalMatrixMovement
     public class MovementEngine
     {
         private PlayerPosition position;
-        private List<Obsticle> obsticles;
+        private List<Obstacle> obsticles;
         private int matrixRow;
         private int matrixCol;
         private string[,] matrix;
 
-        public MovementEngine(PlayerPosition position, List<Obsticle> obsticles, int matrixRow, int matrixCol)
+        public MovementEngine(PlayerPosition position, List<Obstacle> obsticles, int matrixRow, int matrixCol)
         {
             this.matrixRow = matrixRow;
             this.matrixCol = matrixCol;
@@ -122,7 +122,7 @@ namespace DiagonalMatrixMovement
             return matrix;
         }
 
-        private void InputObstacles(List<Obsticle> obsticles)
+        private void InputObstacles(List<Obstacle> obsticles)
         {
             foreach (var obsticle in obsticles)
             {

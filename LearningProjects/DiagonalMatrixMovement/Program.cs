@@ -27,13 +27,13 @@ namespace DiagonalMatrixMovement
                 Col = playerCol
             };
 
-            var obsticles = new List<Obsticle>();
+            var obsticles = new List<Obstacle>();
 
             string obsticlePosition = Console.ReadLine();
             while (obsticlePosition != "END")
             {
                 string[] obsticlePos = obsticlePosition.Split(',');
-                Obsticle obsticle = new Obsticle()
+                Obstacle obsticle = new Obstacle()
                 {
                     Row = int.Parse(obsticlePos[0]),
                     Col = int.Parse(obsticlePos[1])
