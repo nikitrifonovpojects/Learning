@@ -68,7 +68,7 @@ namespace MultiplyAndDivideCalculator.Test
         }
 
         [TestMethod]
-        public void CalculateNumbers()
+        public void DivideDecimalNumbers()
         {
             //Arrange
             string input = "100.2/2/2/5=";
@@ -83,11 +83,41 @@ namespace MultiplyAndDivideCalculator.Test
         }
 
         [TestMethod]
-        public void CalculateTwoNumbers()
+        public void DivideTwoDecimalNumbers()
         {
             //Arrange
             string input = "1010.2/2.25=";
             decimal expected = 448.97777777777777777777777778m;
+
+            //Act
+            var calculator = new MultiplyDivideCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void MultiplyTwoDecimalNumbers()
+        {
+            //Arrange
+            string input = "1010.2*2.25=";
+            decimal expected = 2272.95m;
+
+            //Act
+            var calculator = new MultiplyDivideCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void MultiplyManyDecimalNumbers()
+        {
+            //Arrange
+            string input = "1010.2*2.25*56.35*65.45=";
+            decimal expected = 8382883.9421250m;
 
             //Act
             var calculator = new MultiplyDivideCalculator();
