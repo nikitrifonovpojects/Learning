@@ -50,13 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AddSubtractUnitTest.cs" />
+    <Compile Include="AddSubtractCalculatorUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddAndSubtract\AddAndSubtract.csproj">
       <Project>{A71D149E-088F-47F1-8656-8156BE668008}</Project>
       <Name>AddAndSubtract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Calculator\Calculator.csproj">
+      <Project>{8F517039-5C51-40AF-8BBE-4EE7E8828954}</Project>
+      <Name>Calculator</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
