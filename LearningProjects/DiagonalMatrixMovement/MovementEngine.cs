@@ -9,23 +9,23 @@ namespace DiagonalMatrixMovement
     public class MovementEngine
     {
         private PlayerPosition position;
-        private List<Obstacle> obsticles;
+        private List<Obstacle> obstacles;
         private int matrixRow;
         private int matrixCol;
         private string[,] matrix;
 
-        public MovementEngine(PlayerPosition position, List<Obstacle> obsticles, int matrixRow, int matrixCol)
+        public MovementEngine(PlayerPosition position, List<Obstacle> obstacles, int matrixRow, int matrixCol)
         {
             this.matrixRow = matrixRow;
             this.matrixCol = matrixCol;
             this.position = position;
-            this.obsticles = obsticles;
+            this.obstacles = obstacles;
         }
 
         public string[,] Execute()
         {
             this.matrix = CreateMatrix(matrixRow, matrixCol);
-            InputObstacles(this.obsticles);
+            InputObstacles(this.obstacles);
             int row = position.Row;
             int col = position.Col;
             if (row >= matrix.GetLength(0) || col >= matrix.GetLength(1) || row < 0 || col < 0)
@@ -87,7 +87,7 @@ namespace DiagonalMatrixMovement
             bool move = false;
             if (row >= 0 && col >= 0 && row < matrix.GetLength(0) && col < matrix.GetLength(1))
             {
-                if (!CheckForObsticle(row, col))
+                if (!CheckForObstacle(row, col))
                 {
                     move = true;
                 }
@@ -96,15 +96,15 @@ namespace DiagonalMatrixMovement
             return move;
         }
 
-        private bool CheckForObsticle(int row, int col)
+        private bool CheckForObstacle(int row, int col)
         {
-            bool obsticleFound = false;
+            bool obstacleFound = false;
             if (matrix[row, col] == "XXXX")
             {
-                obsticleFound = true;
+                obstacleFound = true;
             }
 
-            return obsticleFound;
+            return obstacleFound;
         }
 
         private string[,] CreateMatrix(int row, int col)
@@ -122,16 +122,16 @@ namespace DiagonalMatrixMovement
             return matrix;
         }
 
-        private void InputObstacles(List<Obstacle> obsticles)
+        private void InputObstacles(List<Obstacle> obstacles)
         {
-            foreach (var obsticle in obsticles)
+            foreach (var obstacle in obstacles)
             {
-                if (obsticle.Row >= matrix.GetLength(0) || obsticle.Col >= matrix.GetLength(1) || obsticle.Row < 0 || obsticle.Col < 0)
+                if (obstacle.Row >= matrix.GetLength(0) || obstacle.Col >= matrix.GetLength(1) || obstacle.Row < 0 || obstacle.Col < 0)
                 {
-                    throw new ArgumentOutOfRangeException("The obsticle is not within the bounds of the matrix");
+                    throw new ArgumentOutOfRangeException("The obstacle is not within the bounds of the matrix");
                 }
 
-                matrix[obsticle.Row, obsticle.Col] = "XXXX";
+                matrix[obstacle.Row, obstacle.Col] = "XXXX";
             }
         }
     }

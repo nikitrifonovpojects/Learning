@@ -27,23 +27,23 @@ namespace DiagonalMatrixMovement
                 Col = playerCol
             };
 
-            var obsticles = new List<Obstacle>();
+            var obstacles = new List<Obstacle>();
 
-            string obsticlePosition = Console.ReadLine();
-            while (obsticlePosition != "END")
+            string obstaclePosition = Console.ReadLine();
+            while (obstaclePosition != "END")
             {
-                string[] obsticlePos = obsticlePosition.Split(',');
-                Obstacle obsticle = new Obstacle()
+                string[] obsticlePos = obstaclePosition.Split(',');
+                Obstacle obstacle = new Obstacle()
                 {
                     Row = int.Parse(obsticlePos[0]),
                     Col = int.Parse(obsticlePos[1])
                 };
 
-                obsticles.Add(obsticle);
-                obsticlePosition = Console.ReadLine();
+                obstacles.Add(obstacle);
+                obstaclePosition = Console.ReadLine();
             }
 
-            var engine = new MovementEngine(player, obsticles, row, col);
+            var engine = new MovementEngine(player, obstacles, row, col);
 
             string[,] resultMatrix = engine.Execute();
 
