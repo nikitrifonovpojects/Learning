@@ -8,7 +8,7 @@ namespace MultiplyAndDivideCalculator.Test
     public class MultiplyAndDivideUnitTest
     {
         [TestMethod]
-        public void CalculateNormally()
+        public void CalculateNormallySingleDigitNumbers()
         {
             //Arrange
             string input = "2*3/1*5=";
@@ -23,7 +23,7 @@ namespace MultiplyAndDivideCalculator.Test
         }
 
         [TestMethod]
-        public void CalculateWithTwoOperatorsInARow()
+        public void CalculateWithTwoOperatorsInARowSingleDigitNumbers()
         {
             //Arrange
             string input = "2/*3/1*5=";
@@ -38,7 +38,7 @@ namespace MultiplyAndDivideCalculator.Test
         }
 
         [TestMethod]
-        public void CalculateWithOnlyMultiply()
+        public void CalculateWithOnlyMultiplySingleDigitNumbers()
         {
             //Arrange
             string input = "2*3*1*5=";
