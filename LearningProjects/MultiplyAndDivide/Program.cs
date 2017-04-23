@@ -19,9 +19,9 @@ namespace MultiplyAndDivideCalculator
             }
             catch (Exception exception)
             {
-                Console.WriteLine("An error has occured: '{0}'",exception);
+                Console.WriteLine("An error has occured: '{0}'", exception);
             }
-           
+
             Console.WriteLine(result);
         }
     }
