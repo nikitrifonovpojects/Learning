@@ -10,10 +10,19 @@ namespace AddAndSubtract
     {
         static void Main(string[] args)
         {
-            string input = "12+12+6-10-5=";
-            var calc = new AddSubtractCalculator();
+            string input = Console.ReadLine();
+            var calculator = new AddSubtractCalculator();
 
-            decimal result = calc.Calculate(input);
+            decimal result = decimal.Zero;
+            try
+            {
+                result = calculator.Calculate(input);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("An error has occured: '{0}'", exception);
+            }
+
             Console.WriteLine(result);
         }
     }

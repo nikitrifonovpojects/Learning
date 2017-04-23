@@ -33,8 +33,7 @@ namespace AddAndSubtract
                     result -= number;
                     break;
                 default:
-                    Console.WriteLine("Error in PerformCalculation");
-                    break;
+                    throw new ArgumentException("Operator is not supported", currentOperator);
             }
 
             return result;

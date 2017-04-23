@@ -8,6 +8,36 @@ namespace AddAndSubtract.Test
     public class AddSubtractCalculatorUnitTest
     {
         [TestMethod]
+        public void CalculateSubtractWithZero()
+        {
+            //Arrange
+            string input = "0-10=";
+            decimal expected = -10;
+
+            //Act
+            var calculator = new AddSubtractCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void CalculateAddWithZero()
+        {
+            //Arrange
+            string input = "0+10=";
+            decimal expected = 10;
+
+            //Act
+            var calculator = new AddSubtractCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
         public void CalculateSubtractWithDecimalNumbers()
         {
             //Arrange
