@@ -21,12 +21,10 @@ namespace Logger
             {
                 loggers.Add(type, CreateConsoleLogger());
             }
-
             else if (type == LoggerType.FileLogger && !loggers.ContainsKey(type))
             {
                 loggers.Add(type, CreateFileLogger());
             }
-
             else if (!loggers.ContainsKey(type))
             {
                 throw new NotSupportedException(string.Format("{0} is not supported", type));
@@ -59,7 +57,6 @@ namespace Logger
 
                 return new FileLogger(serializer, file, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
             }
-
             else
             {
                 return new FileLogger(Configuration.Serializer, new LoggerFileSystem());
@@ -80,7 +77,6 @@ namespace Logger
 
                 return new ConsoleLogger(serializer, console, Configuration.ConsoleOptions.ForegroundColor, Configuration.ConsoleOptions.BackgroundColor);
             }
-
             else
             {
                 return new ConsoleLogger(Configuration.Serializer, new LoggerConsole());
