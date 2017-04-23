@@ -9,7 +9,7 @@ namespace MultiplyAndDivideCalculator
 {
     public class MultiplyDivideCalculator : AbstractCalculator
     {
-        public override bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator)
+        protected override bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator)
         {
             if (currentOperator != string.Empty)
             {
@@ -22,7 +22,7 @@ namespace MultiplyAndDivideCalculator
             return false;
         }
 
-        public override decimal PerformCalculation(decimal result, string currentOperator, decimal number)
+        protected override decimal PerformCalculation(decimal result, string currentOperator, decimal number)
         {
             switch (currentOperator)
             {
@@ -33,17 +33,23 @@ namespace MultiplyAndDivideCalculator
                     result *= number;
                     break;
                 case "/":
-                    result /= number;
+                    if (number == 0)
+                    {
+                        throw new ArgumentNullException(number.ToString(), "Cannot divide by zero");
+                    }
+                    else
+                    {
+                        result /= number;
+                    }
                     break;
                 default:
-                    Console.WriteLine("Error in PerformCalculation");
-                    break;
+                    throw new ArgumentException("Operator is not supported", currentOperator);
             }
 
             return result;
         }
 
-        public override string PrioritizeOperator(string currentOperator, string nextOperator)
+        protected override string PrioritizeOperator(string currentOperator, string nextOperator)
         {
             return nextOperator;
         }

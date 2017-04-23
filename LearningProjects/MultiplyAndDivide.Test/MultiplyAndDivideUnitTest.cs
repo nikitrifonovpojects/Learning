@@ -7,6 +7,36 @@ namespace MultiplyAndDivideCalculator.Test
     [TestClass]
     public class MultiplyAndDivideUnitTest
     {
+
+        [TestMethod]
+        public void CalculateMultiplyWithZero()
+        {
+            //Arrange
+            string input = "2*0=";
+            decimal expected = 0;
+
+            //Act
+            var calculator = new MultiplyDivideCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void CalculateDivideWithZero()
+        {
+            //Arrange
+            string input = "2/0=";
+
+            //Act
+            var calculator = new MultiplyDivideCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+        }
+
         [TestMethod]
         public void CalculateNormallySingleDigitNumbers()
         {
@@ -88,6 +118,21 @@ namespace MultiplyAndDivideCalculator.Test
             //Arrange
             string input = "1010.2/2.25=";
             decimal expected = 448.97777777777777777777777778m;
+
+            //Act
+            var calculator = new MultiplyDivideCalculator();
+            decimal result = calculator.Calculate(input);
+
+            //Assert
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void DivideManyDecimalNumbers()
+        {
+            //Arrange
+            string input = "1010.2/1.25/56.54/2.24=";
+            decimal expected = 6.3810702915761281520036383848m;
 
             //Act
             var calculator = new MultiplyDivideCalculator();
