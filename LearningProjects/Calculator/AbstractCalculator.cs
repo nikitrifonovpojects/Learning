@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Calculator
 {
     public abstract class AbstractCalculator
     {
+        public AbstractCalculator()
+        {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
+        }
         public decimal Calculate(string input)
         {
             Queue<string> queue = CreateQueue(input);
