@@ -9,7 +9,7 @@ namespace AddAndSubtract
 {
     public class AddSubtractCalculator : AbstractCalculator
     {
-        public override bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator)
+        protected override bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator)
         {
             if (currentOperator != string.Empty)
             {
@@ -22,7 +22,7 @@ namespace AddAndSubtract
             return false;
         }
 
-        public override decimal PerformCalculation(decimal result, string currentOperator, decimal number)
+        protected override decimal PerformCalculation(decimal result, string currentOperator, decimal number)
         {
             switch (currentOperator)
             {
@@ -39,7 +39,7 @@ namespace AddAndSubtract
             return result;
         }
 
-        public override string PrioritizeOperator(string currentOperator, string nextOperator)
+        protected override string PrioritizeOperator(string currentOperator, string nextOperator)
         {
             if (currentOperator == "+" && nextOperator == "+")
             {

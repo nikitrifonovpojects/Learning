@@ -42,11 +42,11 @@ namespace Calculator
             return result;
         }
 
-        public abstract bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator);
+        protected abstract bool CheckForMoreThanOneOperator(string currentOperator, string nextOperator);
 
-        public abstract string PrioritizeOperator(string currentOperator, string nextOperator);
+        protected abstract string PrioritizeOperator(string currentOperator, string nextOperator);
 
-        public abstract decimal PerformCalculation(decimal result, string currentOperator, decimal number);
+        protected abstract decimal PerformCalculation(decimal result, string currentOperator, decimal number);
 
         private Queue<string> CreateQueue(string input)
         {
