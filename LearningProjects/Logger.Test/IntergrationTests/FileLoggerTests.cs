@@ -11,6 +11,12 @@ namespace Logger.Test.IntegrationTests
     [TestClass]
     public class FileLoggerTests
     {
+        [TestInitialize]
+        public void Initialize()
+        {
+            File.Delete(@"..\Log.txt");
+        }
+
         [TestMethod]
         public void CreateFileLoggerWithDefaultOptionsAndMultipleLogs()
         {
@@ -58,7 +64,6 @@ namespace Logger.Test.IntegrationTests
             File.Delete(@"..\Log.txt");
         }
 
-
         [TestMethod]
         public void CreateFileLoggerWithDefaultSettings()
         {
@@ -77,7 +82,6 @@ namespace Logger.Test.IntegrationTests
             Assert.AreEqual(expected, result);
             File.Delete(@"..\Log.txt");
         }
-
 
         [TestCleanup]
         public void Cleanup()

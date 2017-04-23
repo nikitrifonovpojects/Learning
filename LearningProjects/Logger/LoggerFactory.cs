@@ -82,7 +82,5 @@ namespace Logger
                 return new ConsoleLogger(Configuration.Serializer, new LoggerConsole());
             }
         }
-
-
     }
 }
