@@ -8,24 +8,24 @@ namespace DiagonalMatrixMovement
 {
     public class MovementEngine
     {
-        private PlayerPosition position;
+        private PlayerPosition startingPosition;
         private List<Obstacle> obstacles;
         private int matrixRow;
         private int matrixCol;
 
-        public MovementEngine(PlayerPosition position, List<Obstacle> obstacles, int matrixRow, int matrixCol)
+        public MovementEngine(PlayerPosition startingPosition, List<Obstacle> obstacles, int matrixRow, int matrixCol)
         {
             this.matrixRow = matrixRow;
             this.matrixCol = matrixCol;
-            this.position = position;
+            this.startingPosition = startingPosition;
             this.obstacles = obstacles;
         }
 
         public string[,] Execute()
         {
-            string[,] matrix = InputObstaclesInMatrix(this.obstacles, this.matrixRow, this.matrixCol);
-            int row = position.Row;
-            int col = position.Col;
+            string[,] matrix = CreateMatrix(this.obstacles, this.matrixRow, this.matrixCol);
+            int row = this.startingPosition.Row;
+            int col = this.startingPosition.Col;
             if (row >= matrix.GetLength(0) || col >= matrix.GetLength(1) || row < 0 || col < 0)
             {
                 throw new ArgumentOutOfRangeException("The player is not within the bounds of the matrix");
@@ -105,7 +105,7 @@ namespace DiagonalMatrixMovement
             return obstacleFound;
         }
                 
-        private string[,] InputObstaclesInMatrix(List<Obstacle> obstacles, int row, int col)
+        private string[,] CreateMatrix(List<Obstacle> obstacles, int row, int col)
         {
             string[,] matrix = new string[row, col];
 
