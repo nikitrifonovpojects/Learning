@@ -32,11 +32,11 @@ namespace DiagonalMatrixMovement
             string obstaclePosition = Console.ReadLine();
             while (obstaclePosition != "END")
             {
-                string[] obsticlePos = obstaclePosition.Split(',');
+                string[] obstaclePos = obstaclePosition.Split(',');
                 Obstacle obstacle = new Obstacle()
                 {
-                    Row = int.Parse(obsticlePos[0]),
-                    Col = int.Parse(obsticlePos[1])
+                    Row = int.Parse(obstaclePos[0]),
+                    Col = int.Parse(obstaclePos[1])
                 };
 
                 obstacles.Add(obstacle);

@@ -9,7 +9,7 @@ namespace DiagonalMatrixMovement.Test
     public class MovementEngineTest
     {
         [TestMethod]
-        public void MatrixWithPlayerAndObsticleAtTheSamePosition()
+        public void MatrixWithPlayerAndObstacleAtTheSamePosition()
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
@@ -37,7 +37,7 @@ namespace DiagonalMatrixMovement.Test
         }
 
         [TestMethod]
-        public void MatrixWithObsticlesAtPositionsOnTheSameDiagonal()
+        public void MatrixWithObstaclesAtPositionsOnTheSameDiagonal()
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 0, Col = 0 };
@@ -101,7 +101,7 @@ namespace DiagonalMatrixMovement.Test
 
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         [TestMethod]
-        public void ObsticleOutOfBoundsOfTheMatrixReturnsException()
+        public void ObstacleOutOfBoundsOfTheMatrixReturnsException()
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 4, Col = 0 };
@@ -244,7 +244,7 @@ namespace DiagonalMatrixMovement.Test
         }
 
         [TestMethod]
-        public void PlayerStartsAtTheMiddleOfTheMatrixAndTheMatrixIsFullWithObsticlesReturnsOnlyObsticles()
+        public void PlayerStartsAtTheMiddleOfTheMatrixAndTheMatrixIsFullWithObstaclesReturnsOnlyObstacles()
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };
@@ -349,7 +349,7 @@ namespace DiagonalMatrixMovement.Test
         }
 
         [TestMethod]
-        public void PlayerStartsInTheMiddleOfTheMatrixWithObsticlesOnTheEdges()
+        public void PlayerStartsInTheMiddleOfTheMatrixWithObstaclesOnTheEdges()
         {
             //Arrange
             PlayerPosition player = new PlayerPosition() { Row = 2, Col = 2 };

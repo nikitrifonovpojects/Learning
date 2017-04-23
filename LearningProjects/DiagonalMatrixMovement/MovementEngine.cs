@@ -12,7 +12,6 @@ namespace DiagonalMatrixMovement
         private List<Obstacle> obstacles;
         private int matrixRow;
         private int matrixCol;
-        private string[,] matrix;
 
         public MovementEngine(PlayerPosition position, List<Obstacle> obstacles, int matrixRow, int matrixCol)
         {
@@ -24,8 +23,7 @@ namespace DiagonalMatrixMovement
 
         public string[,] Execute()
         {
-            this.matrix = CreateMatrix(matrixRow, matrixCol);
-            InputObstacles(this.obstacles);
+            string[,] matrix = InputObstaclesInMatrix(this.obstacles, this.matrixRow, this.matrixCol);
             int row = position.Row;
             int col = position.Col;
             if (row >= matrix.GetLength(0) || col >= matrix.GetLength(1) || row < 0 || col < 0)
@@ -38,7 +36,7 @@ namespace DiagonalMatrixMovement
 
             while (row - 1 != matrix.GetLength(0) && col - 1 != matrix.GetLength(1))
             {
-                if (CanMove(row, col))
+                if (CanMove(matrix, row, col))
                 {
                     matrix[row, col] = startNumber.ToString("D4");
                     startNumber++;
@@ -47,14 +45,14 @@ namespace DiagonalMatrixMovement
 
                 else
                 {
-                    newPosition = GetNextPosition(row, col);
+                    newPosition = GetNextPosition(matrix, row, col);
                 }
 
                 row = newPosition.Row;
                 col = newPosition.Col;
             }
 
-            return this.matrix;
+            return matrix;
         }
 
         private PlayerPosition MoveNext(int row, int col)
@@ -66,7 +64,7 @@ namespace DiagonalMatrixMovement
             };
         }
 
-        private PlayerPosition GetNextPosition(int row, int col)
+        private PlayerPosition GetNextPosition(string[,] matrix, int row, int col)
         {
             col += 1;
             while (row + 1 < matrix.GetLength(0) && col - 1 >= 0)
@@ -82,12 +80,12 @@ namespace DiagonalMatrixMovement
             };
         }
 
-        private bool CanMove(int row, int col)
+        private bool CanMove(string[,] matrix, int row, int col)
         {
             bool move = false;
             if (row >= 0 && col >= 0 && row < matrix.GetLength(0) && col < matrix.GetLength(1))
             {
-                if (!CheckForObstacle(row, col))
+                if (!CheckForObstacle(matrix, row, col))
                 {
                     move = true;
                 }
@@ -96,7 +94,7 @@ namespace DiagonalMatrixMovement
             return move;
         }
 
-        private bool CheckForObstacle(int row, int col)
+        private bool CheckForObstacle(string[,] matrix, int row, int col)
         {
             bool obstacleFound = false;
             if (matrix[row, col] == "XXXX")
@@ -106,8 +104,8 @@ namespace DiagonalMatrixMovement
 
             return obstacleFound;
         }
-
-        private string[,] CreateMatrix(int row, int col)
+                
+        private string[,] InputObstaclesInMatrix(List<Obstacle> obstacles, int row, int col)
         {
             string[,] matrix = new string[row, col];
 
@@ -118,12 +116,6 @@ namespace DiagonalMatrixMovement
                     matrix[i, f] = "0000";
                 }
             }
-
-            return matrix;
-        }
-
-        private void InputObstacles(List<Obstacle> obstacles)
-        {
             foreach (var obstacle in obstacles)
             {
                 if (obstacle.Row >= matrix.GetLength(0) || obstacle.Col >= matrix.GetLength(1) || obstacle.Row < 0 || obstacle.Col < 0)
@@ -133,6 +125,8 @@ namespace DiagonalMatrixMovement
 
                 matrix[obstacle.Row, obstacle.Col] = "XXXX";
             }
+
+            return matrix;
         }
     }
 }
