@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EncodeEncrypt;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncodeEncrypt.Test
 {

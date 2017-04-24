@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Calculator;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AddAndSubtract.Test
 {

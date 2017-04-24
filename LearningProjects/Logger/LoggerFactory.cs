@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logger.Common;
+﻿using Logger.Common;
 using Logger.Configuration;
 using Logger.Loggers;
+using System;
+using System.Collections.Generic;
 
 namespace Logger
 {

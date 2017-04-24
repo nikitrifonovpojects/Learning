@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Calculator;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace MultiplyAndDivideCalculator.Test
 {

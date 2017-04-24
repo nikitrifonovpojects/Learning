@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Logger.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger.Configuration;
+using System;
 using System.Collections.Generic;
 
 

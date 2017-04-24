@@ -1,10 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Logger.Configuration;
 using Logger.Loggers;
-using Logger.Configuration;
-using Logger.Common;
-using Moq;
-using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Logger.Test.UnitTests
 {

@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+﻿using Logger.Common;
 using Logger.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Logger.Common;
+using System;
 
 namespace Logger.Test.IntegrationTests
 {
