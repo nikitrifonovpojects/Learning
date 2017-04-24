@@ -23,7 +23,7 @@ namespace MultiplyAndDivideCalculator.Test
             Assert.AreEqual(result, expected);
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentException))]
         [TestMethod]
         public void CalculateDivideWithZero()
         {

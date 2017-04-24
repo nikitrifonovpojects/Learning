@@ -35,7 +35,7 @@ namespace MultiplyAndDivideCalculator
                 case "/":
                     if (number == 0)
                     {
-                        throw new ArgumentNullException(number.ToString(), "Cannot divide by zero");
+                        throw new ArgumentException(number.ToString(), "Cannot divide by zero");
                     }
                     else
                     {
