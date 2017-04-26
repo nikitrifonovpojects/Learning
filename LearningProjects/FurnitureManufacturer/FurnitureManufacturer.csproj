@@ -49,7 +49,11 @@
     <Compile Include="Engine\FurnitureManufacturerEngine.cs" />
     <Compile Include="FurnitureProgram.cs" />
     <Compile Include="Interfaces\Engine\IRenderer.cs" />
-    <Compile Include="Models\DeleteMe.cs" />
+    <Compile Include="Models\AdjustableChair.cs" />
+    <Compile Include="Models\Chair.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\ConvertibleChair.cs" />
+    <Compile Include="Models\AbstractFurniture.cs" />
     <Compile Include="Models\MaterialType.cs" />
     <Compile Include="Interfaces\IAdjustableChair.cs" />
     <Compile Include="Interfaces\IChair.cs" />
@@ -61,6 +65,7 @@
     <Compile Include="Interfaces\Engine\IFurnitureFactory.cs" />
     <Compile Include="Interfaces\Engine\IFurnituresManufacturerEngine.cs" />
     <Compile Include="Interfaces\ITable.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
