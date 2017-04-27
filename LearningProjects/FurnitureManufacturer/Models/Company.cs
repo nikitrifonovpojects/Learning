@@ -114,15 +114,9 @@
 
         public IFurniture Find(string model)
         {
-            var firstFound = this.Furnitures.Where(x => x.Model.Contains(model)).ToList();
+            var firstFound = this.Furnitures.FirstOrDefault(x => x.Model.Contains(model));
 
-
-            if (firstFound.Count != 0)
-            {
-                return firstFound[0];
-            }
-
-            return null;
+            return firstFound;
         }
 
         public void Remove(IFurniture furniture)

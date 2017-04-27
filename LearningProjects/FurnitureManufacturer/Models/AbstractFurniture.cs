@@ -5,9 +5,9 @@
 
     public abstract class AbstractFurniture : IFurniture
     {
-        protected string model;
-        protected decimal price;
-        protected decimal height;
+        private string model;
+        private decimal price;
+        private decimal height;
 
         protected AbstractFurniture(string model, string material, decimal price, decimal height)
         {
@@ -44,7 +44,7 @@
             }
             set
             {
-                if (decimal.Equals(value, 0.00) || value < 0)
+                if (value == 0.00m || value < 0)
                 {
                     throw new ArgumentException("The price is zero or less");
                 }
@@ -61,13 +61,19 @@
             }
             protected set
             {
-                if(decimal.Equals(value, 0.00) || value < 0)
+                if(value == 0.00m || value < 0)
                 {
                     throw new ArgumentException("The height is zero or less");
                 }
 
                 this.height = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Type: {0}, Model: {1}, Material: {2}, Price: {3}, Height: {4}",
+                                     this.GetType().Name, this.Model, this.Material, this.Price, this.Height);
         }
     }
 }

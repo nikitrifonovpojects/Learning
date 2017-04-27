@@ -6,11 +6,11 @@
     public class ConvertibleChair : Chair, IConvertibleChair
     {
         private decimal chairHeight;
-        private bool isConverted = false;
+        private decimal originalHeight;
         public ConvertibleChair(string model, string material, decimal price, decimal height, int numberOfLegs) 
             : base(model, material, price, height, numberOfLegs)
         {
-            this.IsConverted = isConverted;
+            this.IsConverted = false;
         }
 
         public override decimal Height
@@ -21,7 +21,7 @@
             }
             protected set
             {
-                if (decimal.Equals(value, 0.00) || value < 0)
+                if ( value == 0 || value < 0)
                 {
                     throw new ArgumentException("The height is zero or less");
                 }
@@ -30,35 +30,27 @@
             }
         }
 
-        public bool IsConverted
-        {
-            get
-            {
-                return this.isConverted;
-            }
-            private set
-            {
-                this.isConverted = value;
-            }
-        }
-
+        public bool IsConverted { get; set; }
+        
         public void Convert()
         {
             if (this.IsConverted)
             {
-                this.Height -= 0.10m;
+                this.Height = originalHeight;
+                
+                this.IsConverted = false;
             }
             else
             {
-                this.Height += 0.10m;
+                this.originalHeight = this.Height;
+                this.Height = 0.10m;
                 this.IsConverted = true;
             }
         }
 
         public override string ToString()
         {
-            return string.Format("Type: {0}, Model: {1}, Material: {2}, Price: {3}, Height: {4}, Legs: {5}, State: {6}",
-                this.GetType().Name, this.Model, this.Material, this.Price, this.Height, this.NumberOfLegs, this.IsConverted ? "Converted" : "Normal");
+            return string.Format(base.ToString() + ',' + " State: {0}", this.IsConverted ? "Converted" : "Normal");
         }
     }
 }
