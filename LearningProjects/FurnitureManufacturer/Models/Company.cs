@@ -63,11 +63,10 @@
         public string Catalog()
         {
             StringBuilder result = new StringBuilder();
-            if (this.Furnitures.Count > 1)
+            if (this.Furnitures.Count > 0)
             {
-                result.AppendLine(this.Name + " - " + this.RegistrationNumber + " - " + this.Furnitures.Count + " furnitures");
+                result.AppendLine(this.ToString());
                 var orderedFurnitures = Furnitures.OrderBy(x => x.Price).ThenBy(x => x.Model).ToList();
-
                 for (int i = 0; i < orderedFurnitures.Count; i++)
                 {
                     if (i != orderedFurnitures.Count - 1)
@@ -83,23 +82,10 @@
 
                 return result.ToString();
             }
-            else if (this.Furnitures.Count == 1)
-            {
-                result.AppendLine(this.Name + " - " + this.RegistrationNumber + " - " + this.Furnitures.Count + " furniture");
-                var orderedFurnitures = Furnitures.OrderBy(x => x.Price).ThenBy(x => x.Model).ToList();
-
-                foreach (var furniture in Furnitures)
-                {
-                    result.Append(furniture.ToString());
-                }
-
-                return result.ToString();
-            }
             else
             {
-                return this.Name + " - " + this.RegistrationNumber + " - no furnitures";
+                return this.ToString();
             }
-
         }
 
         public override string ToString()
