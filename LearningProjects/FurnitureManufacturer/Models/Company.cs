@@ -58,7 +58,6 @@
         public void Add(IFurniture furniture)
         {
             this.Furnitures.Add(furniture);
-            Furnitures.OrderBy(x => x.Price).ThenBy(x => x.Model);
         }
 
         public string Catalog()
@@ -67,8 +66,8 @@
             if (this.Furnitures.Count > 0)
             {
                 result.AppendLine(this.ToString());
-                var orderedFurnitures = Furnitures.OrderBy(x => x.Price).ThenBy(x => x.Model).ToList();
-                for (int i = 0; i < Furnitures.Count; i++)
+                var orderedFurnitures = this.Furnitures.OrderBy(x => x.Price).ThenBy(x => x.Model).ToList();
+                for (int i = 0; i < orderedFurnitures.Count; i++)
                 {
                     if (i != orderedFurnitures.Count - 1)
                     {
