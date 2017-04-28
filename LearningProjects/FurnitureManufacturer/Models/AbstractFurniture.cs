@@ -17,7 +17,7 @@
             this.Height = height;
         }
 
-        public virtual string Model
+        public string Model
         {
             get
             {
@@ -34,9 +34,9 @@
             }
         }
 
-        public virtual string Material { get; protected set; }
+        public string Material { get; protected set; }
 
-        public virtual decimal Price
+        public decimal Price
         {
             get
             {
@@ -44,7 +44,7 @@
             }
             set
             {
-                if (value == 0.00m || value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("The price is zero or less");
                 }
@@ -53,7 +53,7 @@
             }
         }
 
-        public virtual decimal Height
+        public decimal Height
         {
             get
             {
@@ -61,7 +61,7 @@
             }
             protected set
             {
-                if(value == 0.00m || value < 0)
+                if(value <= 0)
                 {
                     throw new ArgumentException("The height is zero or less");
                 }

@@ -5,29 +5,13 @@
 
     public class ConvertibleChair : Chair, IConvertibleChair
     {
-        private decimal chairHeight;
         private decimal originalHeight;
+
         public ConvertibleChair(string model, string material, decimal price, decimal height, int numberOfLegs) 
             : base(model, material, price, height, numberOfLegs)
         {
             this.IsConverted = false;
-        }
-
-        public override decimal Height
-        {
-            get
-            {
-                return this.chairHeight;
-            }
-            protected set
-            {
-                if ( value == 0 || value < 0)
-                {
-                    throw new ArgumentException("The height is zero or less");
-                }
-
-                this.chairHeight = value;
-            }
+            this.originalHeight = height;
         }
 
         public bool IsConverted { get; set; }
@@ -37,15 +21,13 @@
             if (this.IsConverted)
             {
                 this.Height = originalHeight;
-                
-                this.IsConverted = false;
             }
             else
             {
-                this.originalHeight = this.Height;
                 this.Height = 0.10m;
-                this.IsConverted = true;
             }
+
+            this.IsConverted = !this.IsConverted;
         }
 
         public override string ToString()

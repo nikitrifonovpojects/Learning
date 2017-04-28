@@ -23,7 +23,7 @@
             }
             protected set
             {
-                if (value == 0.00m || value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("The height is zero or less");
                 }
@@ -40,7 +40,7 @@
             }
             protected set
             {
-                if (value == 0.00m || value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("The height is zero or less");
                 }
