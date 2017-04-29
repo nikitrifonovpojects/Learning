@@ -56,22 +56,22 @@ namespace Infestation
         }
 
         private ICollection<ISupplement> supplements;
-        public ICollection<ISupplement> Supplements
-        {
-            get
-            {
-                if (this.supplements == null)
-                {
-                    this.supplements = new List<ISupplement>();
-                }
-                return this.supplements;
-            }
+        //public ICollection<ISupplement> Supplements
+        //{
+        //    get
+        //    {
+        //        if (this.supplements == null)
+        //        {
+        //            this.supplements = new List<ISupplement>();
+        //        }
+        //        return this.supplements;
+        //    }
 
-            private set
-            {
-                this.supplements = value;
-            }
-        }
+        //    private set
+        //    {
+        //        this.supplements = value;
+        //    }
+        //}
 
         public Unit(string id, UnitClassification unitType, int health, int power, int aggression)
         {
