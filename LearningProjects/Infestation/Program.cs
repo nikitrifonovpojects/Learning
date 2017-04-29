@@ -25,7 +25,7 @@ namespace Infestation
 
         private static HoldingPen InitializePen()
         {
-            return new HoldingPen();
+            return new HoldingPenExtension();
         }
     }
 }
