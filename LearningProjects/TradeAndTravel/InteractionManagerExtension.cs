@@ -51,35 +51,19 @@ namespace TradeAndTravel
                      HandleGatherInteraction(commandWords, actor);
                     break;
                 case "craft":
-                    var inventory = actor.ListInventory();
-
-                    if (commandWords[2] == "armor")
-                    {
-                        if (HasItems(ItemType.Iron, inventory))
-                        {
-                            AddToPerson(actor, new Armor(commandWords[3]));
-                        }
-                    }
-                    else if (commandWords[2] == "weapon")
-                    {
-                        if (HasItems(ItemType.Iron, inventory) && HasItems(ItemType.Wood, inventory))
-                        {
-                            AddToPerson(actor, new Weapon(commandWords[3]));
-                        }
-                    }
-
+                    HandleCraftCommand(commandWords, actor);
                     break;
                 default:
                     base.HandlePersonCommand(commandWords, actor);
-                    return;
+                    break;
             }
         }
 
-        protected void HandleGatherInteraction(string[] commandWords, Person actor)
+        private void HandleGatherInteraction(string[] commandWords, Person actor)
         {
             var inventory = actor.ListInventory();
 
-            if (actor.Location.LocationType is LocationType.Forest)
+            if (actor.Location.LocationType == LocationType.Forest)
             {
 
                 if (HasItems(ItemType.Weapon, inventory))
@@ -87,7 +71,7 @@ namespace TradeAndTravel
                     AddToPerson(actor, new Wood(commandWords[2]));
                 }
             }
-            else if (actor.Location.LocationType is LocationType.Mine)
+            else if (actor.Location.LocationType == LocationType.Mine)
             {
                 if (HasItems(ItemType.Armor, inventory))
                 {
@@ -96,7 +80,27 @@ namespace TradeAndTravel
             }
         }
 
-        protected bool HasItems(ItemType requiredType, List<Item> inventory)
+        private void HandleCraftCommand(string[] commandWords, Person actor)
+        {
+            var inventory = actor.ListInventory();
+
+            if (commandWords[2] == "armor")
+            {
+                if (HasItems(ItemType.Iron, inventory))
+                {
+                    AddToPerson(actor, new Armor(commandWords[3]));
+                }
+            }
+            else if (commandWords[2] == "weapon")
+            {
+                if (HasItems(ItemType.Iron, inventory) && HasItems(ItemType.Wood, inventory))
+                {
+                    AddToPerson(actor, new Weapon(commandWords[3]));
+                }
+            }
+        }
+
+        private bool HasItems(ItemType requiredType, List<Item> inventory)
         {
             bool hasItemType = false;
             foreach (var item in inventory)
