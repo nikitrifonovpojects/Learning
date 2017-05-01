@@ -8,8 +8,8 @@ namespace Cosmetics.Products
 {
     class Category : ICategory
     {
-        private const int minCategoryNameLenght = 2;
-        private const int maxCategoryNameLenght = 15;
+        private const int MinCategoryNameLenght = 2;
+        private const int MaxCategoryNameLenght = 15;
         private string name;
         private List<IProduct> categoryProducts;
 
@@ -27,11 +27,11 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < Category.minCategoryNameLenght ||
-                    value.Length > Category.maxCategoryNameLenght)
+                if (value.Length < Category.MinCategoryNameLenght ||
+                    value.Length > Category.MaxCategoryNameLenght)
                 {
                     throw new ArgumentException(string.Format("Category name must be between {0} and {1} symbols long!",
-                                                               Category.minCategoryNameLenght, Category.maxCategoryNameLenght));
+                                                               Category.MinCategoryNameLenght, Category.MaxCategoryNameLenght));
                 }
                 else
                 {

@@ -10,7 +10,7 @@ namespace Cosmetics.Products
     {
         private string ingridients;
         private const int MinIngridientLenght = 4;
-        private const int maxIngridientLenght = 12;
+        private const int MaxIngridientLenght = 12;
 
         public Toothpaste(string name, string brand, decimal price, GenderType gender, IList<string> ingredients) 
             : base(name, brand, price, gender)
@@ -18,7 +18,7 @@ namespace Cosmetics.Products
             if (!IsValid(ingredients))
             {
                 throw new ArgumentException(string.Format("Each ingredient must be between {0} and {1} symbols long!",
-                                                               Toothpaste.MinIngridientLenght, Toothpaste.maxIngridientLenght));
+                                                               Toothpaste.MinIngridientLenght, Toothpaste.MaxIngridientLenght));
             }
 
             this.Ingredients = IngridientsToString(ingredients);
@@ -73,7 +73,7 @@ namespace Cosmetics.Products
             foreach (var ingridient in ingridients)
             {
                 if (ingridient.Length < Toothpaste.MinIngridientLenght &&
-                        ingridient.Length <= Toothpaste.maxIngridientLenght)
+                        ingridient.Length <= Toothpaste.MaxIngridientLenght)
                 {
                     return false;
                     

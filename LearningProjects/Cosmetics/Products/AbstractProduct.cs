@@ -7,10 +7,10 @@ namespace Cosmetics.Products
 {
     public class AbstractProduct : IProduct
     {
-        private const int minProductNameLenght = 3;
-        private const int maxProductNameLenght = 10;
-        private const int minBrandNameLenght = 2;
-        private const int maxBrandNameLenght = 10;
+        private const int MinProductNameLenght = 3;
+        private const int MaxProductNameLenght = 10;
+        private const int MinBrandNameLenght = 2;
+        private const int MaxBrandNameLenght = 10;
         private string name;
         private string brand;
         private decimal price;
@@ -31,11 +31,11 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < AbstractProduct.minProductNameLenght ||
-                   value.Length > AbstractProduct.maxProductNameLenght)
+                if (value.Length < AbstractProduct.MinProductNameLenght ||
+                   value.Length > AbstractProduct.MaxProductNameLenght)
                 {
                     throw new ArgumentException(string.Format("Product name must be between {0} and {1} symbols long!",
-                                                               AbstractProduct.minProductNameLenght, AbstractProduct.maxProductNameLenght));
+                                                               AbstractProduct.MinProductNameLenght, AbstractProduct.MaxProductNameLenght));
                 }
                 else
                 {
@@ -52,11 +52,11 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < AbstractProduct.minBrandNameLenght ||
-                   value.Length > AbstractProduct.maxBrandNameLenght)
+                if (value.Length < AbstractProduct.MinBrandNameLenght ||
+                   value.Length > AbstractProduct.MaxBrandNameLenght)
                 {
                     throw new ArgumentException(string.Format("Product brand must be between {0} and {1} symbols long!",
-                                                               AbstractProduct.minBrandNameLenght, AbstractProduct.maxBrandNameLenght));
+                                                               AbstractProduct.MinBrandNameLenght, AbstractProduct.MaxBrandNameLenght));
                 }
                 else
                 {
