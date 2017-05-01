@@ -9,12 +9,18 @@ namespace Cosmetics.Products
     public class Toothpaste : AbstractProduct, IToothpaste
     {
         private string ingridients;
-        private const int minIngridientLenght = 4;
+        private const int MinIngridientLenght = 4;
         private const int maxIngridientLenght = 12;
 
         public Toothpaste(string name, string brand, decimal price, GenderType gender, IList<string> ingredients) 
             : base(name, brand, price, gender)
         {
+            if (!IsValid(ingredients))
+            {
+                throw new ArgumentException(string.Format("Each ingredient must be between {0} and {1} symbols long!",
+                                                               Toothpaste.MinIngridientLenght, Toothpaste.maxIngridientLenght));
+            }
+
             this.Ingredients = IngridientsToString(ingredients);
         }
 
@@ -49,26 +55,32 @@ namespace Cosmetics.Products
             
             for (int i = 0; i < ingridients.Count; i++)
             {
-                if (ingridients[i].Length < Toothpaste.minIngridientLenght &&
-                        ingridients[i].Length <= Toothpaste.maxIngridientLenght)
+                if (i != ingridients.Count - 1)
                 {
-                    throw new ArgumentException(string.Format("Each ingredient must be between {0} and {1} symbols long!",
-                                                               Toothpaste.minIngridientLenght, Toothpaste.maxIngridientLenght));
+                    result.Append(ingridients[i] + "," + " ");
                 }
                 else
                 {
-                    if (i != ingridients.Count - 1)
-                    {
-                        result.Append(ingridients[i] + "," + " ");
-                    }
-                    else
-                    {
-                        result.Append(ingridients[i]);
-                    }
+                    result.Append(ingridients[i]);
                 }
             }
 
             return result.ToString();
+        }
+
+        private bool IsValid(IList<string> ingridients)
+        {
+            foreach (var ingridient in ingridients)
+            {
+                if (ingridient.Length < Toothpaste.MinIngridientLenght &&
+                        ingridient.Length <= Toothpaste.maxIngridientLenght)
+                {
+                    return false;
+                    
+                }
+            }
+
+            return true;
         }
     }
 }
