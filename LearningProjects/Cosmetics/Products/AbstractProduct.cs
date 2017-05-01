@@ -31,11 +31,9 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < AbstractProduct.MinProductNameLenght ||
-                   value.Length > AbstractProduct.MaxProductNameLenght)
+                if (value.Length < AbstractProduct.MinProductNameLenght || value.Length > AbstractProduct.MaxProductNameLenght)
                 {
-                    throw new ArgumentException(string.Format("Product name must be between {0} and {1} symbols long!",
-                                                               AbstractProduct.MinProductNameLenght, AbstractProduct.MaxProductNameLenght));
+                    throw new ArgumentException(string.Format("Product name must be between {0} and {1} symbols long!", AbstractProduct.MinProductNameLenght, AbstractProduct.MaxProductNameLenght));
                 }
                 else
                 {
@@ -52,11 +50,9 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < AbstractProduct.MinBrandNameLenght ||
-                   value.Length > AbstractProduct.MaxBrandNameLenght)
+                if (value.Length < AbstractProduct.MinBrandNameLenght || value.Length > AbstractProduct.MaxBrandNameLenght)
                 {
-                    throw new ArgumentException(string.Format("Product brand must be between {0} and {1} symbols long!",
-                                                               AbstractProduct.MinBrandNameLenght, AbstractProduct.MaxBrandNameLenght));
+                    throw new ArgumentException(string.Format("Product brand must be between {0} and {1} symbols long!", AbstractProduct.MinBrandNameLenght, AbstractProduct.MaxBrandNameLenght));
                 }
                 else
                 {

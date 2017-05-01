@@ -17,8 +17,7 @@ namespace Cosmetics.Products
         {
             if (!IsValid(ingredients))
             {
-                throw new ArgumentException(string.Format("Each ingredient must be between {0} and {1} symbols long!",
-                                                               Toothpaste.MinIngridientLenght, Toothpaste.MaxIngridientLenght));
+                throw new ArgumentException(string.Format("Each ingredient must be between {0} and {1} symbols long!", Toothpaste.MinIngridientLenght, Toothpaste.MaxIngridientLenght));
             }
 
             this.Ingredients = IngridientsToString(ingredients);
@@ -34,7 +33,7 @@ namespace Cosmetics.Products
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new NullReferenceException(value);
+                    throw new ArgumentNullException(value);
                 }
                 else
                 {
@@ -45,8 +44,7 @@ namespace Cosmetics.Products
 
         public override string Print()
         {
-            return string.Format(base.Print() + Environment.NewLine +
-                                                "  * Ingredients: {0}", this.ingridients);
+            return string.Format(base.Print() + Environment.NewLine + "  * Ingredients: {0}", this.ingridients);
         }
 
         private string IngridientsToString(IList<string> ingridients)
@@ -55,13 +53,14 @@ namespace Cosmetics.Products
             
             for (int i = 0; i < ingridients.Count; i++)
             {
+                var currentIngidient = ingridients[i];
                 if (i != ingridients.Count - 1)
                 {
-                    result.Append(ingridients[i] + "," + " ");
+                    result.Append(currentIngidient + "," + " ");
                 }
                 else
                 {
-                    result.Append(ingridients[i]);
+                    result.Append(currentIngidient);
                 }
             }
 
@@ -72,8 +71,7 @@ namespace Cosmetics.Products
         {
             foreach (var ingridient in ingridients)
             {
-                if (ingridient.Length < Toothpaste.MinIngridientLenght &&
-                        ingridient.Length <= Toothpaste.MaxIngridientLenght)
+                if (ingridient.Length < Toothpaste.MinIngridientLenght && ingridient.Length <= Toothpaste.MaxIngridientLenght)
                 {
                     return false;
                     

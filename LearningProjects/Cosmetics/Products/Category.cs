@@ -27,11 +27,9 @@ namespace Cosmetics.Products
             }
             private set
             {
-                if (value.Length < Category.MinCategoryNameLenght ||
-                    value.Length > Category.MaxCategoryNameLenght)
+                if (value.Length < Category.MinCategoryNameLenght || value.Length > Category.MaxCategoryNameLenght)
                 {
-                    throw new ArgumentException(string.Format("Category name must be between {0} and {1} symbols long!",
-                                                               Category.MinCategoryNameLenght, Category.MaxCategoryNameLenght));
+                    throw new ArgumentException(string.Format("Category name must be between {0} and {1} symbols long!", Category.MinCategoryNameLenght, Category.MaxCategoryNameLenght));
                 }
                 else
                 {
@@ -48,7 +46,11 @@ namespace Cosmetics.Products
         public string Print()
         {
             var result = new StringBuilder();
-            var sortedCategoryProducts = this.categoryProducts.OrderBy(x => x.Brand).ThenByDescending(x => x.Price).ToList();
+            var sortedCategoryProducts = this.categoryProducts
+                                             .OrderBy(x => x.Brand)
+                                             .ThenByDescending(x => x.Price)
+                                             .ToList();
+
             result.Append(string.Format("{0} category - {1} {2} in total",
                                              this.Name,
                                              sortedCategoryProducts.Count != 0 ? sortedCategoryProducts.Count.ToString() : "0",
@@ -58,15 +60,17 @@ namespace Cosmetics.Products
             {
                 result.Append(Environment.NewLine);
             }
+            
             for (int i = 0; i < sortedCategoryProducts.Count; i++)
             {
+                var currentProduct = sortedCategoryProducts[i].Print();
                 if (i != sortedCategoryProducts.Count - 1)
                 {
-                    result.AppendLine(sortedCategoryProducts[i].Print());
+                    result.AppendLine(currentProduct);
                 }
                 else
                 {
-                    result.Append(sortedCategoryProducts[i].Print());
+                    result.Append(currentProduct);
                 }
             }
 
@@ -88,18 +92,15 @@ namespace Cosmetics.Products
 
         private bool ProductExists(List<IProduct> products, IProduct product)
         {
-            bool productFound = false;
-
             foreach (var item in products)
             {
                 if (item.Name == product.Name)
                 {
-                    productFound = true;
-                    break;
+                    return true;
                 }
             }
 
-            return productFound;
+            return false;
         }
     }
 }
