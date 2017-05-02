@@ -9,9 +9,9 @@ namespace Dealership.Models
 {
     public class User : IUser
     {
-        private readonly string noComments = "    --NO COMMENTS--";
-        private readonly string comments = "    --COMMENTS--";
-        private readonly string onlyDashes = "    ----------";
+        private const string NoComments = "    --NO COMMENTS--";
+        private const string Comments = "    --COMMENTS--";
+        private const string OnlyDashes = "    ----------";
 
         private string userName;
         private string firstName;
@@ -120,28 +120,26 @@ namespace Dealership.Models
             }
             else
             {
-                int vehicleCount = 0;
                 for (int i = 0; i < this.Vehicles.Count; i++)
                 {
                     var currentVehicle = this.Vehicles[i];
-                    vehicleCount++;
-                    builder.AppendLine(string.Format("{0}. {1}:", vehicleCount, currentVehicle.Type));
+                    builder.AppendLine(string.Format("{0}. {1}:", i + 1, currentVehicle.Type));
                     builder.AppendLine(currentVehicle.ToString());
                     if (currentVehicle.Comments.Count == 0)
                     {
                         if (i == this.Vehicles.Count - 1)
                         {
-                            builder.Append(this.noComments);
+                            builder.Append(User.NoComments);
                         }
                         else
                         {
-                            builder.AppendLine(this.noComments);
+                            builder.AppendLine(User.NoComments);
                         }
                     }
                     else
                     {
-                        builder.AppendLine(this.comments);
-                        builder.AppendLine(this.onlyDashes);
+                        builder.AppendLine(User.Comments);
+                        builder.AppendLine(User.OnlyDashes);
                         builder = AddCommentsToPrint(builder, currentVehicle);
                     }
                 }
@@ -152,23 +150,23 @@ namespace Dealership.Models
 
         private StringBuilder AddCommentsToPrint(StringBuilder builder, IVehicle currentVehicle)
         {
-            for (int f = 0; f < currentVehicle.Comments.Count; f++)
+            for (int i = 0; i < currentVehicle.Comments.Count; i++)
             {
-                var currentComment = currentVehicle.Comments[f].ToString();
-                if (f != currentVehicle.Comments.Count - 1)
+                var currentComment = currentVehicle.Comments[i].ToString();
+                if (i != currentVehicle.Comments.Count - 1)
                 {
                     builder.AppendLine(currentComment);
-                    builder.AppendLine(this.onlyDashes);
-                    builder.AppendLine(this.onlyDashes);
+                    builder.AppendLine(User.OnlyDashes);
+                    builder.AppendLine(User.OnlyDashes);
                 }
                 else
                 {
-                    builder.AppendLine(currentVehicle.Comments[f].ToString());
+                    builder.AppendLine(currentComment);
                 }
             }
 
-            builder.AppendLine(this.onlyDashes);
-            builder.AppendLine(this.comments);
+            builder.AppendLine(User.OnlyDashes);
+            builder.AppendLine(User.Comments);
 
             return builder;
         }
