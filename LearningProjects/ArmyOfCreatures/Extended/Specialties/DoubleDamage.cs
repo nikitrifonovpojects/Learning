@@ -1,11 +1,9 @@
 ﻿namespace ArmyOfCreatures.Extended.Specialties
 {
     using System;
-    using System.Globalization;
     using ArmyOfCreatures.Logic.Battles;
-    using ArmyOfCreatures.Logic.Specialties;
 
-    public class DoubleDamage : Specialty
+    public class DoubleDamage : AbstractSpeciality
     {
         private int rounds;
 
@@ -40,9 +38,9 @@
             return currentDamage *= 2;
         }
 
-        public override string ToString()
+        protected override string GetFormatValue()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0}({1})", base.ToString(), this.rounds);
+            return this.rounds.ToString();
         }
     }
 }

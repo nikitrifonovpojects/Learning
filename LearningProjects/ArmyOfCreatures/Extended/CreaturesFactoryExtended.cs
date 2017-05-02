@@ -4,7 +4,7 @@
     using ArmyOfCreatures.Logic;
     using ArmyOfCreatures.Logic.Creatures;
 
-    class CreaturesFactoryExtended : CreaturesFactory
+    public class CreaturesFactoryExtended : CreaturesFactory
     {
         public override Creature CreateCreature(string name)
         {

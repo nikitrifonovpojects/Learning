@@ -1,13 +1,12 @@
 ﻿namespace ArmyOfCreatures.Extended.Specialties
 {
     using System;
-    using System.Globalization;
     using ArmyOfCreatures.Logic.Battles;
-    using ArmyOfCreatures.Logic.Specialties;
 
-    public class DoubleAttackWhenAttacking : Specialty
+    public class DoubleAttackWhenAttacking : AbstractSpeciality
     {
         private int rounds;
+
         public DoubleAttackWhenAttacking(int rounds)
         {
             if (rounds <= 0)
@@ -24,12 +23,10 @@
             {
                 throw new ArgumentNullException("defenderWithSpecialty");
             }
-
             if (defender == null)
             {
                 throw new ArgumentNullException("attacker");
             }
-
             if (this.rounds <= 0)
             {
                 return;
@@ -39,9 +36,9 @@
             this.rounds--;
         }
 
-        public override string ToString()
+        protected override string GetFormatValue()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0}({1})", base.ToString(), this.rounds);
+            return this.rounds.ToString();
         }
     }
 }
