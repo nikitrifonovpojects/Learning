@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Dealership.Common;
 using Dealership.Common.Enums;
 using Dealership.Contracts;
@@ -32,15 +33,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value, Constants.MinWheels, Constants.MaxWheels, Constants.NumberMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Wheels", Constants.MinWheels, Constants.MaxWheels));
-                }
-                
+                Validator.ValidateIntRange(value, Constants.MinWheels, Constants.MaxWheels, string.Format(Constants.NumberMustBeBetweenMinAndMax, "Wheels", Constants.MinWheels, Constants.MaxWheels));
                 this.wheels = value;
             }
         }
@@ -55,15 +48,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinMakeLength, Constants.MaxMakeLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Make", Constants.MinMakeLength, Constants.MaxMakeLength));
-                }
-                
+                Validator.ValidateIntRange(value.Length, Constants.MinMakeLength, Constants.MaxMakeLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Make", Constants.MinMakeLength, Constants.MaxMakeLength));
                 this.make = value;
             }
         }
@@ -76,15 +61,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinModelLength, Constants.MaxModelLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Model", Constants.MinModelLength, Constants.MaxModelLength));
-                }
-
+                Validator.ValidateIntRange(value.Length, Constants.MinModelLength, Constants.MaxModelLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Model", Constants.MinModelLength, Constants.MaxModelLength));
                 this.model = value;
             }
         }
@@ -105,17 +82,19 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateDecimalRange(value, Constants.MinPrice, Constants.MaxPrice, Constants.NumberMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Price", Constants.MinPrice, Constants.MaxPrice));
-                }
-                
+                Validator.ValidateDecimalRange(value, Constants.MinPrice, Constants.MaxPrice, string.Format(Constants.NumberMustBeBetweenMinAndMax, "Price", Constants.MinPrice, Constants.MaxPrice));
                 this.price = value;
             }
+        }
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine(string.Format("  Make: {0}", this.Make));
+            builder.AppendLine(string.Format("  Model: {0}", this.Model));
+            builder.AppendLine(string.Format("  Wheels: {0}", this.Wheels));
+            builder.AppendLine(string.Format("  Price: ${0}", this.Price));
+
+            return builder.ToString();
         }
     }
 }

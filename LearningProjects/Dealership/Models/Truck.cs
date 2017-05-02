@@ -23,17 +23,14 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value, Constants.MinCapacity, Constants.MaxCapacity, Constants.NumberMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Weight capacity", Constants.MinCapacity, Constants.MaxCapacity));
-                }
-                
+                Validator.ValidateIntRange(value, Constants.MinCapacity, Constants.MaxCapacity, string.Format(Constants.NumberMustBeBetweenMinAndMax, "Weight capacity", Constants.MinCapacity, Constants.MaxCapacity));
                 this.weightCapacity = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + string.Format("  Weight Capacity: {0}t", this.WeightCapacity);
         }
     }
 }

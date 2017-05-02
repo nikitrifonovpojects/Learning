@@ -23,17 +23,14 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value, Constants.MinSeats, Constants.MaxSeats, Constants.NumberMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Seats", Constants.MinSeats, Constants.MaxSeats));
-                }
-                
+                Validator.ValidateIntRange(value, Constants.MinSeats, Constants.MaxSeats, string.Format(Constants.NumberMustBeBetweenMinAndMax, "Seats", Constants.MinSeats, Constants.MaxSeats));
                 this.seats = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + string.Format(string.Format("  Seats: {0}", this.Seats));
         }
     }
 }

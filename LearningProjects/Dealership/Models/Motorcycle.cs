@@ -23,17 +23,14 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinCategoryLength, Constants.MaxCategoryLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Category", Constants.MinCategoryLength, Constants.MaxCategoryLength));
-                }
-                
+                Validator.ValidateIntRange(value.Length, Constants.MinCategoryLength, Constants.MaxCategoryLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Category", Constants.MinCategoryLength, Constants.MaxCategoryLength));
                 this.category = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + string.Format("  Category: {0}", this.Category);
         }
     }
 }

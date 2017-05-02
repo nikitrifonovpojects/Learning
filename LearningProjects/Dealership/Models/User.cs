@@ -9,12 +9,14 @@ namespace Dealership.Models
 {
     public class User : IUser
     {
+        private readonly string noComments = "    --NO COMMENTS--";
+        private readonly string comments = "    --COMMENTS--";
+        private readonly string onlyDashes = "    ----------";
+
         private string userName;
         private string firstName;
         private string lastName;
         private string password;
-        private IList<IVehicle> vehicles;
-        private Role role;
 
         public User(string userName, string firstName, string lastName, string password, string role)
         {
@@ -22,7 +24,7 @@ namespace Dealership.Models
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Password = password;
-            this.vehicles = new List<IVehicle>();
+            this.Vehicles = new List<IVehicle>();
             this.Role = (Role)Enum.Parse(typeof(Role), role);
         }
 
@@ -34,16 +36,8 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateSymbols(value, Constants.UsernamePattern, Constants.InvalidSymbols);
-                    Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Username", Constants.MinNameLength, Constants.MaxNameLength));
-                }
-                
+                Validator.ValidateSymbols(value, Constants.UsernamePattern, string.Format(Constants.InvalidSymbols, "Username", Constants.MinNameLength, Constants.MaxNameLength));
+                Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Username", Constants.MinNameLength, Constants.MaxNameLength));
                 this.userName = value;
             }
         }
@@ -56,15 +50,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Firstname", Constants.MinNameLength, Constants.MaxNameLength));
-                }
-                
+                Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Firstname", Constants.MinNameLength, Constants.MaxNameLength));
                 this.firstName = value;
             }
         }
@@ -77,15 +63,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Lastname", Constants.MinNameLength, Constants.MaxNameLength));
-                }
-                
+                Validator.ValidateIntRange(value.Length, Constants.MinNameLength, Constants.MaxNameLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Lastname", Constants.MinNameLength, Constants.MaxNameLength));
                 this.lastName = value;
             }
         }
@@ -98,16 +76,8 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateSymbols(value, Constants.PasswordPattern, Constants.InvalidSymbols);
-                    Validator.ValidateIntRange(value.Length, Constants.MinPasswordLength, Constants.MaxPasswordLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Password", Constants.MinPasswordLength, Constants.MaxPasswordLength));
-                }
-                
+                Validator.ValidateSymbols(value, Constants.PasswordPattern, string.Format(Constants.InvalidSymbols, "Password", Constants.MinPasswordLength, Constants.MaxPasswordLength));
+                Validator.ValidateIntRange(value.Length, Constants.MinPasswordLength, Constants.MaxPasswordLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Password", Constants.MinPasswordLength, Constants.MaxPasswordLength));
                 this.password = value;
             }
         }
@@ -118,15 +88,8 @@ namespace Dealership.Models
 
         public void AddComment(IComment commentToAdd, IVehicle vehicleToAddComment)
         {
-            try
-            {
-                Validator.ValidateNull(vehicleToAddComment, Constants.CommentCannotBeNull);
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw new ArgumentNullException(exception.Message);
-            }
-
+            Validator.ValidateNull(commentToAdd, Constants.CommentCannotBeNull);
+            Validator.ValidateNull(vehicleToAddComment, Constants.VehicleCannotBeNull);
             vehicleToAddComment.Comments.Add(commentToAdd);
         }
 
@@ -137,13 +100,13 @@ namespace Dealership.Models
             {
                 throw new ArgumentException(Constants.AdminCannotAddVehicles);
             }
-            else if (this.vehicles.Count >= 5 && this.Role == Role.Normal)
+            else if (this.Vehicles.Count >= 5 && this.Role == Role.Normal)
             {
-                throw new ArgumentException(string.Format(Constants.NotAnVipUserVehiclesAdd.ToString(), Constants.MaxVehiclesToAdd));
+                throw new ArgumentException(string.Format(Constants.NotAnVipUserVehiclesAdd, Constants.MaxVehiclesToAdd));
             }
             else
             {
-                this.vehicles.Add(vehicle);
+                this.Vehicles.Add(vehicle);
             }
         }
 
@@ -151,90 +114,61 @@ namespace Dealership.Models
         {
             var builder = new StringBuilder();
             builder.AppendLine(string.Format("--USER {0}--", this.userName));
-            if (this.vehicles.Count == 0)
+            if (this.Vehicles.Count == 0)
             {
                 builder.Append("--NO VEHICLES--");
             }
             else
             {
-                builder = ListUserVehicles(builder);
+                int vehicleCount = 0;
+                for (int i = 0; i < this.Vehicles.Count; i++)
+                {
+                    var currentVehicle = this.Vehicles[i];
+                    vehicleCount++;
+                    builder.AppendLine(string.Format("{0}. {1}:", vehicleCount, currentVehicle.Type));
+                    builder.AppendLine(currentVehicle.ToString());
+                    if (currentVehicle.Comments.Count == 0)
+                    {
+                        if (i == this.Vehicles.Count - 1)
+                        {
+                            builder.Append(this.noComments);
+                        }
+                        else
+                        {
+                            builder.AppendLine(this.noComments);
+                        }
+                    }
+                    else
+                    {
+                        builder.AppendLine(this.comments);
+                        builder.AppendLine(this.onlyDashes);
+                        builder = AddCommentsToPrint(builder, currentVehicle);
+                    }
+                }
             }
 
             return builder.ToString();
         }
 
-        private StringBuilder ListUserVehicles(StringBuilder builder)
+        private StringBuilder AddCommentsToPrint(StringBuilder builder, IVehicle currentVehicle)
         {
-            int vehicleCount = 0;
-            for (int i = 0; i < this.vehicles.Count; i++)
+            for (int f = 0; f < currentVehicle.Comments.Count; f++)
             {
-                var currentVehicle = this.vehicles[i];
-                vehicleCount++;
-                builder.AppendLine(string.Format("{0}. {1}:", vehicleCount, currentVehicle.GetType().Name));
-                builder.AppendLine(string.Format("  Make: {0}", currentVehicle.Make));
-                builder.AppendLine(string.Format("  Model: {0}", currentVehicle.Model));
-                builder.AppendLine(string.Format("  Wheels: {0}", currentVehicle.Wheels));
-                builder.AppendLine(string.Format("  Price: ${0}", currentVehicle.Price));
-
-                switch (currentVehicle.GetType().Name)
+                var currentComment = currentVehicle.Comments[f].ToString();
+                if (f != currentVehicle.Comments.Count - 1)
                 {
-                    case "Motorcycle":
-                        var Motorcycle = currentVehicle as Motorcycle;
-                        builder.AppendLine(string.Format("  Category: {0}", Motorcycle.Category));
-                        break;
-                    case "Car":
-                        var car = currentVehicle as Car;
-                        builder.AppendLine(string.Format("  Seats: {0}", car.Seats));
-                        break;
-                    case "Truck":
-                        var truck = currentVehicle as Truck;
-                        builder.AppendLine(string.Format("  Weight Capacity: {0}t", truck.WeightCapacity));
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format("{0} is not a valid type", currentVehicle.GetType().Name));
-                }
-
-                builder = AddComments(builder, i, currentVehicle);
-            }
-
-            return builder;
-        }
-
-        private StringBuilder AddComments(StringBuilder builder, int i, IVehicle currentVehicle)
-        {
-            if (currentVehicle.Comments.Count == 0)
-            {
-                if (i == this.vehicles.Count - 1)
-                {
-                    builder.Append("    --NO COMMENTS--");
+                    builder.AppendLine(currentComment);
+                    builder.AppendLine(this.onlyDashes);
+                    builder.AppendLine(this.onlyDashes);
                 }
                 else
                 {
-                    builder.AppendLine("    --NO COMMENTS--");
+                    builder.AppendLine(currentVehicle.Comments[f].ToString());
                 }
             }
-            else
-            {
-                builder.AppendLine("    --COMMENTS--");
-                builder.AppendLine("    ----------");
-                for (int f = 0; f < currentVehicle.Comments.Count; f++)
-                {
-                    var currentComment = currentVehicle.Comments[f].ToString();
-                    if (f != currentVehicle.Comments.Count - 1)
-                    {
-                        builder.AppendLine(currentComment);
-                        builder.AppendLine("    ----------");
-                        builder.AppendLine("    ----------");
-                    }
-                    else
-                    {
-                        builder.AppendLine(currentVehicle.Comments[f].ToString());
-                    }
-                }
 
-                builder.AppendLine("    ----------");
-                builder.AppendLine("    --COMMENTS--");
-            }
+            builder.AppendLine(this.onlyDashes);
+            builder.AppendLine(this.comments);
 
             return builder;
         }
@@ -256,12 +190,12 @@ namespace Dealership.Models
         public void RemoveVehicle(IVehicle vehicle)
         {
             Validator.ValidateNull(vehicle, Constants.VehicleCannotBeNull);
-            this.vehicles.Remove(vehicle);
+            this.Vehicles.Remove(vehicle);
         }
 
         public override string ToString()
         {
-            return string.Format(Constants.UserToString + ", Role: {3}", this.userName, this.firstName, this.lastName, this.role);
+            return string.Format(Constants.UserToString + ", Role: {3}", this.userName, this.firstName, this.lastName, this.Role);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Dealership.Common;
 using Dealership.Contracts;
 
@@ -22,15 +21,7 @@ namespace Dealership.Models
             }
             private set
             {
-                try
-                {
-                    Validator.ValidateIntRange(value.Length, Constants.MinCommentLength, Constants.MaxCommentLength, Constants.StringMustBeBetweenMinAndMax);
-                }
-                catch (ArgumentException exception)
-                {
-                    throw new ArgumentException(string.Format(exception.Message, "Content", Constants.MinCommentLength, Constants.MaxCommentLength));
-                }
-                
+                Validator.ValidateIntRange(value.Length, Constants.MinCommentLength, Constants.MaxCommentLength, string.Format(Constants.StringMustBeBetweenMinAndMax, "Content", Constants.MinCommentLength, Constants.MaxCommentLength));
                 this.content = value;
             }
         }
@@ -40,7 +31,7 @@ namespace Dealership.Models
         public override string ToString()
         {
             var builder = new StringBuilder();
-            builder.AppendLine(string.Format("    {0}", this.content));
+            builder.AppendLine(string.Format("    {0}", this.Content));
             builder.Append(string.Format("      User: {0}", this.Author));
 
             return builder.ToString();
