@@ -112,33 +112,27 @@ namespace Dealership.Models
             }
         }
 
-        public Role Role
-        {
-            get
-            {
-                return this.role;
-            }
-            private set
-            {
-                this.role = value;
-            }
-        }
+        public Role Role { get; private set; }
 
-        public IList<IVehicle> Vehicles
-        {
-            get
-            {
-                return this.vehicles;
-            }
-        }
+        public IList<IVehicle> Vehicles { get; private set; }
 
         public void AddComment(IComment commentToAdd, IVehicle vehicleToAddComment)
         {
+            try
+            {
+                Validator.ValidateNull(vehicleToAddComment, Constants.CommentCannotBeNull);
+            }
+            catch (ArgumentNullException exception)
+            {
+                throw new ArgumentNullException(exception.Message);
+            }
+
             vehicleToAddComment.Comments.Add(commentToAdd);
         }
 
         public void AddVehicle(IVehicle vehicle)
         {
+            Validator.ValidateNull(vehicle, Constants.VehicleCannotBeNull);
             if (this.Role == Role.Admin)
             {
                 throw new ArgumentException(Constants.AdminCannotAddVehicles);
@@ -247,6 +241,8 @@ namespace Dealership.Models
 
         public void RemoveComment(IComment commentToRemove, IVehicle vehicleToRemoveComment)
         {
+            Validator.ValidateNull(commentToRemove, Constants.CommentCannotBeNull);
+            Validator.ValidateNull(vehicleToRemoveComment, Constants.VehicleCannotBeNull);
             if (commentToRemove.Author == this.Username)
             {
                 vehicleToRemoveComment.Comments.Remove(commentToRemove);
@@ -259,12 +255,13 @@ namespace Dealership.Models
 
         public void RemoveVehicle(IVehicle vehicle)
         {
+            Validator.ValidateNull(vehicle, Constants.VehicleCannotBeNull);
             this.vehicles.Remove(vehicle);
         }
 
         public override string ToString()
         {
-            return string.Format("Username: {0}, FullName: {1} {2}, Role: {3}", this.userName, this.firstName, this.lastName, this.role);
+            return string.Format(Constants.UserToString + ", Role: {3}", this.userName, this.firstName, this.lastName, this.role);
         }
     }
 }
