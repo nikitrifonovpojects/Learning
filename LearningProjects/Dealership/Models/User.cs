@@ -163,13 +163,13 @@ namespace Dealership.Models
             }
             else
             {
-                ListUserVehicles(builder);
+                builder = ListUserVehicles(builder);
             }
 
             return builder.ToString();
         }
 
-        private void ListUserVehicles(StringBuilder builder)
+        private StringBuilder ListUserVehicles(StringBuilder builder)
         {
             int vehicleCount = 0;
             for (int i = 0; i < this.vehicles.Count; i++)
@@ -200,11 +200,13 @@ namespace Dealership.Models
                         throw new ArgumentException(string.Format("{0} is not a valid type", currentVehicle.GetType().Name));
                 }
 
-                AddComments(builder, i, currentVehicle);
+                builder = AddComments(builder, i, currentVehicle);
             }
+
+            return builder;
         }
 
-        private void AddComments(StringBuilder builder, int i, IVehicle currentVehicle)
+        private StringBuilder AddComments(StringBuilder builder, int i, IVehicle currentVehicle)
         {
             if (currentVehicle.Comments.Count == 0)
             {
@@ -239,6 +241,8 @@ namespace Dealership.Models
                 builder.AppendLine("    ----------");
                 builder.AppendLine("    --COMMENTS--");
             }
+
+            return builder;
         }
 
         public void RemoveComment(IComment commentToRemove, IVehicle vehicleToRemoveComment)

@@ -7,11 +7,10 @@ namespace Dealership.Models
 {
     public class Truck : AbstractVehicle, ITruck
     {
-        private const int TruckWheels = 8;
         private int weightCapacity;
 
         public Truck(string make, string model, decimal price, int weightCapacity) 
-            : base(VehicleType.Truck, make, model, price, Truck.TruckWheels)
+            : base(VehicleType.Truck, make, model, price, (int)VehicleType.Truck)
         {
             this.WeightCapacity = weightCapacity;
         }

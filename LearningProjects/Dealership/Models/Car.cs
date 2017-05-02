@@ -7,11 +7,10 @@ namespace Dealership.Models
 {
     public class Car : AbstractVehicle, ICar
     {
-        private const int CarWheels = 4;
         private int seats;
 
         public Car(string make, string model, decimal price, int seats) 
-            : base(VehicleType.Car, make, model, price, Car.CarWheels)
+            : base(VehicleType.Car, make, model, price, (int)VehicleType.Car)
         {
             this.Seats = seats;
         }
