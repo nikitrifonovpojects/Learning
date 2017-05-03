@@ -140,7 +140,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             Console.WriteLine(
                 String.Format(
                     GlobalConstants.ItemAssignedSuccessfullyMessage,
-                    objectToAssignId, 
+                    objectToAssignId,
                     ownerToAssignToId));
         }
         public void ExecuteRemovalStrategy(string[] commandParameters)
@@ -170,7 +170,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 case GlobalConstants.TunningCommand:
                     {
                         var vehicleToRemoveFrom = this.motorVehicles.GetById(ownerToRemoveFromId);
-                        var tunningToRemove = this.tunningParts.GetById(objectToRemoveId);
+                        var tunningToRemove = vehicleToRemoveFrom.TunningParts.GetById(objectToRemoveId);
                         vehicleToRemoveFrom.RemoveTunning(tunningToRemove);
                         break;
                     }
@@ -190,16 +190,16 @@ namespace FastAndFurious.ConsoleApplication.Engine
 
             Console.WriteLine(
                 String.Format(
-                    GlobalConstants.DriverSelectsNewVehicleMessage, 
+                    GlobalConstants.DriverSelectsNewVehicleMessage,
                     driver.Name,
-                    driver.Gender == GenderType.Male? "his" : "her", 
+                    driver.Gender == GenderType.Male ? "his" : "her",
                     vehicle.GetType().Name));
         }
         public void ExecuteRunningStrategy(string[] commandParameters)
         {
             var removeTypeCommand = commandParameters[1];
             var trackId = int.Parse(commandParameters[2]);
-            
+
             switch (removeTypeCommand)
             {
                 case GlobalConstants.TrackCommand:
@@ -220,21 +220,24 @@ namespace FastAndFurious.ConsoleApplication.Engine
             var removeTypeCommand = commandParameters[5];
             var numberOfTimesToDisplay = int.Parse(commandParameters[2]);
             var trackId = int.Parse(commandParameters[6]);
+            var trackToDisplay = this.raceTracks.GetById(trackId);
+            var results = trackToDisplay.FinishedRacesResults;
 
             switch (removeTypeCommand)
             {
                 case GlobalConstants.TrackCommand:
                     {
-                        var trackToDisplay = this.raceTracks.GetById(trackId);
-                        Console.WriteLine(string.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName));
                         var topResults = trackToDisplay.FinishedRacesResults.SelectMany(x => x)
                             .OrderBy(x => x)
                             .Take(numberOfTimesToDisplay);
-                        
+
+                        Console.WriteLine(results != null && results.Count() > 0 ? String.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName) : String.Format(ModelsConstants.NoRacesYetMessage, trackToDisplay.TrackName));
+
                         foreach (var result in topResults)
                         {
                             Console.WriteLine(result.ToString());
                         }
+
                         break;
                     }
                 default:
@@ -245,7 +248,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
         }
         public void CreateObjectOfTypeAndAssignToCollection<T>(string typeName, ICollection<T> collection)
         {
-            var typeToInstantiate = Assembly.GetCallingAssembly().GetTypes().FirstOrDefault(x=>x.Name == typeName);
+            var typeToInstantiate = Assembly.GetCallingAssembly().GetTypes().FirstOrDefault(x => x.Name == typeName);
             var instanceOfType = (T)Activator.CreateInstance(typeToInstantiate);
             collection.Add(instanceOfType);
         }

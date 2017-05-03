@@ -80,15 +80,14 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
             {
                 throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedToTheSameRaceTrackMoreThanOnce);
             }
-            else if (this.participants.Count < this.MaxParticipantsCount)
-            {
-                this.participants.Add(participant);
-            }
-            else
+            if (this.participants.Count > this.MaxParticipantsCount)
             {
                 throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedTheTrackHasMaximumParticipants);
             }
+
+            this.participants.Add(participant);
         }
+
         public bool RemoveParticipant(IDriver participant)
         {
             return this.participants.Remove(participant);

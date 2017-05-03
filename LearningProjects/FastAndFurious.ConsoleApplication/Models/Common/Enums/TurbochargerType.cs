@@ -4,6 +4,7 @@
     {
         NotSet = 0,
         SequentialTurbo,
-        TwinTurbo
+        TwinTurbo,
+        TwinScroll
     }
 }

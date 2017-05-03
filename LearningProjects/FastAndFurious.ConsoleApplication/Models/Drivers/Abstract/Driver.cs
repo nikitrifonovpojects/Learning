@@ -65,6 +65,10 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers.Abstract
         }
         public bool RemoveVehicle(IMotorVehicle vehicle)
         {
+            if (vehicle == null)
+            {
+                throw new ArgumentNullException(GlobalConstants.CannotSetNullObjectAsActiveVehicleExceptionMessage);
+            }
             if (!this.vehicles.Any(x => x.Id == vehicle.Id))
             {
                 return false;
@@ -79,6 +83,10 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers.Abstract
             if (vehicle == null)
             {
                 throw new ArgumentNullException(GlobalConstants.CannotSetNullObjectAsActiveVehicleExceptionMessage);
+            }
+            if (!this.Vehicles.Any(x => x.Id == vehicle.Id))
+            {
+                throw new InvalidOperationException(GlobalConstants.CannotSetForeignVehicleAsActiveExceptionMessage);
             }
 
             this.activeVehicle = vehicle;
