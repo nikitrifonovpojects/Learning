@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using FastAndFurious.ConsoleApplication.Common.Constants;
 using FastAndFurious.ConsoleApplication.Common.Enums;
+using FastAndFurious.ConsoleApplication.Common.Exceptions;
 using FastAndFurious.ConsoleApplication.Common.Extensions;
 using FastAndFurious.ConsoleApplication.Contracts;
 using FastAndFurious.ConsoleApplication.Models.Common.Constants;
@@ -33,7 +34,22 @@ namespace FastAndFurious.ConsoleApplication.Engine
             while (command != GlobalConstants.ExitCommand)
             {
                 commandParameters = ParseCommand(command);
-                ExecuteCommand(commandParameters);
+                try
+                {
+                    ExecuteCommand(commandParameters);
+                }
+                catch (NotSupportedException e)
+                {
+                    Console.Write(e.Message);
+                }
+                catch (InvalidOperationException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (TunningDuplicationException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 command = ReadCommand();
             }
         }
