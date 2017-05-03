@@ -6,6 +6,7 @@ using FastAndFurious.ConsoleApplication.Common.Constants;
 using FastAndFurious.ConsoleApplication.Common.Enums;
 using FastAndFurious.ConsoleApplication.Common.Extensions;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Common.Constants;
 
 namespace FastAndFurious.ConsoleApplication.Engine
 {
@@ -97,7 +98,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
             }
 
             // Why not extract this string in a constant? You're allowed to do it.
-            Console.WriteLine(String.Format("{0} - successfully created!", typeName));
+            Console.WriteLine(String.Format(ModelsConstants.ObjectCreationSuccess, typeName));
         }
         public void ExecuteAssigningStrategy(string[] commandParameters)
         {
@@ -121,6 +122,13 @@ namespace FastAndFurious.ConsoleApplication.Engine
                         var driverToAssignTo = this.drivers.GetById(ownerToAssignToId);
                         var vehicleToAssign = this.motorVehicles.GetById(objectToAssignId);
                         driverToAssignTo.AddVehicle(vehicleToAssign);
+                        break;
+                    }
+                case GlobalConstants.DriverCommand:
+                    {
+                        var driverToAssignTo = this.drivers.GetById(objectToAssignId);
+                        var trackToAssign = this.raceTracks.GetById(ownerToAssignToId);
+                        trackToAssign.AddParticipant(driverToAssignTo);
                         break;
                     }
                 default:
@@ -159,6 +167,13 @@ namespace FastAndFurious.ConsoleApplication.Engine
                         driverToRemoveFrom.RemoveVehicle(vehicleToRemove);
                         break;
                     }
+                case GlobalConstants.TunningCommand:
+                    {
+                        var vehicleToRemoveFrom = this.motorVehicles.GetById(ownerToRemoveFromId);
+                        var tunningToRemove = this.tunningParts.GetById(objectToRemoveId);
+                        vehicleToRemoveFrom.RemoveTunning(tunningToRemove);
+                        break;
+                    }
                 default:
                     {
                         throw new NotSupportedException(GlobalConstants.RemovalOperationNotSupportedExceptionMessage);
@@ -182,13 +197,51 @@ namespace FastAndFurious.ConsoleApplication.Engine
         }
         public void ExecuteRunningStrategy(string[] commandParameters)
         {
-            // TODO: Implement (Extend functionality)
-            throw new NotImplementedException();
+            var removeTypeCommand = commandParameters[1];
+            var trackId = int.Parse(commandParameters[2]);
+            
+            switch (removeTypeCommand)
+            {
+                case GlobalConstants.TrackCommand:
+                    {
+                        var trackToRace = this.raceTracks.GetById(trackId);
+                        Console.WriteLine(string.Format(GlobalConstants.PerformingRaceOnTrackMessage, trackToRace.TrackName, trackToRace.Participants.Count()));
+                        trackToRace.RunRace();
+                        break;
+                    }
+                default:
+                    {
+                        throw new NotSupportedException(GlobalConstants.RemovalOperationNotSupportedExceptionMessage);
+                    }
+            }
         }
         public void ExecuteDisplayingStrategy(string[] commandParameters)
         {
-            // TODO: Implement (Extend functionality)
-            throw new NotImplementedException();
+            var removeTypeCommand = commandParameters[5];
+            var numberOfTimesToDisplay = int.Parse(commandParameters[2]);
+            var trackId = int.Parse(commandParameters[6]);
+
+            switch (removeTypeCommand)
+            {
+                case GlobalConstants.TrackCommand:
+                    {
+                        var trackToDisplay = this.raceTracks.GetById(trackId);
+                        Console.WriteLine(string.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName));
+                        var topResults = trackToDisplay.FinishedRacesResults.SelectMany(x => x)
+                            .OrderBy(x => x)
+                            .Take(numberOfTimesToDisplay);
+                        
+                        foreach (var result in topResults)
+                        {
+                            Console.WriteLine(result.ToString());
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        throw new NotSupportedException(GlobalConstants.RemovalOperationNotSupportedExceptionMessage);
+                    }
+            }
         }
         public void CreateObjectOfTypeAndAssignToCollection<T>(string typeName, ICollection<T> collection)
         {

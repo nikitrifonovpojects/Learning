@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using FastAndFurious.ConsoleApplication.Common.Enums;
+using FastAndFurious.ConsoleApplication.Models.ModelContracts;
 
 namespace FastAndFurious.ConsoleApplication.Contracts
 {
-    public interface IDriver 
+    public interface IDriver : IIdentifiable
     {
-        int Id { get; }
         string Name { get; }
         GenderType Gender { get; }
         IMotorVehicle ActiveVehicle { get; }

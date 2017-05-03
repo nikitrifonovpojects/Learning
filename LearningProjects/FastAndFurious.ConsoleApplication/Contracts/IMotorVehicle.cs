@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using FastAndFurious.ConsoleApplication.Models.ModelContracts;
 
 namespace FastAndFurious.ConsoleApplication.Contracts
 {
-    public interface IMotorVehicle : IAccelerateable, ITopSpeed, IWeightable, IValuable
+    public interface IMotorVehicle : IAccelerateable, ITopSpeed, IWeightable, IValuable, IIdentifiable
     {
-        int Id { get; }
         /// <summary>
         /// Collects all of the tunning parts applied to the vehicle.
         /// (Intercoolers, Turbochargers, Exhaust systems, Transmissions, Tires, Engine control units, etc...)

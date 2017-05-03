@@ -1,29 +1,17 @@
-﻿using System;
-using FastAndFurious.ConsoleApplication.Common.Enums;
+﻿using FastAndFurious.ConsoleApplication.Common.Enums;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Tunnings.Abstract;
 
 namespace FastAndFurious.ConsoleApplication.Models.Tunnings.EngineControlUnits.Abstract
 {
-    public abstract class EngineControlUnit : IEngineControlUnit, ITunningPart, IAccelerateable, ITopSpeed, IWeightable, IValuable
+    public abstract class EngineControlUnit : Tunning, IEngineControlUnit, ITunningPart, IAccelerateable, ITopSpeed, IWeightable, IValuable
     {
         private EngineControlUnitType engineControlUnitType;
 
-        public EngineControlUnit(
-            decimal price,
-            int weight,
-            int acceleration,
-            int topSpeed,
-            TunningGradeType gradeType,
-            EngineControlUnitType engineControlUnitType)
+        public EngineControlUnit(decimal price, int weight, int acceleration, int topSpeed, TunningGradeType gradeType, EngineControlUnitType engineControlUnitType) 
+            : base(price, weight, acceleration,topSpeed,gradeType)
         {
-        }
-
-        public int Acceleration
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            this.engineControlUnitType = engineControlUnitType;
         }
 
         public EngineControlUnitType EngineControlUnitType
@@ -31,46 +19,6 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.EngineControlUnits.A
             get
             {
                 return this.engineControlUnitType;
-            }
-        }
-
-        public TunningGradeType GradeType
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public decimal Price
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int TopSpeed
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Weight
-        {
-            get
-            {
-                throw new NotImplementedException();
             }
         }
     }

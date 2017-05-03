@@ -1,4 +1,5 @@
 ﻿using FastAndFurious.ConsoleApplication.Common.Enums;
+using FastAndFurious.ConsoleApplication.Models.Common.Enums;
 
 namespace FastAndFurious.ConsoleApplication.Contracts
 {

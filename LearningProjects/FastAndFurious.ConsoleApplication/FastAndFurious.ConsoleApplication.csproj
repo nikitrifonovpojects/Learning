@@ -74,7 +74,19 @@
     <Compile Include="Contracts\IValuable.cs" />
     <Compile Include="Contracts\IWeightable.cs" />
     <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Models\Common\Constants\ModelsConstants.cs" />
+    <Compile Include="Models\Common\Enums\IntercoolerType.cs" />
+    <Compile Include="Models\Common\Enums\TransmissionType.cs" />
+    <Compile Include="Models\Common\Enums\TurbochargerType.cs" />
+    <Compile Include="Models\Common\IdentifiableObject.cs" />
     <Compile Include="Models\Drivers\Abstract\Driver.cs" />
+    <Compile Include="Models\Drivers\DominicRendeto.cs" />
+    <Compile Include="Models\Drivers\Jessi.cs" />
+    <Compile Include="Models\Drivers\LetiSpaghetti.cs" />
+    <Compile Include="Models\Drivers\Mia.cs" />
+    <Compile Include="Models\Drivers\VinBenzin.cs" />
+    <Compile Include="Models\Drivers\Vince.cs" />
+    <Compile Include="Models\ModelContracts\IIdentifiable.cs" />
     <Compile Include="Models\Motors\Abstract\Motor.cs" />
     <Compile Include="Models\Motors\CentaurPulseMotor.cs" />
     <Compile Include="Models\Motors\HellcatMotor.cs" />
@@ -82,34 +94,49 @@
     <Compile Include="Models\Motors\ShockblazePulsejetMotor.cs" />
     <Compile Include="Models\Motors\StingrayMotor.cs" />
     <Compile Include="Models\Motors\TyphoonPulseEngine.cs" />
+    <Compile Include="Models\MotorVehicles\AcuraIntegraTypeR.cs" />
+    <Compile Include="Models\MotorVehicles\MitsubishiEclipse.cs" />
+    <Compile Include="Models\MotorVehicles\MitsubishiLancerEvolution.cs" />
+    <Compile Include="Models\MotorVehicles\Nissan350Z.cs" />
+    <Compile Include="Models\MotorVehicles\NissanGTR.cs" />
+    <Compile Include="Models\MotorVehicles\NissanSkylineR34.cs" />
+    <Compile Include="Models\MotorVehicles\SubaruImprezaWRX.cs" />
     <Compile Include="Models\Tracks\Abstract\RaceTrack.cs" />
     <Compile Include="Models\Tracks\IndianapolisRaceTrack.cs" />
     <Compile Include="Models\Tracks\MonacoRaceTrack.cs" />
     <Compile Include="Models\Tracks\StormblazeRaceTrack.cs" />
     <Compile Include="Models\Tracks\TokioUndergroundRaceTrack.cs" />
+    <Compile Include="Models\Tunnings\Abstract\Tunning.cs" />
     <Compile Include="Models\Tunnings\EngineControlUnits\Abstract\EngineControlUnit.cs" />
     <Compile Include="Models\Tunnings\EngineControlUnits\APREngineControlUnit.cs" />
     <Compile Include="Models\Tunnings\EngineControlUnits\DinanEngineControlUnit.cs" />
     <Compile Include="Models\Tunnings\EngineControlUnits\SCTPerformanceEngineControlUnit.cs" />
     <Compile Include="Models\Tunnings\ExhaustSystems\Abstract\Exhaust.cs" />
+    <Compile Include="Models\Tunnings\ExhaustSystems\BorlaExhaust.cs" />
+    <Compile Include="Models\Tunnings\ExhaustSystems\MagnaflowExhaust.cs" />
+    <Compile Include="Models\Tunnings\ExhaustSystems\RemusExhaust.cs" />
+    <Compile Include="Models\Tunnings\Intercoolers\Abstract\Intercooler.cs" />
+    <Compile Include="Models\Tunnings\Intercoolers\EvolutionXPerformanceIntercooler.cs" />
+    <Compile Include="Models\Tunnings\Intercoolers\ViperGenieIntercooler.cs" />
     <Compile Include="Models\Tunnings\Tires\Abstract\TireSet.cs" />
+    <Compile Include="Models\Tunnings\Transmissions\Abstract\Transmission.cs" />
+    <Compile Include="Models\Tunnings\Transmissions\BMShortShifter.cs" />
+    <Compile Include="Models\Tunnings\Transmissions\HurstCompetitionManualShifter.cs" />
+    <Compile Include="Models\Tunnings\Transmissions\TWMPerformanceTransmission.cs" />
     <Compile Include="Models\Tunnings\Turbochargers\Abstract\Turbocharger.cs" />
     <Compile Include="Models\MotorVehicles\Abstract\MotorVehicle.cs" />
     <Compile Include="Models\Tunnings\Tires\FalkenAzenisTiresSet.cs" />
     <Compile Include="Models\Tunnings\Tires\MichelinPilotTiresSet.cs" />
     <Compile Include="Models\Tunnings\Tires\YokohamaAdvanTiresSet.cs" />
+    <Compile Include="Models\Tunnings\Turbochargers\VortexR35SequentialTurbocharger.cs" />
+    <Compile Include="Models\Tunnings\Turbochargers\ZX8ParallelTwinTurbocharger.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Common\" />
-    <Folder Include="Models\Tunnings\Abstract\" />
-    <Folder Include="Models\Tunnings\Intercoolers\Abstract\" />
-    <Folder Include="Models\Tunnings\Transmissions\Abstract\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

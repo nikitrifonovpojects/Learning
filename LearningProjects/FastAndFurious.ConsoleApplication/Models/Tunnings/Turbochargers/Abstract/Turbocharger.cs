@@ -1,68 +1,25 @@
-﻿using System;
-using FastAndFurious.ConsoleApplication.Common.Enums;
+﻿using FastAndFurious.ConsoleApplication.Common.Enums;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Common.Enums;
+using FastAndFurious.ConsoleApplication.Models.Tunnings.Abstract;
 
 namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Turbochargers.Abstract
 {
-    public abstract class Turbocharger : ITurbocharger, ITunningPart, IAccelerateable, ITopSpeed, IWeightable, IValuable 
+    public abstract class Turbocharger : Tunning, ITurbocharger, ITunningPart, IAccelerateable, ITopSpeed, IWeightable, IValuable 
     {
-        public Turbocharger()
-        {
-        }
+        private readonly TurbochargerType turbochargerType;
 
-        public int Acceleration
+        public Turbocharger(decimal price, int weight, int acceleration, int topSpeed, TunningGradeType gradeType, TurbochargerType turbochargerType) 
+            :base(price, weight, acceleration, topSpeed, gradeType)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public TunningGradeType GradeType
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public decimal Price
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int TopSpeed
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            this.turbochargerType = turbochargerType;
         }
 
         public TurbochargerType TurbochargerType
         {
             get
             {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Weight
-        {
-            get
-            {
-                throw new NotImplementedException();
+                return this.turbochargerType;
             }
         }
     }

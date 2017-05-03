@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.ModelContracts;
 
 namespace FastAndFurious.ConsoleApplication.Common.Extensions
 {

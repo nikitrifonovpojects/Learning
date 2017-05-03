@@ -1,68 +1,23 @@
-﻿using System;
-using FastAndFurious.ConsoleApplication.Common.Enums;
+﻿using FastAndFurious.ConsoleApplication.Common.Enums;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Tunnings.Abstract;
 
 namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Tires.Abstract
 {
-    public abstract class TiresSet : ITunningPart, ITireSet, IAccelerateable, ITopSpeed, IWeightable, IValuable 
+    public abstract class TiresSet : Tunning, ITunningPart, ITireSet, IAccelerateable, ITopSpeed, IWeightable, IValuable 
     {
-        public TiresSet() 
+        private readonly TireType tireType;
+        public TiresSet(decimal price, int weight, int acceleration, int topSpeed, TunningGradeType gradeType, TireType tireType)
+            : base(price, weight, acceleration, topSpeed, gradeType)
         {
-        }
-
-        public int Acceleration
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public TunningGradeType GradeType
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public decimal Price
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            this.tireType = tireType;
         }
 
         public TireType TireType
         {
             get
             {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int TopSpeed
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public int Weight
-        {
-            get
-            {
-                throw new NotImplementedException();
+                return this.tireType;
             }
         }
     }

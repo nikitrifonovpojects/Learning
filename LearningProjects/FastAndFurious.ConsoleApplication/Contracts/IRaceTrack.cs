@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using FastAndFurious.ConsoleApplication.Models.ModelContracts;
 
 namespace FastAndFurious.ConsoleApplication.Contracts
 {
-    public interface IRaceTrack 
+    public interface IRaceTrack : IIdentifiable
     {
-        int Id { get; }
         int TrackLengthInMeters { get; }
         int MaxParticipantsCount { get; }
         int MinParticipantsCount { get; }

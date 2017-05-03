@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using FastAndFurious.ConsoleApplication.Common.Constants;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Common;
+using FastAndFurious.ConsoleApplication.Models.Common.Constants;
 
 namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
 {
-    public class RaceTrack : IRaceTrack
+    public class RaceTrack : IdentifiableObject, IRaceTrack
     {
         private readonly string trackName;
         private readonly int maxParticipantsCount;
@@ -19,7 +21,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
             string trackName,
             int maxParticipantsCount,
             int minParticipantsCount,
-            int trackLengthInMeters)
+            int trackLengthInMeters) : base()
         {
             this.trackName = trackName;
             this.maxParticipantsCount = maxParticipantsCount;
@@ -72,19 +74,19 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
             }
         }
 
-        public int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public void AddParticipant(IDriver participant)
         {
-            if (this.participants.Count < this.MaxParticipantsCount)
+            if (this.participants.Any(x => x.Id == participant.Id))
+            {
+                throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedToTheSameRaceTrackMoreThanOnce);
+            }
+            else if (this.participants.Count < this.MaxParticipantsCount)
             {
                 this.participants.Add(participant);
+            }
+            else
+            {
+                throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedTheTrackHasMaximumParticipants);
             }
         }
         public bool RemoveParticipant(IDriver participant)
@@ -104,7 +106,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                     var timeRequiredToFinishTheTrack = participant.ActiveVehicle.Race(this.TrackLengthInMeters);
                     raceResults.Add(timeRequiredToFinishTheTrack);
                 }
-
+                
                 this.finishedRacesResults.Add(raceResults);
                 this.participants.Clear();
             }

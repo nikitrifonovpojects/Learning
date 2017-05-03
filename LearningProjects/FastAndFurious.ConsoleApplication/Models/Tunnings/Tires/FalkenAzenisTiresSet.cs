@@ -10,8 +10,11 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Tires
         private const int FalkenAzenisTireAccelerationBonus = 3;
         private const int FalkenAzenisTireTopSpeedBonus = 0;
         private const decimal FalkenAzenisTirePriceInUSADollars = 359;
+        private const TunningGradeType FalkenAzenisGradeType = TunningGradeType.LowGrade;
+        private const TireType FalkenAzenisType = TireType.OffRoadTire;
 
-        public FalkenAzenisTiresSet()
+        public FalkenAzenisTiresSet() 
+            : base(FalkenAzenisTiresSet.FalkenAzenisTirePriceInUSADollars, FalkenAzenisTiresSet.FalkenAzenisTireWeightInGrams, FalkenAzenisTiresSet.FalkenAzenisTireAccelerationBonus, FalkenAzenisTiresSet.FalkenAzenisTireTopSpeedBonus, FalkenAzenisTiresSet.FalkenAzenisGradeType, FalkenAzenisTiresSet.FalkenAzenisType)
         {
         }
     }

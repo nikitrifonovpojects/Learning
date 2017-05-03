@@ -5,14 +5,25 @@ using FastAndFurious.ConsoleApplication.Common.Constants;
 using FastAndFurious.ConsoleApplication.Common.Exceptions;
 using FastAndFurious.ConsoleApplication.Common.Utils;
 using FastAndFurious.ConsoleApplication.Contracts;
+using FastAndFurious.ConsoleApplication.Models.Common;
 
 namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
 {
-    public abstract class MotorVehicle : IMotorVehicle, IWeightable, IValuable
+    public abstract class MotorVehicle : IdentifiableObject, IMotorVehicle, IWeightable, IValuable
     {
+        private readonly decimal price;
+        private readonly int weight;
+        private readonly int acceleration;
+        private readonly int topSpeed;
+        private readonly ICollection<ITunningPart> tunningParts;
 
-        public MotorVehicle()
+        public MotorVehicle(decimal price, int weight, int acceleration, int topSpeed) : base()
         {
+            this.price = price;
+            this.weight = weight;
+            this.acceleration = acceleration;
+            this.topSpeed = topSpeed;
+            this.tunningParts = new List<ITunningPart>();
         }
 
         public decimal Price
@@ -26,50 +37,76 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
         {
             get
             {
-                throw new NotImplementedException();
+                return this.weight + this.TunningParts.Sum(x => x.Weight);
             }
         }
         public int Acceleration
         {
             get
             {
-                throw new NotImplementedException();
+                return this.acceleration + this.TunningParts.Sum(x => x.Acceleration);
             }
         }
         public int TopSpeed
         {
             get
             {
-                throw new NotImplementedException();
+                return this.topSpeed + this.TunningParts.Sum(x => x.TopSpeed);
             }
         }
         public IEnumerable<ITunningPart> TunningParts
         {
             get
             {
-                throw new NotImplementedException();
-            }
-        }
-        public int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
+                return this.tunningParts;
             }
         }
 
         public void AddTunning(ITunningPart part)
         {
-            throw new NotImplementedException();
+            if (this.TunningParts.Any(x => x.Id == part.Id))
+            {
+                throw new TunningDuplicationException(GlobalConstants.CannotAddMultiplePartsOfTheSameTypeToVehicleExceptionMessage, part.GetType().Name);
+            }
+
+            this.tunningParts.Add(part);
         }
         public TimeSpan Race(int trackLengthInMeters)
         {
-            // Oohh boy, you shouldn't have missed the PHYSICS class in high school.
-            throw new NotImplementedException();
+            var topSpeedInMetersPerSecond = MetricUnitsConverter.GetMetersPerSecondFrom(this.TopSpeed);
+            var accelerationInMetersPerSecondSquared = this.Acceleration;
+
+            var timeRequiredToReachTopSpeedInSeconds = (topSpeedInMetersPerSecond / accelerationInMetersPerSecondSquared);
+            var distanceTravelledWhileReachingTopSpeedInMeters = accelerationInMetersPerSecondSquared * Math.Pow(timeRequiredToReachTopSpeedInSeconds, 2);
+
+            if (trackLengthInMeters == distanceTravelledWhileReachingTopSpeedInMeters)
+            {
+                return TimeSpan.FromSeconds(timeRequiredToReachTopSpeedInSeconds);
+            }
+            else if (trackLengthInMeters > distanceTravelledWhileReachingTopSpeedInMeters)
+            {
+                var remainingDistanceInMeters = trackLengthInMeters - distanceTravelledWhileReachingTopSpeedInMeters;
+                var timeRequiredToTravelRemainingDistanceInSeconds = remainingDistanceInMeters / topSpeedInMetersPerSecond;
+                var totalTimeInSeconds = timeRequiredToReachTopSpeedInSeconds + timeRequiredToTravelRemainingDistanceInSeconds;
+
+                return TimeSpan.FromSeconds(totalTimeInSeconds);
+            }
+            else
+            {
+                var totalTime = Math.Sqrt((trackLengthInMeters / accelerationInMetersPerSecondSquared));
+
+                return TimeSpan.FromSeconds(totalTime);
+            }
         }
         public bool RemoveTunning(ITunningPart part)
         {
-            throw new NotImplementedException();
+            if (!this.TunningParts.Any(x => x.Id == part.Id))
+            {
+                return false;
+            }
+
+            this.tunningParts.Remove(part);
+            return true;
         }
     }
 }

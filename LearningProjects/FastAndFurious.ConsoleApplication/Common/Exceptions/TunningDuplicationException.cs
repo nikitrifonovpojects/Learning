@@ -10,24 +10,29 @@ namespace FastAndFurious.ConsoleApplication.Common.Exceptions
         {
         }
 
-        public TunningDuplicationException(string message) : base(message)
+        public TunningDuplicationException(string message) 
+            : base(message)
         {
         }
 
-        public TunningDuplicationException(string message, string paramName) : base(message, paramName)
+        public TunningDuplicationException(string message, string paramName) 
+            : base(message, paramName)
         {
         }
 
-        public TunningDuplicationException(string message, Exception innerException) : base(message, innerException)
+        public TunningDuplicationException(string message, Exception innerException) 
+            : base(message, innerException)
         {
         }
 
-        public TunningDuplicationException(string message, string paramName, Exception innerException) : base(message, paramName, innerException)
+        public TunningDuplicationException(string message, string paramName, Exception innerException) 
+            : base(message, paramName, innerException)
         {
         }
 
-        protected TunningDuplicationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected TunningDuplicationException(SerializationInfo info, StreamingContext context) 
+            : base(info, context)
         {
-        }
+        } 
     }
 }
