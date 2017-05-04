@@ -17,7 +17,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
         private readonly int topSpeed;
         private readonly ICollection<ITunningPart> tunningParts;
 
-        public MotorVehicle(decimal price, int weight, int acceleration, int topSpeed) : base()
+        public MotorVehicle(decimal price, int weight, int acceleration, int topSpeed)
         {
             this.price = price;
             this.weight = weight;

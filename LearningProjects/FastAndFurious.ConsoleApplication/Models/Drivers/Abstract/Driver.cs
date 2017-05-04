@@ -15,7 +15,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers.Abstract
         private readonly ICollection<IMotorVehicle> vehicles;
         private IMotorVehicle activeVehicle;
 
-        public Driver(string name, GenderType gender) : base()
+        public Driver(string name, GenderType gender)
         {
             this.gender = gender;
             this.name = name;
@@ -63,6 +63,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers.Abstract
 
             this.vehicles.Add(vehicle);
         }
+
         public bool RemoveVehicle(IMotorVehicle vehicle)
         {
             if (vehicle == null)
@@ -78,6 +79,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers.Abstract
             return true;
             
         }
+
         public void SetActiveVehicle(IMotorVehicle vehicle)
         {
             if (vehicle == null)

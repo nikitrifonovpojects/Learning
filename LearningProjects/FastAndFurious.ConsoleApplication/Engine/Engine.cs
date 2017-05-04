@@ -50,6 +50,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 {
                     Console.WriteLine(e.Message);
                 }
+
                 command = ReadCommand();
             }
         }
@@ -246,9 +247,15 @@ namespace FastAndFurious.ConsoleApplication.Engine
                         var topResults = trackToDisplay.FinishedRacesResults.SelectMany(x => x)
                             .OrderBy(x => x)
                             .Take(numberOfTimesToDisplay);
-
-                        Console.WriteLine(results != null && results.Count() > 0 ? String.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName) : String.Format(ModelsConstants.NoRacesYetMessage, trackToDisplay.TrackName));
-
+                        if (results != null && results.Count() > 0)
+                        {
+                            Console.WriteLine(string.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName));
+                        }
+                        else
+                        {
+                            Console.WriteLine(string.Format(ModelsConstants.NoRacesYetMessage, trackToDisplay.TrackName)));
+                        }
+                        
                         foreach (var result in topResults)
                         {
                             Console.WriteLine(result.ToString());

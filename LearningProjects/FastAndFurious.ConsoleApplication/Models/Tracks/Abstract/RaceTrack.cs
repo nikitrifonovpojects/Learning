@@ -21,7 +21,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
             string trackName,
             int maxParticipantsCount,
             int minParticipantsCount,
-            int trackLengthInMeters) : base()
+            int trackLengthInMeters)
         {
             this.trackName = trackName;
             this.maxParticipantsCount = maxParticipantsCount;
@@ -80,6 +80,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
             {
                 throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedToTheSameRaceTrackMoreThanOnce);
             }
+
             if (this.participants.Count > this.MaxParticipantsCount)
             {
                 throw new InvalidOperationException(ModelsConstants.DriverCannotBeAssignedTheTrackHasMaximumParticipants);
@@ -92,6 +93,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
         {
             return this.participants.Remove(participant);
         }
+
         public void RunRace()
         {
             var participantsCount = this.participants.Count();

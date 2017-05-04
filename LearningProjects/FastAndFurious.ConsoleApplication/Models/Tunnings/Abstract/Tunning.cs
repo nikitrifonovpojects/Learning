@@ -12,7 +12,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Abstract
         private readonly int topSpeed;
         private readonly TunningGradeType gradeType;
 
-        public Tunning(decimal price, int weight, int acceleration, int topSpeed, TunningGradeType gradeType) : base()
+        public Tunning(decimal price, int weight, int acceleration, int topSpeed, TunningGradeType gradeType)
         {
             this.price = price;
             this.weight = weight;

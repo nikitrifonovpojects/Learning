@@ -24,7 +24,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Motors.Abstract
             int horsepower,
             TunningGradeType gradeType,
             CylinderType cylinderType,
-            MotorType engineType) : base()
+            MotorType engineType)
         {
             this.price = price;
             this.weight = weight;
