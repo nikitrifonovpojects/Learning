@@ -1,5 +1,5 @@
-﻿using Logger.Common;
-using System;
+﻿using System;
+using Logger.Contracts;
 
 namespace Logger.Loggers
 {

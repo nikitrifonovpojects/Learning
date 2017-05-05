@@ -1,7 +1,8 @@
-﻿using Logger.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.IO;
+using Logger.Common.Enum;
+using Logger.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Test.IntegrationTests
 {

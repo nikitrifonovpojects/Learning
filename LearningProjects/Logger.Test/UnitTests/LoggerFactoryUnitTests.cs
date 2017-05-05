@@ -1,7 +1,7 @@
-﻿using Logger.Configuration;
+﻿using System;
+using Logger.Common.Enum;
 using Logger.Loggers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace Logger.Test.UnitTests
 {

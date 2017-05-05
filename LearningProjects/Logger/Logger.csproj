@@ -44,21 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\IFileSystem.cs" />
+    <Compile Include="Common\Formatters\DateTimeFormatter.cs" />
+    <Compile Include="Contracts\IFileSystem.cs" />
+    <Compile Include="Contracts\IFormatter.cs" />
     <Compile Include="Common\LoggerFileSystem.cs" />
     <Compile Include="Configuration\FactoryOptions.cs" />
     <Compile Include="Configuration\ConsoleLoggerOptions.cs" />
     <Compile Include="Configuration\FileLoggerOptions.cs" />
-    <Compile Include="Common\IConsole.cs" />
-    <Compile Include="Common\ISerializer.cs" />
+    <Compile Include="Contracts\IConsole.cs" />
+    <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Common\JsonSerializer.cs" />
     <Compile Include="Loggers\AbstractLogger.cs" />
     <Compile Include="Common\LoggerConsole.cs" />
-    <Compile Include="Configuration\LoggerType.cs" />
+    <Compile Include="Common\Enum\LoggerType.cs" />
     <Compile Include="Loggers\ConsoleLogger.cs" />
     <Compile Include="Loggers\FileLogger.cs" />
-    <Compile Include="Common\ILogger.cs" />
-    <Compile Include="LoggerFactory.cs" />
+    <Compile Include="Contracts\ILogger.cs" />
+    <Compile Include="Factory\LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

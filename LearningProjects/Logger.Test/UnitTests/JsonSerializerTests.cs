@@ -1,7 +1,7 @@
-﻿using Logger.Configuration;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Logger.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace Logger.Test.UnitTests

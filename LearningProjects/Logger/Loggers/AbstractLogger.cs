@@ -1,5 +1,5 @@
-﻿using Logger.Common;
-using System;
+﻿using System;
+using Logger.Contracts;
 
 namespace Logger.Loggers
 {
@@ -16,7 +16,7 @@ namespace Logger.Loggers
         {
             if (message == null)
             {
-                throw new ArgumentNullException("message");
+                throw new ArgumentNullException(message);
             }
 
             message = string.Format("{0}-{1}", DateTime.Now, message);
@@ -30,7 +30,7 @@ namespace Logger.Loggers
                 throw new ArgumentNullException("message");
             }
 
-            Log(serializer.Serialize(message));
+            Log(this.serializer.Serialize(message));
         }
 
         protected abstract void Write(string message);

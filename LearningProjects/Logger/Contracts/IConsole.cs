@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logger.Common
+namespace Logger.Contracts
 {
     public interface IConsole
     {

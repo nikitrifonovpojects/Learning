@@ -1,8 +1,10 @@
-﻿using Logger.Common;
-using Logger.Configuration;
-using Logger.Loggers;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Logger.Common;
+using Logger.Common.Enum;
+using Logger.Configuration;
+using Logger.Contracts;
+using Logger.Loggers;
 
 namespace Logger
 {

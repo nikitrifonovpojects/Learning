@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Logger.Contracts;
+using Newtonsoft.Json;
 
 
 namespace Logger.Common

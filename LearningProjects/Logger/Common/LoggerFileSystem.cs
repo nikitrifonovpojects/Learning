@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Logger.Contracts;
 
 namespace Logger.Common
 {

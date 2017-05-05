@@ -1,4 +1,5 @@
-﻿using Logger.Common;
+﻿using Logger.Common.Enum;
+using Logger.Contracts;
 
 namespace Logger.Configuration
 {

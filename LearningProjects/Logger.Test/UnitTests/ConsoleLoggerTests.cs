@@ -1,9 +1,10 @@
-﻿using Logger.Common;
+﻿using System;
+using Logger.Common.Enum;
 using Logger.Configuration;
+using Logger.Contracts;
 using Logger.Loggers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 
 namespace Logger.Test.UnitTests
 {
