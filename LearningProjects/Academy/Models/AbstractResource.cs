@@ -29,7 +29,8 @@ namespace Academy.Models
                 {
                     throw new ArgumentNullException(string.Format(Constants.NullExceptionMessage, nameof(Name)));
                 }
-                if (value.Count() < Constants.MinDemoResourceNameLenght || value.Count() > Constants.MaxDemoResourceNameLenght)
+
+                if (value.Length < Constants.MinDemoResourceNameLenght || value.Length > Constants.MaxDemoResourceNameLenght)
                 {
                     throw new ArgumentException(string.Format(Constants.ResourceNameLenghtExceptionMessage, Constants.MinDemoResourceNameLenght, Constants.MaxDemoResourceNameLenght));
                 }
@@ -50,7 +51,8 @@ namespace Academy.Models
                 {
                     throw new ArgumentNullException(string.Format(Constants.NullExceptionMessage, nameof(Url)));
                 }
-                if (value.Count() < Constants.MinUrlNameLenght || value.Count() > Constants.MaxUrlNameLenght)
+
+                if (value.Length < Constants.MinUrlNameLenght || value.Length > Constants.MaxUrlNameLenght)
                 {
                     throw new ArgumentException(string.Format(Constants.ResourceUrlLenghtExceptionMessage, Constants.MinUrlNameLenght, Constants.MaxUrlNameLenght));
                 }

@@ -91,6 +91,7 @@
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\Utils\Contracts\ICourseResult.cs" />
     <Compile Include="Models\Utils\Contracts\ILectureResource.cs" />
+    <Compile Include="Models\Utils\Utility.cs" />
     <Compile Include="Models\VideoResource.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

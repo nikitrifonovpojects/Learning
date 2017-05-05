@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Academy.Models.Enums;
+using Academy.Models.Utils;
 
 namespace Academy.Models
 {
@@ -23,7 +24,7 @@ namespace Academy.Models
 
         public override string ToString()
         {
-            return string.Format(base.ToString() + Environment.NewLine + "     - Due date: {0}", this.DueDate.ToString("M/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture));
+            return string.Format(base.ToString() + Environment.NewLine + "     - Due date: {0}", Utility.FormatDate(this.DueDate));
         }
     }
 }

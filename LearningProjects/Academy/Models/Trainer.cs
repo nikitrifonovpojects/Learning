@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Academy.Models.Common;
 using Academy.Models.Contracts;
+using Academy.Models.Utils;
 
 namespace Academy.Models
 {
     public class Trainer : ITrainer
     {
-        private IList<string> technologies = new List<string>();
+        private IList<string> technologies;
         private string userName;
 
         public Trainer(string username, string technologies)
@@ -47,7 +48,8 @@ namespace Academy.Models
                 {
                     throw new ArgumentNullException(string.Format(Constants.NullExceptionMessage, nameof(Username)));
                 }
-                if (value.Count() < Constants.MinTrainerAndStudentNameLenght || value.Count() > Constants.MaxTrainerAndStudentNameLenght)
+
+                if (value.Length < Constants.MinTrainerAndStudentNameLenght || value.Length > Constants.MaxTrainerAndStudentNameLenght)
                 {
                     throw new ArgumentException(string.Format(Constants.TrainerAndStudentNameLenghtExceptionMessage, Constants.MinTrainerAndStudentNameLenght, Constants.MaxTrainerAndStudentNameLenght));
                 }

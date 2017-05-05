@@ -5,6 +5,7 @@ using System.Text;
 using Academy.Models.Common;
 using Academy.Models.Contracts;
 using Academy.Models.Enums;
+using Academy.Models.Utils;
 using Academy.Models.Utils.Contracts;
 
 namespace Academy.Models
@@ -44,7 +45,8 @@ namespace Academy.Models
                 {
                     throw new ArgumentNullException(string.Format(Constants.NullExceptionMessage, nameof(Username)));
                 }
-                if (value.Count() < Constants.MinTrainerAndStudentNameLenght || value.Count() > Constants.MaxTrainerAndStudentNameLenght)
+
+                if (value.Length < Constants.MinTrainerAndStudentNameLenght || value.Length > Constants.MaxTrainerAndStudentNameLenght)
                 {
                     throw new ArgumentException(string.Format(Constants.TrainerAndStudentNameLenghtExceptionMessage, Constants.MinTrainerAndStudentNameLenght, Constants.MaxTrainerAndStudentNameLenght));
                 }
@@ -67,17 +69,7 @@ namespace Academy.Models
             }
             else
             {
-                for (int i = 0; i < this.CourseResults.Count; i++)
-                {
-                    if (i == this.CourseResults.Count - 1)
-                    {
-                        printStudent.Append(this.CourseResults[i].ToString());
-                    }
-                    else
-                    {
-                        printStudent.AppendLine(this.CourseResults[i].ToString());
-                    }
-                }
+                printStudent.Append(Utility.ListItemsInCollection(this.CourseResults));
             }
 
             return printStudent.ToString();

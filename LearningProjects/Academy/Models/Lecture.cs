@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Academy.Models.Common;
 using Academy.Models.Contracts;
+using Academy.Models.Utils;
 
 namespace Academy.Models
 {
@@ -32,7 +33,8 @@ namespace Academy.Models
                 {
                     throw new ArgumentNullException(string.Format(Constants.NullExceptionMessage, nameof(Name)));
                 }
-                if (value.Count() < Constants.MinLectureNameLenght || value.Count() > Constants.MaxLectureNameLenght)
+
+                if (value.Length < Constants.MinLectureNameLenght || value.Length > Constants.MaxLectureNameLenght)
                 {
                     throw new ArgumentException(string.Format(Constants.LectureNameLenghtExceptionMessage, Constants.MinLectureNameLenght, Constants.MaxLectureNameLenght));
                 }
@@ -52,7 +54,7 @@ namespace Academy.Models
             var printLecture = new StringBuilder();
             printLecture.AppendLine("  * Lecture:");
             printLecture.AppendLine(string.Format("   - Name: {0}", this.Name));
-            printLecture.AppendLine(string.Format("   - Date: {0}", this.Date.ToString("M/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture)));
+            printLecture.AppendLine(string.Format("   - Date: {0}", Utility.FormatDate(this.Date)));
             printLecture.AppendLine(string.Format("   - Trainer username: {0}", this.Trainer.Username));
             printLecture.AppendLine("   - Resources:");
 
@@ -62,17 +64,7 @@ namespace Academy.Models
             }
             else
             {
-                for (int i = 0; i < this.Resources.Count; i++)
-                {
-                    if (i != this.Resources.Count - 1)
-                    {
-                        printLecture.AppendLine(this.Resources[i].ToString());
-                    }
-                    else
-                    {
-                        printLecture.Append(this.Resources[i].ToString());
-                    }
-                }
+                printLecture.Append(Utility.ListItemsInCollection(this.Resources));
             }
 
             return printLecture.ToString();
