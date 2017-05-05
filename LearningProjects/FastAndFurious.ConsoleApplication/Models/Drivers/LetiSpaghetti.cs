@@ -5,11 +5,10 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers
 {
     public class LetiSpaghetti : Driver
     {
-        private const string DriverName = "Leti Spaghetti";
-        private const GenderType DriverGender = GenderType.Female;
+        private const string LetiSpaghettiName = "Leti Spaghetti";
 
         public LetiSpaghetti() 
-            : base(LetiSpaghetti.DriverName, LetiSpaghetti.DriverGender)
+            : base(LetiSpaghettiName, GenderType.Female)
         {
         }
     }

@@ -33,6 +33,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
                 return this.Price + this.TunningParts.Sum(x => x.Price);
             }
         }
+
         public int Weight
         {
             get
@@ -40,6 +41,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
                 return this.weight + this.TunningParts.Sum(x => x.Weight);
             }
         }
+
         public int Acceleration
         {
             get
@@ -47,6 +49,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
                 return this.acceleration + this.TunningParts.Sum(x => x.Acceleration);
             }
         }
+
         public int TopSpeed
         {
             get
@@ -54,6 +57,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
                 return this.topSpeed + this.TunningParts.Sum(x => x.TopSpeed);
             }
         }
+
         public IEnumerable<ITunningPart> TunningParts
         {
             get
@@ -71,6 +75,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
 
             this.tunningParts.Add(part);
         }
+
         public TimeSpan Race(int trackLengthInMeters)
         {
             var topSpeedInMetersPerSecond = MetricUnitsConverter.GetMetersPerSecondFrom(this.TopSpeed);
@@ -98,6 +103,7 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles.Abstract
                 return TimeSpan.FromSeconds(totalTime);
             }
         }
+
         public bool RemoveTunning(ITunningPart part)
         {
             if (!this.TunningParts.Any(x => x.Id == part.Id))

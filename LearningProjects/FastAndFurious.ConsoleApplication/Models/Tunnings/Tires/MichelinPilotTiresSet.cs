@@ -6,15 +6,13 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Tires
 {
     public class MichelinPilotTiresSet : TiresSet, ITunningPart, ITireSet, IAccelerateable, ITopSpeed, IWeightable, IValuable 
     {
-        private const int MichelinPilotTireWeightInGrams = 6500;
-        private const int MichelinPilotTireAccelerationBonus = 7;
-        private const int MichelinPilotTireTopSpeedBonus = 1;
-        private const decimal MichelinPilotTirePriceInUSADollars = 1399;
-        private const TunningGradeType MichelinPilotGradeType = TunningGradeType.LowGrade;
-        private const TireType MichelinPilotType = TireType.OffRoadTire;
+        private const int MichelinPilotTireSetWeightInGrams = 6500;
+        private const int MichelinPilotTireSetAccelerationBonus = 7;
+        private const int MichelinPilotTireSetTopSpeedBonus = 1;
+        private const decimal MichelinPilotTireSetPrice = 1399;
 
         public MichelinPilotTiresSet() 
-            : base(MichelinPilotTiresSet.MichelinPilotTirePriceInUSADollars, MichelinPilotTiresSet.MichelinPilotTireWeightInGrams, MichelinPilotTiresSet.MichelinPilotTireAccelerationBonus, MichelinPilotTiresSet.MichelinPilotTireTopSpeedBonus, MichelinPilotTiresSet.MichelinPilotGradeType, MichelinPilotTiresSet.MichelinPilotType)
+            : base(MichelinPilotTireSetPrice, MichelinPilotTireSetWeightInGrams, MichelinPilotTireSetAccelerationBonus, MichelinPilotTireSetTopSpeedBonus, TunningGradeType.HighGrade, TireType.PerformanceTire)
         {
         }
     }

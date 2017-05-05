@@ -6,15 +6,13 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Turbochargers
 {
     class ZX8ParallelTwinTurbocharger : Turbocharger
     {
-        private const decimal ZX8ParallelTwinPrice = 799;
-        private const int ZX8ParallelTwinWeight = 3500;
-        private const int ZX8ParallelTwinAcceleration = 15;
-        private const int ZX8ParallelTwinTopSpeed = 60;
-        private const TunningGradeType ZX8ParallelTwinGradeType = TunningGradeType.HighGrade;
-        private const TurbochargerType ZX8ParallelTwinType = TurbochargerType.TwinTurbo;
+        private const decimal ZX8ParallelTwinTurbochargerPrice = 799;
+        private const int ZX8ParallelTwinTurbochargerWeight = 3500;
+        private const int ZX8ParallelTwinTurbochargerAcceleration = 15;
+        private const int ZX8ParallelTwinTurbochargerTopSpeed = 60;
 
         public ZX8ParallelTwinTurbocharger() 
-            : base(ZX8ParallelTwinTurbocharger.ZX8ParallelTwinPrice, ZX8ParallelTwinTurbocharger.ZX8ParallelTwinWeight, ZX8ParallelTwinTurbocharger.ZX8ParallelTwinAcceleration, ZX8ParallelTwinTurbocharger.ZX8ParallelTwinTopSpeed, ZX8ParallelTwinTurbocharger.ZX8ParallelTwinGradeType, ZX8ParallelTwinTurbocharger.ZX8ParallelTwinType)
+            : base(ZX8ParallelTwinTurbochargerPrice, ZX8ParallelTwinTurbochargerWeight, ZX8ParallelTwinTurbochargerAcceleration, ZX8ParallelTwinTurbochargerTopSpeed, TunningGradeType.HighGrade, TurbochargerType.TwinTurbo)
         {
         }
     }

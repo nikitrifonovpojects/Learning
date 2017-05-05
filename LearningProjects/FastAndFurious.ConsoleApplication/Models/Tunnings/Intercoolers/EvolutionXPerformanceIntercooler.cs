@@ -5,15 +5,18 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Intercoolers
 {
     public class EvolutionXPerformanceIntercooler : Intercooler
     {
-        private const decimal EvolutionXPerformancePrice = 499;
-        private const int EvolutionXPerformanceWeight = 4500;
-        private const int EvolutionXPerformanceAcceleration = -5;
-        private const int EvolutionXPerformanceTopSpeed = 40;
-        private const TunningGradeType EvolutionXPerformanceGradeType = TunningGradeType.HighGrade;
-        private const IntercoolerType EvolutionXPerformanceType = IntercoolerType.AirToLiquidIntercooler;
+        private const decimal EvolutionXPerformanceIntercoolerPrice = 499;
+        private const int EvolutionXPerformanceIntercoolerWeight = 4500;
+        private const int EvolutionXPerformanceIntercoolerAcceleration = -5;
+        private const int EvolutionXPerformanceIntercoolerTopSpeed = 40;
 
         public EvolutionXPerformanceIntercooler() 
-            : base(EvolutionXPerformanceIntercooler.EvolutionXPerformancePrice, EvolutionXPerformanceIntercooler.EvolutionXPerformanceWeight, EvolutionXPerformanceIntercooler.EvolutionXPerformanceAcceleration, EvolutionXPerformanceIntercooler.EvolutionXPerformanceTopSpeed, EvolutionXPerformanceIntercooler.EvolutionXPerformanceGradeType, EvolutionXPerformanceIntercooler.EvolutionXPerformanceType)
+            : base(EvolutionXPerformanceIntercoolerPrice,
+                  EvolutionXPerformanceIntercoolerWeight,
+                  EvolutionXPerformanceIntercoolerAcceleration,
+                  EvolutionXPerformanceIntercoolerTopSpeed,
+                  TunningGradeType.HighGrade,
+                  IntercoolerType.AirToLiquidIntercooler)
         {
         }
     }

@@ -6,15 +6,13 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Tires
 {
     public class FalkenAzenisTiresSet : TiresSet, ITunningPart, ITireSet, IAccelerateable, ITopSpeed, IWeightable, IValuable 
     {
-        private const int FalkenAzenisTireWeightInGrams = 7800;
-        private const int FalkenAzenisTireAccelerationBonus = 3;
-        private const int FalkenAzenisTireTopSpeedBonus = 0;
-        private const decimal FalkenAzenisTirePriceInUSADollars = 359;
-        private const TunningGradeType FalkenAzenisGradeType = TunningGradeType.LowGrade;
-        private const TireType FalkenAzenisType = TireType.OffRoadTire;
+        private const int FalkenAzenisTiresSetWeightInGrams = 7800;
+        private const int FalkenAzenisTiresSetAccelerationBonus = 3;
+        private const int FalkenAzenisTiresSetTopSpeedBonus = 0;
+        private const decimal FalkenAzenisTiresSetPrice = 359;
 
         public FalkenAzenisTiresSet() 
-            : base(FalkenAzenisTiresSet.FalkenAzenisTirePriceInUSADollars, FalkenAzenisTiresSet.FalkenAzenisTireWeightInGrams, FalkenAzenisTiresSet.FalkenAzenisTireAccelerationBonus, FalkenAzenisTiresSet.FalkenAzenisTireTopSpeedBonus, FalkenAzenisTiresSet.FalkenAzenisGradeType, FalkenAzenisTiresSet.FalkenAzenisType)
+            : base(FalkenAzenisTiresSetPrice, FalkenAzenisTiresSetWeightInGrams, FalkenAzenisTiresSetAccelerationBonus, FalkenAzenisTiresSetTopSpeedBonus, TunningGradeType.LowGrade, TireType.OffRoadTire)
         {
         }
     }

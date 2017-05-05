@@ -9,11 +9,9 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Transmissions
         private const int BMShortShifterWeight = 5700;
         private const int BMShortShifterAcceleration = 28;
         private const int BMShortShifterTopSpeed = 0;
-        private const TunningGradeType BMShortShifterGradeType = TunningGradeType.HighGrade;
-        private const TransmissionType BMShortShifterType = TransmissionType.ManualShortShifter;
 
         public BMShortShifter() 
-            : base(BMShortShifter.BMShortShifterPrice, BMShortShifter.BMShortShifterWeight, BMShortShifter.BMShortShifterAcceleration, BMShortShifter.BMShortShifterTopSpeed, BMShortShifter.BMShortShifterGradeType, BMShortShifter.BMShortShifterType)
+            : base(BMShortShifterPrice, BMShortShifterWeight, BMShortShifterAcceleration, BMShortShifterTopSpeed, TunningGradeType.HighGrade, TransmissionType.ManualShortShifter)
         {
         }
     }

@@ -5,15 +5,13 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Intercoolers
 {
     public class ViperGenieIntercooler : Intercooler
     {
-        private const decimal ViperGeniePrice = 289;
-        private const int ViperGenieWeight = 5300;
-        private const int ViperGenieAcceleration = 0;
-        private const int ViperGenieTopSpeed = 25;
-        private const TunningGradeType ViperGenieGradeType = TunningGradeType.MidGrade;
-        private const IntercoolerType ViperGenieType = IntercoolerType.ChargeAirIntercooler;
+        private const decimal ViperGenieIntercoolerPrice = 289;
+        private const int ViperGenieIntercoolerWeight = 5300;
+        private const int ViperGenieIntercoolerAcceleration = 0;
+        private const int ViperGenieIntercoolerTopSpeed = 25;
 
         public ViperGenieIntercooler() 
-            : base(ViperGenieIntercooler.ViperGeniePrice, ViperGenieIntercooler.ViperGenieWeight, ViperGenieIntercooler.ViperGenieAcceleration, ViperGenieIntercooler.ViperGenieTopSpeed, ViperGenieIntercooler.ViperGenieGradeType, ViperGenieIntercooler.ViperGenieType)
+            : base(ViperGenieIntercoolerPrice, ViperGenieIntercoolerWeight, ViperGenieIntercoolerAcceleration, ViperGenieIntercoolerTopSpeed, TunningGradeType.MidGrade, IntercoolerType.ChargeAirIntercooler)
         {
         }
     }

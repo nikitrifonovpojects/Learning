@@ -197,6 +197,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     }
             }
         }
+
         public void ExecuteSelectingStrategy(string[] commandParameters)
         {
             var driverId = int.Parse(commandParameters[5]);
@@ -212,6 +213,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     driver.Gender == GenderType.Male ? "his" : "her",
                     vehicle.GetType().Name));
         }
+
         public void ExecuteRunningStrategy(string[] commandParameters)
         {
             var removeTypeCommand = commandParameters[1];
@@ -232,6 +234,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                     }
             }
         }
+
         public void ExecuteDisplayingStrategy(string[] commandParameters)
         {
             var removeTypeCommand = commandParameters[5];
@@ -249,11 +252,11 @@ namespace FastAndFurious.ConsoleApplication.Engine
                             .Take(numberOfTimesToDisplay);
                         if (results != null && results.Count() > 0)
                         {
-                            Console.WriteLine(string.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName));
+                            Console.WriteLine(String.Format(GlobalConstants.DisplayBestNTimesEverMessage, numberOfTimesToDisplay, trackToDisplay.TrackName));
                         }
                         else
                         {
-                            Console.WriteLine(string.Format(ModelsConstants.NoRacesYetMessage, trackToDisplay.TrackName)));
+                            Console.WriteLine(String.Format(ModelsConstants.NoRacesYetMessage, trackToDisplay.TrackName));
                         }
                         
                         foreach (var result in topResults)

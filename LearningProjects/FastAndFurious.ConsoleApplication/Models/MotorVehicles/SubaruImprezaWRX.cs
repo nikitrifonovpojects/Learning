@@ -4,13 +4,13 @@ namespace FastAndFurious.ConsoleApplication.Models.MotorVehicles
 {
     public class SubaruImprezaWRX : MotorVehicle
     {
-        private const decimal VehiclePrice = 55999;
-        private const int VehicleWeight = 1560000;
-        private const int VehicleAcceleration = 35;
-        private const int VehicleTopSpeed = 260;
+        private const decimal SubaruImprezaWRXPrice = 55999;
+        private const int SubaruImprezaWRXWeight = 1560000;
+        private const int SubaruImprezaWRXAcceleration = 35;
+        private const int SubaruImprezaWRXTopSpeed = 260;
 
         public SubaruImprezaWRX() 
-            : base(SubaruImprezaWRX.VehiclePrice, SubaruImprezaWRX.VehicleWeight, SubaruImprezaWRX.VehicleAcceleration, SubaruImprezaWRX.VehicleTopSpeed)
+            : base(SubaruImprezaWRXPrice, SubaruImprezaWRXWeight, SubaruImprezaWRXAcceleration, SubaruImprezaWRXTopSpeed)
         {
         }
     }

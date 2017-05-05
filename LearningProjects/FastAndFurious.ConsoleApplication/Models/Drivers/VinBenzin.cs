@@ -5,11 +5,10 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers
 {
     public class VinBenzin : Driver
     {
-        private const string DriverName = "Vin Benzin";
-        private const GenderType DriverGender = GenderType.Male;
+        private const string VinBenzinName = "Vin Benzin";
 
         public VinBenzin() 
-            : base(VinBenzin.DriverName, VinBenzin.DriverGender)
+            : base(VinBenzinName, GenderType.Male)
         {
         }
     }

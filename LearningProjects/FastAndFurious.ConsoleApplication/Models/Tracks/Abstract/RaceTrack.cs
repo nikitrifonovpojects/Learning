@@ -38,6 +38,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                 return this.maxParticipantsCount;
             }
         }
+
         public int MinParticipantsCount
         {
             get
@@ -45,6 +46,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                 return this.minParticipantsCount;
             }
         }
+
         public int TrackLengthInMeters
         {
             get
@@ -52,6 +54,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                 return this.trackLengthInMeters;
             }
         }
+
         public string TrackName
         {
             get
@@ -59,6 +62,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                 return this.trackName;
             }
         }
+
         public IEnumerable<IDriver> Participants
         {
             get
@@ -66,6 +70,7 @@ namespace FastAndFurious.ConsoleApplication.Models.Tracks.Abstract
                 return this.participants;
             }
         }
+
         public IEnumerable<IEnumerable<TimeSpan>> FinishedRacesResults
         {
             get

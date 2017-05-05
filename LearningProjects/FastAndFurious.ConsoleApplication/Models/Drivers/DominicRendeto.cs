@@ -5,11 +5,10 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers
 {
     public class DominicRendeto : Driver
     {
-        private const string DriverName = "Dominic Rendeto";
-        private const GenderType DriverGender = GenderType.Male;
+        private const string DominicRendetoName = "Dominic Rendeto";
 
         public DominicRendeto() 
-            : base(DominicRendeto.DriverName, DominicRendeto.DriverGender)
+            : base(DominicRendetoName, GenderType.Male)
         {
         }
     }

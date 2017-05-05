@@ -9,11 +9,9 @@ namespace FastAndFurious.ConsoleApplication.Models.Tunnings.Transmissions
         private const int TWMPerformanceTransmissionWeight = 4799;
         private const int TWMPerformanceTransmissionAcceleration = 15;
         private const int TWMPerformanceTransmissionTopSpeed = 0;
-        private const TunningGradeType TWMPerformanceTransmissionGradeType = TunningGradeType.LowGrade;
-        private const TransmissionType TWMPerformanceTransmissionType = TransmissionType.SemiManualShifter;
 
         public TWMPerformanceTransmission() 
-            : base(TWMPerformanceTransmission.TWMPerformanceTransmissionPrice, TWMPerformanceTransmission.TWMPerformanceTransmissionWeight, TWMPerformanceTransmission.TWMPerformanceTransmissionAcceleration, TWMPerformanceTransmission.TWMPerformanceTransmissionTopSpeed, TWMPerformanceTransmission.TWMPerformanceTransmissionGradeType, TWMPerformanceTransmission.TWMPerformanceTransmissionType)
+            : base(TWMPerformanceTransmissionPrice, TWMPerformanceTransmissionWeight, TWMPerformanceTransmissionAcceleration, TWMPerformanceTransmissionTopSpeed, TunningGradeType.LowGrade, TransmissionType.SemiManualShifter)
         {
         }
     }
