@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Academy.Models.Common;
 using Academy.Models.Contracts;
@@ -29,6 +28,7 @@ namespace Academy.Models
 
             this.CourseResults = new List<ICourseResult>();
         }
+
         public Track Track { get; set; }
 
         public IList<ICourseResult> CourseResults { get; set; }
