@@ -12,9 +12,6 @@ namespace Academy.Models
     {
         private string name;
         private int lecturesPerWeek;
-        private IList<IStudent> onsiteStudents;
-        private IList<IStudent> onlineStudents;
-        private IList<ILecture> lectures;
 
         public Course(string name, string lecturesPerWeek, string startingDate)
         {
@@ -22,9 +19,9 @@ namespace Academy.Models
             this.LecturesPerWeek = int.Parse(lecturesPerWeek);
             this.StartingDate = DateTime.Parse(string.Format("{0} 00:00:00", startingDate));
             this.EndingDate = this.StartingDate.AddDays(30);
-            this.onsiteStudents = new List<IStudent>();
-            this.onlineStudents = new List<IStudent>();
-            this.lectures = new List<ILecture>();
+            this.OnsiteStudents = new List<IStudent>();
+            this.OnlineStudents = new List<IStudent>();
+            this.Lectures = new List<ILecture>();
         }
 
         public string Name
@@ -69,29 +66,12 @@ namespace Academy.Models
         
         public DateTime EndingDate { get; set; }
 
-        public IList<IStudent> OnsiteStudents
-        {
-            get
-            {
-                return this.onsiteStudents;
-            }
-        }
-
-        public IList<IStudent> OnlineStudents
-        {
-            get
-            {
-                return this.onlineStudents;
-            }
-        }
-
-        public IList<ILecture> Lectures
-        {
-            get
-            {
-                return this.lectures;
-            }
-        }
+        public IList<IStudent> OnsiteStudents { get; }
+        
+        public IList<IStudent> OnlineStudents { get; }
+       
+        public IList<ILecture> Lectures { get; }
+        
 
         public override string ToString()
         {

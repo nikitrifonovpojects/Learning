@@ -11,13 +11,13 @@ namespace Academy.Models
     public class Lecture : ILecture
     {
         private string name;
-        private IList<ILectureResource> resources = new List<ILectureResource>();
 
         public Lecture(string name, string date, ITrainer trainer)
         {
             this.Name = name;
             this.Date = DateTime.Parse(string.Format("{0} 00:00:00", date));
             this.Trainer = trainer;
+            this.Resources = new List<ILectureResource>();
         }
 
         public string Name
@@ -45,13 +45,7 @@ namespace Academy.Models
 
         public ITrainer Trainer { get; set; }
         
-        public IList<ILectureResource> Resources
-        {
-            get
-            {
-                return this.resources;
-            }
-        }
+        public IList<ILectureResource> Resources { get; }
 
         public override string ToString()
         {

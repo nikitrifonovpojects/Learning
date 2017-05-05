@@ -8,25 +8,18 @@ namespace Academy.Models
 {
     public class CourseResult : ICourseResult
     {
-        private ICourse course;
         private float examPoints;
         private float coursePoints;
         private Grade grade;
 
         public CourseResult(ICourse course, string examPoints, string coursePoints) 
         {
-            this.course = course;
+            this.Course = course;
             this.ExamPoints = float.Parse(examPoints);
             this.CoursePoints = float.Parse(coursePoints);
         }
 
-        public ICourse Course
-        {
-            get
-            {
-                return this.course;
-            }
-        }
+        public ICourse Course { get; }
 
         public float ExamPoints
         {
