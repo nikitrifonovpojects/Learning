@@ -224,7 +224,7 @@ namespace FastAndFurious.ConsoleApplication.Engine
                 case GlobalConstants.TrackCommand:
                     {
                         var trackToRace = this.raceTracks.GetById(trackId);
-                        Console.WriteLine(string.Format(GlobalConstants.PerformingRaceOnTrackMessage, trackToRace.TrackName, trackToRace.Participants.Count()));
+                        Console.WriteLine(String.Format(GlobalConstants.PerformingRaceOnTrackMessage, trackToRace.TrackName, trackToRace.Participants.Count()));
                         trackToRace.RunRace();
                         break;
                     }

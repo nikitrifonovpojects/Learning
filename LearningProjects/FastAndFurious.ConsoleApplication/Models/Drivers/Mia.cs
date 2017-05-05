@@ -6,7 +6,6 @@ namespace FastAndFurious.ConsoleApplication.Models.Drivers
     public class Mia : Driver
     {
         private const string MiaName = "Mia";
-        private const GenderType DriverGender = GenderType.Female;
 
         public Mia() 
             : base(MiaName, GenderType.Female)
