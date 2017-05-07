@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Logger.Common.Serializers;
 using Logger.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +14,7 @@ namespace Logger.Test.UnitTests
         public void SerializeSerializesCorrectlyClass()
         {
             //Arrange
-            var serializer = new Common.JsonSerializer();
+            var serializer = new JsonSerializer();
             var input = new FileLoggerOptions()
             {
                 FileName = "Logthis",
@@ -34,7 +35,7 @@ namespace Logger.Test.UnitTests
         public void SerializeSerializesCorrectlyInt()
         {
             //Arrange
-            var serializer = new Common.JsonSerializer();
+            var serializer = new JsonSerializer();
             int input = 567;
 
             //Act
@@ -49,7 +50,7 @@ namespace Logger.Test.UnitTests
         public void SerializeSerializesCorrectlyList()
         {
             //Arrange
-            var serializer = new Common.JsonSerializer();
+            var serializer = new JsonSerializer();
             List<string> input = new List<string> { "This list was deserialized correctly" };
 
             //Act
@@ -64,7 +65,7 @@ namespace Logger.Test.UnitTests
         public void SerializeSerializesCorrectlyArray()
         {
             //Arrange
-            var serializer = new Common.JsonSerializer();
+            var serializer = new JsonSerializer();
             int[] input = new int[] { 1, 5, 8, 4, 6, 2, 7 };
 
             //Act
@@ -79,7 +80,7 @@ namespace Logger.Test.UnitTests
         public void SerializeSerializesCorrectlyMatrix()
         {
             //Arrange
-            var serializer = new Common.JsonSerializer();
+            var serializer = new JsonSerializer();
             int[,] input = new int[3, 4];
 
             for (int i = 0; i < input.GetLength(0); i++)

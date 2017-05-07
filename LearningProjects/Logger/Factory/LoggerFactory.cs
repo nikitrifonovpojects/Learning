@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Logger.Common;
 using Logger.Common.Enum;
+using Logger.Common.Formatters;
+using Logger.Common.Serializers;
 using Logger.Configuration;
 using Logger.Contracts;
 using Logger.Loggers;
@@ -44,42 +46,36 @@ namespace Logger
 
         private static ILogger CreateFileLogger()
         {
-            if (Configuration.FileOptions != null)
-            {
-                ISerializer serializer = new JsonSerializer();
-                IFileSystem file = new LoggerFileSystem();
+            SetDefaultOptions();
+            Configuration.FileOptions = Configuration.FileOptions ?? new FileLoggerOptions();
+            Configuration.FileOptions.File = new LoggerFileSystem();
+            Configuration.FileOptions.FileName = Configuration.FileOptions.FileName ?? "Log.txt";
+            Configuration.FileOptions.FilePath = Configuration.FileOptions.FilePath ?? "../";
 
-                if (Configuration.FileOptions.File != null)
-                {
-                    file = Configuration.FileOptions.File;
-                }
-
-                return new FileLogger(serializer, file, Configuration.FileOptions.FileName, Configuration.FileOptions.FilePath);
-            }
-            else
-            {
-                return new FileLogger(Configuration.Serializer, new LoggerFileSystem());
-            }
+            return new FileLogger(Configuration.Serializer,
+                                  Configuration.Formatter,
+                                  Configuration.FileOptions.File,
+                                  Configuration.FileOptions.FileName,
+                                  Configuration.FileOptions.FilePath);
         }
 
         private static ILogger CreateConsoleLogger()
         {
-            if (Configuration.ConsoleOptions != null)
-            {
-                IConsole console = new LoggerConsole();
-                ISerializer serializer = new JsonSerializer();
+            SetDefaultOptions();
+            Configuration.ConsoleOptions = Configuration.ConsoleOptions ?? new ConsoleLoggerOptions();
+            Configuration.ConsoleOptions.Console = new LoggerConsole();
 
-                if (Configuration.ConsoleOptions.Console != null)
-                {
-                    console = Configuration.ConsoleOptions.Console;
-                }
+            return new ConsoleLogger(Configuration.Serializer,
+                                      Configuration.ConsoleOptions.Console,
+                                      Configuration.Formatter,
+                                      Configuration.ConsoleOptions.ForegroundColor,
+                                      Configuration.ConsoleOptions.BackgroundColor);
+        }
 
-                return new ConsoleLogger(serializer, console, Configuration.ConsoleOptions.ForegroundColor, Configuration.ConsoleOptions.BackgroundColor);
-            }
-            else
-            {
-                return new ConsoleLogger(Configuration.Serializer, new LoggerConsole());
-            }
+        private static void SetDefaultOptions()
+        {
+            Configuration.Serializer = Configuration.Serializer ?? new JsonSerializer();
+            Configuration.Formatter = Configuration.Formatter ?? new DateTimeFormatter();
         }
     }
 }

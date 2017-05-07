@@ -1,4 +1,5 @@
 ﻿using System;
+using Logger.Common.Formatters;
 using Logger.Configuration;
 using Logger.Contracts;
 using Logger.Loggers;
@@ -18,7 +19,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>(MockBehavior.Strict);
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             var input = "this is a log";
             //Act
@@ -37,13 +39,14 @@ namespace Logger.Test.UnitTests
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             mockSerializer.Setup(x => x.Serialize(It.IsAny<object>()));
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             var a = new { a = 3, b = "asdf" };
             mockSerializer.Setup(x => x.Serialize(a)).Returns("asdf");
             //Act
             logger.Log(a);
-            
+
             //Assert
             mockSerializer.Verify(x => x.Serialize(a), Times.Once);
         }
@@ -56,7 +59,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             var a = 1235;
             mockSerializer.Setup(x => x.Serialize(a)).Returns("123");
@@ -75,7 +79,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             int[] a = { 1, 2, 3, 5, };
             mockSerializer.Setup(x => x.Serialize(a)).Returns("123");
@@ -94,7 +99,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             string a = "this is a test";
             //Act
@@ -114,8 +120,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             string fileName = "Logged.txt";
             string filePath = "../../";
-
-            var logger = new FileLogger(serializer, fileSystem, fileName, filePath);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, fileName, filePath);
 
             string a = "this is a test";
             //Act
@@ -134,8 +140,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
             int? input = null;
             //Act
             logger.Log(input);
@@ -151,7 +157,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             string input = string.Empty;
             string time = DateTime.Now.ToString();
@@ -172,8 +179,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
             string input = null;
             //Act
             logger.Log(input);
@@ -190,7 +197,8 @@ namespace Logger.Test.UnitTests
             var fileSystem = file.Object;
             Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
             var serializer = mockSerializer.Object;
-            var logger = new FileLogger(serializer, fileSystem);
+            var formatter = new DateTimeFormatter();
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
 
             FactoryOptions input = null;
             //var input = default(FactoryOptions); alternative for null class

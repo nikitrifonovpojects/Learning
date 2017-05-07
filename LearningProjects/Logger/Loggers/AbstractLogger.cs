@@ -5,12 +5,15 @@ namespace Logger.Loggers
 {
     public abstract class AbstractLogger : ILogger
     {
-        private ISerializer serializer;
-
-        protected AbstractLogger(ISerializer serializer)
+        protected AbstractLogger(ISerializer serializer, IFormatter formatter)
         {
-            this.serializer = serializer;
+            this.Serializer = serializer;
+            this.Formatter = formatter;
         }
+
+        protected ISerializer Serializer { get; private set; }
+
+        protected IFormatter Formatter { get; private set; }
 
         public void Log(string message)
         {
@@ -19,8 +22,7 @@ namespace Logger.Loggers
                 throw new ArgumentNullException(message);
             }
 
-            message = string.Format("{0}-{1}", DateTime.Now, message);
-            Write(message);
+            Write(this.Formatter.Format(message));
         }
 
         public void Log<T>(T message)
@@ -30,7 +32,7 @@ namespace Logger.Loggers
                 throw new ArgumentNullException("message");
             }
 
-            Log(this.serializer.Serialize(message));
+            Log(this.Serializer.Serialize(message));
         }
 
         protected abstract void Write(string message);

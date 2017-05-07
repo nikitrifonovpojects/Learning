@@ -13,5 +13,7 @@ namespace Logger.Configuration
 
         public ISerializer Serializer { get; set; }
 
+        public IFormatter Formatter { get; set; }
+
     }
 }

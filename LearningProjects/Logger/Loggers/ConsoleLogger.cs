@@ -7,17 +7,19 @@ namespace Logger.Loggers
     {
         private IConsole console;
 
-        public ConsoleLogger(ISerializer serializer, IConsole console) 
-            : base(serializer)
+        public ConsoleLogger(ISerializer serializer, IConsole console, IFormatter formatter, ConsoleColor? foregroundColor = null, ConsoleColor? backgroundColor = null)
+            : base(serializer, formatter)
         {
             this.console = console;
-        }
+            if (backgroundColor.HasValue)
+            {
+                this.console.BackgroundColor = backgroundColor.Value;
+            }
 
-        public ConsoleLogger(ISerializer serializer,IConsole console, ConsoleColor foregroundColor, ConsoleColor backgroundColor)
-            : this(serializer,console)
-        {
-            this.console.BackgroundColor = backgroundColor;
-            this.console.ForegroundColor = foregroundColor;
+            if (foregroundColor.HasValue)
+            {
+                this.console.ForegroundColor = foregroundColor.Value;
+            }
         }
 
         protected override void Write(string message)

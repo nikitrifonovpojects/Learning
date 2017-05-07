@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 
-namespace Logger.Common
+namespace Logger.Common.Serializers
 {
     public class JsonSerializer : ISerializer
     {

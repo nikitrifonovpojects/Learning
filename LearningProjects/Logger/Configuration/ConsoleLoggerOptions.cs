@@ -7,8 +7,8 @@ namespace Logger.Configuration
     {
         public IConsole Console { get; set; }
 
-        public ConsoleColor ForegroundColor { get; set; }
+        public ConsoleColor? ForegroundColor { get; set; }
 
-        public ConsoleColor BackgroundColor { get; set; }
+        public ConsoleColor? BackgroundColor { get; set; }
     }
 }

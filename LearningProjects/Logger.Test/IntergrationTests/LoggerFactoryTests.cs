@@ -16,6 +16,7 @@ namespace Logger.Test.IntegrationTests
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.ConsoleLogger;
             var mockConsole = new Mock<IConsole>();
+            mockConsole.Setup(c => c.WriteLine(It.IsAny<string>()));
             var console = mockConsole.Object;
             LoggerFactory.Configuration.ConsoleOptions = new ConsoleLoggerOptions()
             {

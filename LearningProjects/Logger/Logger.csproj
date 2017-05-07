@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Formatters\DefaultFormatter.cs" />
     <Compile Include="Common\Formatters\DateTimeFormatter.cs" />
+    <Compile Include="Common\Formatters\LeapYearFormatter.cs" />
     <Compile Include="Contracts\IFileSystem.cs" />
     <Compile Include="Contracts\IFormatter.cs" />
     <Compile Include="Common\LoggerFileSystem.cs" />
@@ -53,7 +55,7 @@
     <Compile Include="Configuration\FileLoggerOptions.cs" />
     <Compile Include="Contracts\IConsole.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
-    <Compile Include="Common\JsonSerializer.cs" />
+    <Compile Include="Common\Serializers\JsonSerializer.cs" />
     <Compile Include="Loggers\AbstractLogger.cs" />
     <Compile Include="Common\LoggerConsole.cs" />
     <Compile Include="Common\Enum\LoggerType.cs" />

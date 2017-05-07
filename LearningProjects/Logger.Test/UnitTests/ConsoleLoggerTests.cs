@@ -1,5 +1,6 @@
 ﻿using System;
 using Logger.Common.Enum;
+using Logger.Common.Formatters;
 using Logger.Configuration;
 using Logger.Contracts;
 using Logger.Loggers;
@@ -37,7 +38,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-            var logger = new ConsoleLogger(serializer, console);
+            var formatter = new DateTimeFormatter();
+            var logger = new ConsoleLogger(serializer, console, formatter);
             var input = new { a = 13, b = "strings" };
             mockSerializer.Setup(x => x.Serialize(input)).Returns("123");
             //Act
@@ -55,8 +57,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-
-            var logger = new ConsoleLogger(serializer, console, ConsoleColor.DarkBlue, ConsoleColor.DarkMagenta);
+            var formatter = new DateTimeFormatter();
+            var logger = new ConsoleLogger(serializer, console, formatter, ConsoleColor.DarkBlue, ConsoleColor.DarkMagenta);
             var input = "strings";
             string time = DateTime.Now.ToString();
             string expected = string.Join("-", time, input);
@@ -78,7 +80,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-            var logger = new ConsoleLogger(serializer, console);
+            var formatter = new DateTimeFormatter();
+            var logger = new ConsoleLogger(serializer, console, formatter);
             var input = default(FactoryOptions);
 
             //Act
@@ -96,7 +99,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-            var logger = new ConsoleLogger(serializer, console);
+            var formatter = new DateTimeFormatter();
+            var logger = new ConsoleLogger(serializer, console, formatter);
             string input = null;
 
             //Act
@@ -113,7 +117,8 @@ namespace Logger.Test.UnitTests
             var serializer = mockSerializer.Object;
             var mockConsole = new Mock<IConsole>();
             var console = mockConsole.Object;
-            var logger = new ConsoleLogger(serializer, console);
+            var formatter = new DateTimeFormatter();
+            var logger = new ConsoleLogger(serializer, console, formatter);
 
             string input = string.Empty;
             string time = DateTime.Now.ToString();

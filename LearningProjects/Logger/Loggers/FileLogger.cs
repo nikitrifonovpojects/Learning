@@ -6,17 +6,10 @@ namespace Logger.Loggers
     public class FileLogger : AbstractLogger, ILogger
     {
         private string fullFileName;
-
         private IFileSystem file;
 
-        public FileLogger(ISerializer serializer, IFileSystem file)
-            : this(serializer, file, "Log.txt", "../") // default
-        {
-
-        }
-
-        public FileLogger(ISerializer serializer, IFileSystem file, string fileName, string filePath)
-            : base(serializer)
+        public FileLogger(ISerializer serializer, IFormatter formatter, IFileSystem file, string fileName, string filePath)
+            : base(serializer,formatter)
         {
             this.fullFileName = filePath + fileName;
             this.file = file;
