@@ -48,7 +48,7 @@ namespace Logger
         {
             SetDefaultOptions();
             Configuration.FileOptions = Configuration.FileOptions ?? new FileLoggerOptions();
-            Configuration.FileOptions.File = new LoggerFileSystem();
+            Configuration.FileOptions.File = Configuration.FileOptions.File ?? new LoggerFileSystem();
             Configuration.FileOptions.FileName = Configuration.FileOptions.FileName ?? "Log.txt";
             Configuration.FileOptions.FilePath = Configuration.FileOptions.FilePath ?? "../";
 
@@ -63,7 +63,7 @@ namespace Logger
         {
             SetDefaultOptions();
             Configuration.ConsoleOptions = Configuration.ConsoleOptions ?? new ConsoleLoggerOptions();
-            Configuration.ConsoleOptions.Console = new LoggerConsole();
+            Configuration.ConsoleOptions.Console = Configuration.ConsoleOptions.Console ?? new LoggerConsole();
 
             return new ConsoleLogger(Configuration.Serializer,
                                       Configuration.ConsoleOptions.Console,
