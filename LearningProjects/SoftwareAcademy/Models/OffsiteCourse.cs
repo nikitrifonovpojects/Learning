@@ -1,6 +1,7 @@
 ﻿using System;
+using SoftwareAcademy.Contracts;
 
-namespace SoftwareAcademy
+namespace SoftwareAcademy.Models
 {
     public class OffsiteCourse : Course, IOffsiteCourse
     {

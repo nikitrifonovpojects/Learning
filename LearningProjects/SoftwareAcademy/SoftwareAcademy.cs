@@ -6,56 +6,6 @@ using Microsoft.CSharp;
 
 namespace SoftwareAcademy
 {
-    public interface ITeacher
-    {
-        string Name { get; set; }
-        void AddCourse(ICourse course);
-        string ToString();
-    }
-
-    public interface ICourse
-    {
-        string Name { get; set; }
-        ITeacher Teacher { get; set; }
-        void AddTopic(string topic);
-        string ToString();
-    }
-
-    public interface ILocalCourse : ICourse
-    {
-        string Lab { get; set; }
-    }
-
-    public interface IOffsiteCourse : ICourse
-    {
-        string Town { get; set; }
-    }
-
-    public interface ICourseFactory
-    {
-        ITeacher CreateTeacher(string name);
-        ILocalCourse CreateLocalCourse(string name, ITeacher teacher, string lab);
-        IOffsiteCourse CreateOffsiteCourse(string name, ITeacher teacher, string town);
-    }
-
-    public class CourseFactory : ICourseFactory
-    {
-        public ITeacher CreateTeacher(string name)
-        {
-            return new Teacher(name);
-        }
-
-        public ILocalCourse CreateLocalCourse(string name, ITeacher teacher, string lab)
-        {
-            return new LocalCourse(name, teacher, lab);
-        }
-
-        public IOffsiteCourse CreateOffsiteCourse(string name, ITeacher teacher, string town)
-        {
-            return new OffsiteCourse(name, teacher, town);
-        }
-    }
-
     public class SoftwareAcademyCommandExecutor
     {
         static void Main()

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SoftwareAcademy.Contracts;
 
-namespace SoftwareAcademy
+namespace SoftwareAcademy.Models
 {
     public class Teacher : ITeacher
     {

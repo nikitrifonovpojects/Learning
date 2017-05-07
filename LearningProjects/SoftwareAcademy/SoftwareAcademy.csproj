@@ -36,11 +36,17 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Course.cs" />
-    <Compile Include="LocalCourse.cs" />
-    <Compile Include="OffsiteCourse.cs" />
+    <Compile Include="Contracts\ICourse.cs" />
+    <Compile Include="Contracts\ICourseFactory.cs" />
+    <Compile Include="Contracts\ILocalCourse.cs" />
+    <Compile Include="Contracts\IOffsiteCourse.cs" />
+    <Compile Include="Contracts\ITeacher.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Factory\CourseFactory.cs" />
+    <Compile Include="Models\LocalCourse.cs" />
+    <Compile Include="Models\OffsiteCourse.cs" />
     <Compile Include="SoftwareAcademy.cs" />
-    <Compile Include="Teacher.cs" />
+    <Compile Include="Models\Teacher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
