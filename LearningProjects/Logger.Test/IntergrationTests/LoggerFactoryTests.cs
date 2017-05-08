@@ -10,6 +10,12 @@ namespace Logger.Test.IntegrationTests
     [TestClass]
     public class LoggerFactoryTests
     {
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            LoggerFactory.Configuration = new FactoryOptions();
+        }
+
         [TestMethod]
         public void CreateConsoleLoggerWithDefaultOptions()
         {
@@ -112,6 +118,7 @@ namespace Logger.Test.IntegrationTests
         public void Cleanup()
         {
             LoggerFactory.ClearLoggers();
+            LoggerFactory.Configuration = new FactoryOptions();
         }
     }
 }

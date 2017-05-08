@@ -12,7 +12,7 @@ namespace Logger
 {
     public static class LoggerFactory
     {
-        public readonly static FactoryOptions Configuration = new FactoryOptions();
+        public static FactoryOptions Configuration = new FactoryOptions();
 
         private static Dictionary<LoggerType, ILogger> loggers = new Dictionary<LoggerType, ILogger>();
 

@@ -82,6 +82,7 @@ namespace Logger.Test.IntegrationTests
         public void Cleanup()
         {
             LoggerFactory.ClearLoggers();
+            LoggerFactory.Configuration = new FactoryOptions();
         }
     }
 }
