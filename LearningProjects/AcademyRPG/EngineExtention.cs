@@ -1,6 +1,6 @@
 ﻿namespace AcademyRPG
 {
-    class EngineExtention : Engine
+    public class EngineExtention : Engine
     {
         public override void ExecuteCreateObjectCommand(string[] commandWords)
         {
