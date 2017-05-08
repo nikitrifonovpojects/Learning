@@ -2,6 +2,7 @@
 using System.IO;
 using Logger.Common.Enum;
 using Logger.Common.Formatters;
+using Logger.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Test.IntergrationTests

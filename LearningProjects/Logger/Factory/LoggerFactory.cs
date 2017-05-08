@@ -8,7 +8,7 @@ using Logger.Configuration;
 using Logger.Contracts;
 using Logger.Loggers;
 
-namespace Logger
+namespace Logger.Factory
 {
     public static class LoggerFactory
     {

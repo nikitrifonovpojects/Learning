@@ -2,6 +2,7 @@
 using System.IO;
 using Logger.Common.Enum;
 using Logger.Configuration;
+using Logger.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Test.IntegrationTests
@@ -39,7 +40,7 @@ namespace Logger.Test.IntegrationTests
         }
 
         [TestMethod]
-        public void CreateFIleLoggerWithFileNameAndFilePath()
+        public void CreateFileLoggerWithFileNameAndFilePath()
         {
             //Arrange
             LoggerFactory.Configuration.FileOptions = new FileLoggerOptions();

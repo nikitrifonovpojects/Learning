@@ -2,6 +2,7 @@
 using Logger.Common.Enum;
 using Logger.Configuration;
 using Logger.Contracts;
+using Logger.Factory;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

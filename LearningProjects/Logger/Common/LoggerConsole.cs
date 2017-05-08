@@ -11,7 +11,6 @@ namespace Logger.Common
             {
                 return Console.BackgroundColor;
             }
-
             set
             {
                  Console.BackgroundColor = value;
@@ -24,7 +23,6 @@ namespace Logger.Common
             {
                 return Console.ForegroundColor;
             }
-
             set
             {
                 Console.ForegroundColor = value;

@@ -1,5 +1,6 @@
 ﻿using System;
 using Logger.Common.Enum;
+using Logger.Factory;
 using Logger.Loggers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
