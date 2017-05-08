@@ -20,7 +20,6 @@ namespace Logger.Test.IntegrationTests
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.FileLogger;
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Logs";
             string expected = string.Empty;
 
@@ -30,7 +29,7 @@ namespace Logger.Test.IntegrationTests
             for (int i = 0; i < numberOfLogs; i++)
             {
                 testFileLogger.Log(inputLog);
-                expected += string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+                expected += string.Join("-", inputLog + Environment.NewLine);
             }
 
             //Assert
@@ -48,9 +47,8 @@ namespace Logger.Test.IntegrationTests
             LoggerFactory.Configuration.FileOptions.FileName = "Log.txt";
             LoggerFactory.Configuration.FileOptions.FilePath = @"..\";
             
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+            string expected = string.Join("-", inputLog + Environment.NewLine);
 
             //Act
             var testFileLogger = LoggerFactory.GetLogger(LoggerType.FileLogger);
@@ -67,9 +65,8 @@ namespace Logger.Test.IntegrationTests
         {
             //Arrange
             LoggerFactory.Configuration.DefaultLoggerType = LoggerType.FileLogger;
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+            string expected = string.Join("-", inputLog + Environment.NewLine);
 
             //Act
             var testFileLogger = LoggerFactory.GetLogger();

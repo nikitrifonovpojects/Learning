@@ -23,9 +23,8 @@ namespace Logger.Test.IntegrationTests
                 Console = console
             };
 
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog);
+            string expected = string.Join("-", inputLog);
 
 
             //Act
@@ -55,7 +54,6 @@ namespace Logger.Test.IntegrationTests
                 Console = console
             };
 
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "log";
 
 
@@ -67,7 +65,7 @@ namespace Logger.Test.IntegrationTests
             for (int i = 0; i < numberOfLogs; i++)
             {
                 testConsoleLogger.Log(inputLog);
-                expected += string.Join("-", timeOfLog, inputLog + Environment.NewLine);
+                expected += string.Join("-", inputLog + Environment.NewLine);
             }
 
 
@@ -93,9 +91,8 @@ namespace Logger.Test.IntegrationTests
                 ForegroundColor = ConsoleColor.DarkCyan
             };
 
-            string timeOfLog = DateTime.Now.ToString();
             string inputLog = "Hello";
-            string expected = string.Join("-", timeOfLog, inputLog);
+            string expected = string.Join("-", inputLog);
 
             //Act
 

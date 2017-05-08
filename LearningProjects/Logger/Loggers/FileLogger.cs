@@ -8,7 +8,7 @@ namespace Logger.Loggers
         private string fullFileName;
         private IFileSystem file;
 
-        public FileLogger(ISerializer serializer, IFormatter formatter, IFileSystem file, string fileName, string filePath)
+        public FileLogger(ISerializer serializer, IFormatter formatter, IFileSystem file, string fileName = null, string filePath = null)
             : base(serializer,formatter)
         {
             if (fileName == null)

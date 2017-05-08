@@ -2,7 +2,7 @@
 
 namespace Logger.Common.Formatters
 {
-    public abstract class DefaultFormatter : IFormatter
+    public class DefaultFormatter : IFormatter
     {
         public string Format(string message)
         {

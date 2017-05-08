@@ -75,7 +75,7 @@ namespace Logger
         private static void SetDefaultOptions()
         {
             Configuration.Serializer = Configuration.Serializer ?? new JsonSerializer();
-            Configuration.Formatter = Configuration.Formatter ?? new DateTimeFormatter();
+            Configuration.Formatter = Configuration.Formatter ?? new DefaultFormatter();
         }
     }
 }
