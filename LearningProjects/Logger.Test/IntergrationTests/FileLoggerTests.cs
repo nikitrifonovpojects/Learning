@@ -14,6 +14,7 @@ namespace Logger.Test.IntegrationTests
         public void Initialize()
         {
             File.Delete(@"..\Log.txt");
+            LoggerFactory.Configuration = new FactoryOptions();
         }
 
         [TestMethod]
