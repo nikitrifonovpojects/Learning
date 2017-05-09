@@ -16,68 +16,90 @@ namespace ExtensionDelegatesLamdbaLinq
             return result;
         }
 
-        public static IEnumerable<T> Sum<T>(this IEnumerable<T> input)
+        public static decimal MySum<T>(this IEnumerable<T> collection) where T : IConvertible
         {
-            var result = (from x in input select x).Sum<T>();
-            
+            var result = collection
+                .Select(x => Convert.ToDecimal(x))
+                .Sum();
 
             return result;
         }
 
-        public static IEnumerable<T> Product<T>(this IEnumerable<T> input)
+        public static decimal MyProduct<T>(this IEnumerable<T> collection) where T : IConvertible
         {
-            var result = (from x in input select x).Product<T>();
+            var convertedCollection = collection
+                .Select(x => Convert.ToDecimal(x));
 
+            decimal result = 1;
+            foreach (var number in convertedCollection)
+            {
+                result *= number;
+            }
 
             return result;
         }
 
-        public static IEnumerable<T> Min<T>(this IEnumerable<T> input)
+        public static decimal MyMin<T>(this IEnumerable<T> collection) where T : IConvertible
         {
-            var result = (from x in input select x).Min<T>();
+            var convertedCollection = collection
+                .Select(x => Convert.ToDecimal(x));
 
+            var result = convertedCollection.FirstOrDefault();
+            foreach (var number in convertedCollection)
+            {
+                if (number < result)
+                {
+                    result = number;
+                }
+            }
 
             return result;
         }
 
-        public static IEnumerable<T> Max<T>(this IEnumerable<T> input)
+        public static decimal MyMax<T>(this IEnumerable<T> collection) where T : IConvertible
         {
-            var result = (from x in input select x).Max<T>();
+            var convertedCollection = collection
+                .Select(x => Convert.ToDecimal(x));
 
+            var result = convertedCollection.FirstOrDefault();
+            foreach (var number in convertedCollection)
+            {
+                if (number > result)
+                {
+                    result = number;
+                }
+            }
 
             return result;
         }
 
-        public static IEnumerable<T> Average<T>(this IEnumerable<T> input)
+        public static decimal MyAverage<T>(this IEnumerable<T> collection) where T : IConvertible
         {
-            var result = (from x in input select x).Average<T>();
-
-
-            return result;
+            return collection.MySum() / collection.Count();
         }
 
-        public static Student[] FirstBeforeLastName(this Student[] arrayOfStudents)
+        public static T[] FirstBeforeLastName<T>(this T[] arrayOfStudents) where T : Student
         {
             var result = arrayOfStudents.OrderBy(x => x.FirstName).ThenBy(c => c.LastName).ToArray();
 
             return result;
         }
 
-        public static Student[] ListStudentsInAgeRange(this Student[] arrayOfStudents, int lowerBoudary, int upperBoundary)
+        public static T[] ListStudentsInAgeRange<T>(this T[] arrayOfStudents, int lowerBoudary, int upperBoundary) where T : Student
         {
             var result = arrayOfStudents.Where(x => x.Age >= lowerBoudary && x.Age <= upperBoundary).ToArray();
 
             return result;
         }
 
-        public static Student[] SortStudentsInDescendingOrderWithLambda(this Student[] arrayOfStudents)
+        public static T[] SortStudentsInDescendingOrderWithLambda<T>(this T[] arrayOfStudents) where T : Student
         {
             var result = arrayOfStudents.OrderByDescending(x => x.FirstName).ThenByDescending(c => c.LastName).ToArray();
 
             return result;
         }
 
-        public static IEnumerable<Student> SortStudentsInDescendingOrderWithLinq(this IEnumerable<Student> listOfStudents)
+        public static IEnumerable<T> SortStudentsInDescendingOrderWithLinq<T>(this IEnumerable<T> listOfStudents) where T : Student
         {
             var result = from student in listOfStudents
                          orderby student.FirstName descending, student.LastName descending
@@ -100,6 +122,42 @@ namespace ExtensionDelegatesLamdbaLinq
                          select number;
 
             return result.ToArray();
+        }
+
+        public static IEnumerable<T> ListStudentsByGroupNumber<T>(this IEnumerable<T> students, int groupNumber) where T : Student
+        {
+            var result = from student in students
+                                      where student.GroupNumber == groupNumber
+                                      select student;
+
+            return result.ToList();
+        }
+
+        public static IEnumerable<T> ListStudentsByFirstName<T>(this IEnumerable<T> students) where T : Student
+        {
+            var result = from student in students
+                         orderby student.FirstName
+                         select student;
+
+            return result.ToList();
+        }
+
+        public static IEnumerable<T> FindStudentsByEmail<T>(this IEnumerable<T> students, string domain) where T : Student
+        {
+            var result = students
+                         .Where(x => x.Email.Split('@').Last() == domain)
+                         .ToArray();
+
+            return result;
+        }
+
+        public static IEnumerable<T> FindStudentsByPhone<T>(this IEnumerable<T> students, string expectedGroupContain) where T : Student
+        {
+            var result = students
+                .Where(x => x.Tel.Split(' ')
+                                .FirstOrDefault() == expectedGroupContain)
+                .ToArray();
+            return result;
         }
     }
 }
