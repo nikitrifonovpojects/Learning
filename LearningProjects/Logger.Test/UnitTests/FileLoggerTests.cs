@@ -2,7 +2,6 @@
 using Logger.Common.Formatters;
 using Logger.Configuration;
 using Logger.Contracts;
-using Logger.Factory;
 using Logger.Loggers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -97,6 +96,26 @@ namespace Logger.Test.UnitTests
         }
 
         [TestMethod]
+        public void LogStringUsesFilesystemCorrectlyWithDefaultFilePathAndFileName()
+        {
+            //Arrange
+            Mock<IFileSystem> file = new Mock<IFileSystem>();
+            var fileSystem = file.Object;
+            Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
+            var serializer = mockSerializer.Object;
+            var format = new Mock<IFormatter>();
+            var formatter = format.Object;
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
+
+            string a = "this is a test";
+            //Act
+            logger.Log(a);
+
+            //Assert
+            file.Verify(x => x.AppendAllText("../Log.txt", It.IsAny<string>()));
+        }
+
+        [TestMethod]
         public void LogStringUsesFilesystemCorrectlyWithFilePathAndFileName()
         {
             //Arrange
@@ -135,6 +154,28 @@ namespace Logger.Test.UnitTests
             logger.Log(input);
 
             //Assert
+        }
+
+        [TestMethod]
+        public void LogVoidStringUsesFilesystemCorrectlyWithDefaultFilePathAndFileName()
+        {
+            //Arrange
+            Mock<IFileSystem> file = new Mock<IFileSystem>();
+            var fileSystem = file.Object;
+            Mock<ISerializer> mockSerializer = new Mock<ISerializer>();
+            var serializer = mockSerializer.Object;
+            var format = new Mock<IFormatter>();
+            var formatter = format.Object;
+            var logger = new FileLogger(serializer, formatter, fileSystem, null, null);
+
+            string input = string.Empty;
+
+            //Act
+            logger.Log(input);
+
+            //Assert
+            file.Verify(x => x.AppendAllText("../Log.txt",It.IsAny<string>()));
+            format.Verify(x => x.Format(It.IsAny<string>()));
         }
 
         [ExpectedException(typeof(ArgumentNullException))]
