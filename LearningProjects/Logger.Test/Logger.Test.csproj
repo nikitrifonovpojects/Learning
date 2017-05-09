@@ -73,6 +73,9 @@
     <Compile Include="UnitTests\FileLoggerTests.cs" />
     <Compile Include="UnitTests\JsonSerializerTests.cs" />
     <Compile Include="UnitTests\LoggerFactoryUnitTests.cs" />
+    <Compile Include="UnitTests\DateTimeFormatterTests.cs" />
+    <Compile Include="UnitTests\LeapYearFormatterTests.cs" />
+    <Compile Include="UnitTests\DefaultFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.csproj">
