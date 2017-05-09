@@ -157,6 +157,7 @@ namespace ExtensionDelegatesLamdbaLinq
                 .Where(x => x.Tel.Split(' ')
                                 .FirstOrDefault() == expectedGroupContain)
                 .ToArray();
+
             return result;
         }
     }

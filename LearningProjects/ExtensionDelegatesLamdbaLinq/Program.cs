@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ExtensionDelegatesLamdbaLinq
 {
@@ -18,6 +17,10 @@ namespace ExtensionDelegatesLamdbaLinq
     //11.Extract all students that have email in abv.bg. Use string methods and LINQ
     //12.xtract all students with phones in Sofia. Use LINQ.
     //13.Select all students that have at least one mark Excellent (6) into a new anonymous class that has properties – FullName and Marks.
+    //14.Write down a similar program that extracts the students with exactly two marks "2".
+    //15.Extract all Marks of the students that enrolled in 2006. (The students from 2006 have 06 as their 5-th and 6-th digit in the FN).
+    //17.Write a program to return the string with maximum length from an array of strings.
+    //18.Create a program that extracts all students grouped by GroupNumber and then prints them to the console.
 
     public class Program
     {
@@ -43,12 +46,12 @@ namespace ExtensionDelegatesLamdbaLinq
             Console.WriteLine();
 
 
-            var student = new Student("Gosho", "Goshov", 13, 123456, "02 937 2211", "abv@gmail.bg", 2, new List<int> { 6, 5, 2, 6, 2, 4 });
+            var student = new Student("Gosho", "Goshov", 13, 123406, "02 937 2211", "abv@gmail.bg", 2, new List<int> { 6, 5, 2, 6, 2, 4 });
             var student1 = new Student("Pepi", "Toshov", 28, 669933, "02 937 2212", "aaa@abv.bg", 1, new List<int> { 3, 5, 3, 6, 5, 4 });
             var student2 = new Student("Tosho", "Peshov", 19, 888777, "02 937 2213", "bbb@yahoo.bg", 2, new List<int> { 3, 5, 5, 6, 3, 4 });
-            var student3 = new Student("Aleks", "Ivanov", 23, 654321, "032 656 700", "ccc@abv.bg", 1, new List<int> { 2, 5, 2, 6, 2, 4 });
+            var student3 = new Student("Aleks", "Ivanov", 23, 654306, "032 656 700", "ccc@abv.bg", 1, new List<int> { 2, 5, 2, 6, 2, 4 });
             var student4 = new Student("Eli", "Pavlova", 20, 554477, "032 656 703", "ddd@gmail.bg", 1, new List<int> { 4, 5, 2, 6, 2, 4 });
-            var student5 = new Student("Gloria", "Tran", 26, 712536, "052 937 211", "eee@abv.bg", 2, new List<int> { 5, 5, 6, 6, 3, 4 });
+            var student5 = new Student("Gloria", "Tran", 26, 712506, "052 937 211", "eee@abv.bg", 2, new List<int> { 5, 5, 6, 6, 3, 4 });
             var student6 = new Student("Krasi", "Shishov", 18, 489364, "042 937 211", "ggg@yahoo.bg", 1, new List<int> { 2, 5, 2, 3, 2, 4 });
 
             List<Student> studentsForTask9 = new List<Student>() { student, student1, student2, student3, student4, student5, student6 };
@@ -108,6 +111,7 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.Write(string.Format("{0}, ", numbers[i].ToString()));
             }
             Console.WriteLine();
+
             //Console.WriteLine("Task 7:");
             //Timer timer = new Timer(1);
             //timer.InvokeDelegate();
@@ -146,7 +150,7 @@ namespace ExtensionDelegatesLamdbaLinq
             }
 
             Console.WriteLine();
-            Console.WriteLine("Task 10:");
+            Console.WriteLine("Task 11:");
             var studentsByMail = studentsForTask9.FindStudentsByEmail("abv.bg");
 
             foreach (var item in studentsByMail)
@@ -155,7 +159,7 @@ namespace ExtensionDelegatesLamdbaLinq
             }
 
             Console.WriteLine();
-            Console.WriteLine("Task 11:");
+            Console.WriteLine("Task 12:");
             Console.WriteLine("Students with phones starting with 02 are from Sofia!");
 
             var studentsByCity = studentsForTask9.FindStudentsByPhone("02");
@@ -164,6 +168,67 @@ namespace ExtensionDelegatesLamdbaLinq
             {
                 Console.WriteLine(item.ToString());
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Task 13:");
+
+            var anonymousArray = new[]
+            {
+                new {FullName = "Pesho Ivanov", Marks=new List<int> { 6, 5, 2, 6, 2, 4 }},
+                new {FullName = "George Petkov", Marks=new List<int> {3, 5, 3, 6, 5, 4 }},
+                new {FullName = "Ivan Georgiev", Marks=new List<int> { 3, 5, 5, 6, 3, 4 }},
+                new {FullName = "Stefan Varbanov", Marks=new List<int> { 2, 5, 2, 6, 2, 4 }},
+                new {FullName = "Stefan Kostov", Marks=new List<int> { 3, 5, 2, 3, 2, 4 }},
+                new {FullName = "Nikolay Yankov", Marks=new List<int> { 3, 5, 2, 6, 4, 4 }},
+                new {FullName = "Dimityr Blagoev", Marks=new List<int> { 4, 5, 2, 6, 2, 4 }},
+                new {FullName = "Hristo Gospodinov", Marks=new List<int> { 5, 5, 6, 6, 3, 4  }},
+                new {FullName = "Petar Hristov", Marks=new List<int> { 4, 5, 2, 6, 4, 4 }},
+                new {FullName = "Atanas Atanasov", Marks=new List<int> { 2, 5, 2, 3, 2, 4 }}
+            };
+
+            Console.WriteLine("Students with atleast 1 mark = 6");
+                
+            foreach (var item in anonymousArray.Where(x => x.Marks.Contains(6)))
+            {
+                Console.WriteLine($"{item.FullName} marks: {string.Join(" ", item.Marks)}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Task 14:");
+            Console.WriteLine("Students with exact 2 marks = 2");
+
+            foreach (var item in anonymousArray.Where(x => x.Marks.Where(m => m == 2).Count() == 2))
+            {
+                Console.WriteLine($"{item.FullName} marks: {string.Join(" ", item.Marks)}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Task 15:");
+
+            var studentsFrom2006 = studentsForTask9.Where(x => x.FN.ToString()[4] == '0' && x.FN.ToString()[5] == '6');
+
+            foreach (var item in studentsFrom2006)
+            {
+                Console.WriteLine(string.Join(" ", item.Marks));
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Task 17:");
+            string[] strings = new string[]
+            {
+               "Create a class Group with properties GroupNumber and DepartmentName.",
+               "Create a program that extracts all students grouped by GroupNumber and then prints them to the console.",
+               "sorts query results in ascending or descending order",
+               "Lambda functions can be stored in variables of type",
+               "Teachers, we salute you! Celebrate National Teacher Day with a look at some inspirational quotes from our favorite on-screen educators.",
+               "BFI, Creative Scotland among backers of UK movie now in production"
+
+            };
+
+            var longestString = strings
+                .OrderByDescending(x => x.Length)
+                .FirstOrDefault();
+            Console.WriteLine(longestString);
         }
     }
 }
