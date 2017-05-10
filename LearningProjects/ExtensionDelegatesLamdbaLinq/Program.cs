@@ -19,8 +19,8 @@ namespace ExtensionDelegatesLamdbaLinq
     //13.Select all students that have at least one mark Excellent (6) into a new anonymous class that has properties – FullName and Marks.
     //14.Write down a similar program that extracts the students with exactly two marks "2".
     //15.Extract all Marks of the students that enrolled in 2006. (The students from 2006 have 06 as their 5-th and 6-th digit in the FN).
+    //16.Create a class Group with properties GroupNumber and DepartmentName. Introduce a property GroupNumber in the Student class. Extract all students from "Mathematics" department.Use the Join operator.
     //17.Write a program to return the string with maximum length from an array of strings.
-    //18.Create a program that extracts all students grouped by GroupNumber and then prints them to the console.
 
     public class Program
     {
@@ -30,9 +30,8 @@ namespace ExtensionDelegatesLamdbaLinq
             var builder = new StringBuilder();
             builder.Append("This is a string for homework.");
             StringBuilder substing = builder.Substring(10, 6);
-
             Console.WriteLine(substing);
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
 
             Console.WriteLine("Task 2:");
             var listOfnumbersForTask2 = new []{ 2, 3, 4, 5, 6, 10, 45 };
@@ -43,29 +42,20 @@ namespace ExtensionDelegatesLamdbaLinq
             var average = listOfnumbersForTask2.MyAverage();
 
             Console.WriteLine("Sum = {0}, Product = {1}, Min = {2}, Max = {3}, Average = {4}", sum, product, min, max, average);
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
 
-
-            var student = new Student("Gosho", "Goshov", 13, 123406, "02 937 2211", "abv@gmail.bg", 2, new List<int> { 6, 5, 2, 6, 2, 4 });
-            var student1 = new Student("Pepi", "Toshov", 28, 669933, "02 937 2212", "aaa@abv.bg", 1, new List<int> { 3, 5, 3, 6, 5, 4 });
-            var student2 = new Student("Tosho", "Peshov", 19, 888777, "02 937 2213", "bbb@yahoo.bg", 2, new List<int> { 3, 5, 5, 6, 3, 4 });
-            var student3 = new Student("Aleks", "Ivanov", 23, 654306, "032 656 700", "ccc@abv.bg", 1, new List<int> { 2, 5, 2, 6, 2, 4 });
-            var student4 = new Student("Eli", "Pavlova", 20, 554477, "032 656 703", "ddd@gmail.bg", 1, new List<int> { 4, 5, 2, 6, 2, 4 });
-            var student5 = new Student("Gloria", "Tran", 26, 712506, "052 937 211", "eee@abv.bg", 2, new List<int> { 5, 5, 6, 6, 3, 4 });
-            var student6 = new Student("Krasi", "Shishov", 18, 489364, "042 937 211", "ggg@yahoo.bg", 1, new List<int> { 2, 5, 2, 3, 2, 4 });
-
-            List<Student> studentsForTask9 = new List<Student>() { student, student1, student2, student3, student4, student5, student6 };
-
-            Student[] listOfStudents = new Student[] { student, student1, student2, student3 };
-
+            List<Student> studentsForTask9 = CreateStudentsList();
+            Student[] listOfStudents = CreateStudentsArray();
             Student[] fistBeforeLast = listOfStudents.FirstBeforeLastName();
+
             Console.WriteLine("Task 3:");
             for (int i = 0; i < fistBeforeLast.Length; i++)
             {
                 Console.WriteLine(fistBeforeLast[i].ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Student[] ageRange = listOfStudents.ListStudentsInAgeRange(18, 24);
             Console.WriteLine("Task 4:");
 
@@ -74,7 +64,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(ageRange[i].ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Student[] orderDexcendingLambda = listOfStudents.SortStudentsInDescendingOrderWithLambda();
             Console.WriteLine("Task 5: With Lambda");
 
@@ -83,7 +74,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(orderDexcendingLambda[i].ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             var orderDexcendingLinq = listOfStudents.SortStudentsInDescendingOrderWithLinq();
             Console.WriteLine("Task 5: With Linq");
 
@@ -92,7 +84,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 6: With Lambda");
             int[] numbers = new int[] { 3, 7, 28, 44, 77, 700, 335, 9, 70 };
             numbers.ArrayNumbersDevisibleBy7And3Lambda();
@@ -102,7 +95,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.Write(string.Format("{0}, ", numbers[i].ToString()));
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 6: With Linq");
             numbers.ArrayNumbersDevisibleBy7And3Linq();
 
@@ -110,13 +104,15 @@ namespace ExtensionDelegatesLamdbaLinq
             {
                 Console.Write(string.Format("{0}, ", numbers[i].ToString()));
             }
-            Console.WriteLine();
 
-            //Console.WriteLine("Task 7:");
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            Console.WriteLine("Task 7:");
             //Timer timer = new Timer(1);
             //timer.InvokeDelegate();
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 9:");
 
             var result = from studentTask9 in studentsForTask9
@@ -129,7 +125,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(studentForTask9);
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 10:");
             var orderedByFirstName = studentsForTask9.ListStudentsByFirstName();
             var orderedByGroup = studentsForTask9.ListStudentsByGroupNumber(2);
@@ -141,7 +138,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Students by Group:");
 
             foreach (var item in orderedByGroup)
@@ -149,7 +147,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 11:");
             var studentsByMail = studentsForTask9.FindStudentsByEmail("abv.bg");
 
@@ -158,7 +157,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 12:");
             Console.WriteLine("Students with phones starting with 02 are from Sofia!");
 
@@ -169,7 +169,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(item.ToString());
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 13:");
 
             var anonymousArray = new[]
@@ -193,7 +194,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine($"{item.FullName} marks: {string.Join(" ", item.Marks)}");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 14:");
             Console.WriteLine("Students with exact 2 marks = 2");
 
@@ -202,7 +204,8 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine($"{item.FullName} marks: {string.Join(" ", item.Marks)}");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 15:");
 
             var studentsFrom2006 = studentsForTask9.Where(x => x.FN.ToString()[4] == '0' && x.FN.ToString()[5] == '6');
@@ -212,8 +215,73 @@ namespace ExtensionDelegatesLamdbaLinq
                 Console.WriteLine(string.Join(" ", item.Marks));
             }
 
-            Console.WriteLine();
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
+            Console.WriteLine("Task 16:");
+            var math = new Group(2, "Mathematics");
+            var lang = new Group(1, "Language");
+            var foreign = new Group(3, "Foreign Languages");
+
+            var groupedStudents = studentsForTask9.ListStudentsByGroupNumber(2);
+
+            foreach (var item in groupedStudents)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.WriteLine("----------------------------------------------------------------------------------------------");
+
             Console.WriteLine("Task 17:");
+
+            var strings = GetStrings();
+            var longestString = strings
+                .OrderByDescending(x => x.Length)
+                .FirstOrDefault();
+            Console.WriteLine(longestString);
+        }
+
+        private static Student[] CreateStudentsArray()
+        {
+            var allStudents = new Student[7];
+            allStudents[0] = new Student("Gosho", "Goshov", 13, 123406, "02 937 2211", "abv@gmail.bg", 2, new List<int> { 6, 5, 2, 6, 2, 4 });
+            allStudents[1] = new Student("Pepi", "Toshov", 28, 669933, "02 937 2212", "aaa@abv.bg", 1, new List<int> { 3, 5, 3, 6, 5, 4 });
+            allStudents[2] = new Student("Tosho", "Peshov", 19, 888777, "02 937 2213", "bbb@yahoo.bg", 2, new List<int> { 3, 5, 5, 6, 3, 4 });
+            allStudents[3] = new Student("Aleks", "Ivanov", 23, 654306, "032 656 700", "ccc@abv.bg", 1, new List<int> { 2, 5, 2, 6, 2, 4 });
+            allStudents[4] = new Student("Eli", "Pavlova", 20, 554477, "032 656 703", "ddd@gmail.bg", 1, new List<int> { 4, 5, 2, 6, 2, 4 });
+            allStudents[5] = new Student("Gloria", "Tran", 26, 712506, "052 937 211", "eee@abv.bg", 2, new List<int> { 5, 5, 6, 6, 3, 4 });
+            allStudents[6] = new Student("Krasi", "Shishov", 18, 489364, "042 937 211", "ggg@yahoo.bg", 1, new List<int> { 2, 5, 2, 3, 2, 4 });
+
+            return allStudents;
+        }
+
+        private static List<Student> CreateStudentsList()
+        {
+            var allStudents = new List<Student>();
+            allStudents.Add(new Student("Gosho", "Goshov", 13, 123406, "02 937 2211", "abv@gmail.bg", 2, new List<int> { 6, 5, 2, 6, 2, 4 }));
+            allStudents.Add(new Student("Pepi", "Toshov", 28, 669933, "02 937 2212", "aaa@abv.bg", 1, new List<int> { 3, 5, 3, 6, 5, 4 }));
+            allStudents.Add(new Student("Tosho", "Peshov", 19, 888777, "02 937 2213", "bbb@yahoo.bg", 2, new List<int> { 3, 5, 5, 6, 3, 4 }));
+            allStudents.Add(new Student("Aleks", "Ivanov", 23, 654306, "032 656 700", "ccc@abv.bg", 1, new List<int> { 2, 5, 2, 6, 2, 4 }));
+            allStudents.Add(new Student("Eli", "Pavlova", 20, 554477, "032 656 703", "ddd@gmail.bg", 1, new List<int> { 4, 5, 2, 6, 2, 4 }));
+            allStudents.Add(new Student("Gloria", "Tran", 26, 712506, "052 937 211", "eee@abv.bg", 2, new List<int> { 5, 5, 6, 6, 3, 4 }));
+            allStudents.Add(new Student("Krasi", "Shishov", 18, 489364, "042 937 211", "ggg@yahoo.bg", 1, new List<int> { 2, 5, 2, 3, 2, 4 }));
+
+            return allStudents;
+        }
+
+        private static Group[] GroupsGenerator()
+        {
+            var result = new Group[5];
+            result[0] = new Group(1, "Programming");
+            result[1] = new Group(2, "Mathematics");
+            result[2] = new Group(3, "Physics");
+            result[3] = new Group(4, "Philosophy");
+            result[4] = new Group(5, "Biology");
+
+            return result;
+        }
+
+        private static string[] GetStrings()
+        {
             string[] strings = new string[]
             {
                "Create a class Group with properties GroupNumber and DepartmentName.",
@@ -225,10 +293,7 @@ namespace ExtensionDelegatesLamdbaLinq
 
             };
 
-            var longestString = strings
-                .OrderByDescending(x => x.Length)
-                .FirstOrDefault();
-            Console.WriteLine(longestString);
+            return strings;
         }
     }
 }

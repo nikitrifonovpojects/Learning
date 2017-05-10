@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Group.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentExtensions.cs" />
     <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
